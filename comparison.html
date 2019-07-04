@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf8">
+	<title>Comparison - CornerstoneUI</title>
+	<link href="/dist/css/cornerstone.min.css" rel="stylesheet" type="text/css">
+	<style>
+		table {
+			border: 1px solid #000;
+			border-collapse: collapse;
+		}
+		thead th {
+			padding: 1rem 1.5rem;
+			border: 1px solid #ccc;
+			border-bottom: 2px solid #bbb;
+			width: 150px;
+			text-align: center;
+		}
+		thead th:first-child {
+			border-bottom: 1px solid #ccc;
+		}
+		tbody td {
+			text-align: center;
+			vertical-align: top;
+			padding: 1rem;
+			border: 1px solid #ccc;
+			border-right: 2px solid #bbb;
+		}
+		tbody tr td:last-child {
+			border-right: 1px solid #ccc;
+		}
+		tbody td .label {
+			color: #999;
+			font-size: 0.85em;
+		}
+		tbody td .check {
+			color: #0F0;
+		}
+		tbody td .cross {
+			color: #F00;
+		}
+	</style>
+	<script>
+		var componentsData = {
+			grid: {
+				label: 'Grid',
+				cnf: [
+					[true, 'XY Grid / Float Grid / Flex Grid'],
+					[false, ''],
+					[true, 'Flex / Grid'],
+					[true, 'Grid'],
+					[true, 'Grid'],
+					[false, ''],
+					[true, 'Grid / Flex Grid'],
+				]
+			}
+			,accordion: {
+				label: 'Accordion',
+				cnf: [
+					[true, 'Accordion Menu'],
+					[true, 'Accordion'],
+					[true, 'Accordion'],
+					[true, 'Collapse'],
+					[true, 'Grid'],
+					[false, ''],
+					[true, 'Accordion'],
+				]
+			}
+			,countdown: {
+				label: 'Countdown',
+				cnf: [
+					[false, ''],
+					[false, ''],
+					[true, 'Countdown'],
+					[false, ''],
+					[false, ''],
+					[false, ''],
+					[true, 'Countdown'],
+				]
+			}
+		};
+		function renderData(data) {
+			for (var key in data) {
+				if (data.hasOwnProperty(key)) {
+					document.write('<tr>');
+					document.write('<td>'+data[key].label+'</td>');
+					for (var i = 0; i < data[key].cnf.length; i++) {
+						var _indicator = data[key].cnf[i][0] ? '&check;' : '&cross;';
+						var _class = data[key].cnf[i][0] ? 'check' : 'cross';
+						var _label = data[key].cnf[i][1] && data[key].cnf[i][1] != '' ? '<br /><span class="label">'+data[key].cnf[i][1]+'</span>' : '';
+						document.write('<td><span class="indicator '+_class+'">'+_indicator+'</span>' + _label);
+					}
+					document.write('</tr>');
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>Foundation</th>
+				<th>jQuery UI</th>
+				<th>UiKit</th>
+				<th>Materialize CSS</th>
+				<th>Bootstrap</th>
+				<th>Kendo UI</th>
+				<th>Cornerstone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<script>renderData(componentsData);</script>
+		</tbody>
+	</table>
+	<script src="/dist/js/cornerstone.min.js"></script>
+</body>
+</html>

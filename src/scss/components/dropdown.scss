@@ -1,0 +1,63 @@
+@mixin CornerstoneUI_dropdown() {
+	.cs-dropdown {
+		position: relative;
+		display: inline-block;
+		.dropdown-content {
+			overflow: hidden;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: auto;
+			display: none;
+			z-index: 100;
+			background-color: #efefef;
+		}
+		&[data-anchor="bottom-right"] {
+			.dropdown-content {
+				left: unset;
+				right: 0;
+			}
+		}
+		&[data-anchor="top-left"] {
+			.dropdown-content {
+				top: unset;
+				bottom: 100%;
+			}
+		}
+		&[data-anchor="top-right"] {
+			.dropdown-content {
+				top: unset;
+				left: unset;
+				bottom: 100%;
+				right: 0;
+			}
+		}
+		&:hover {
+			.dropdown-content {
+				display: block;
+			}
+		}
+		.dropdown-content-wrap {
+			padding: 1rem;
+			border: 1px solid #ccc;
+		}
+	}
+	.cs-js {
+		.cs-dropdown {
+			.dropdown-content {
+				display: block;
+				transition: height .3s;
+			}
+			&[data-state="opened"] {
+				.dropdown-content {
+					@extend .shadow-1;
+				}
+			}
+			&[data-state="closed"] {
+				.dropdown-content {
+					height: 0 !important;
+				}
+			}
+		}
+	}
+}

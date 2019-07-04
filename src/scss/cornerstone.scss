@@ -1,0 +1,57 @@
+@import './core/functions/import';
+@import './core/mixins/import';
+
+//--edit and uncomment the following file to override any sass variables
+// @import './settings';
+
+@import './components/settings';
+@import './components/normalize';
+@import './components/html5-boilerplate';
+@import './components/screen-readers';
+@import './components/base';
+@import './components/columns';
+@import './components/hidden';
+@import './components/visible';
+@import './components/colors';
+@import './components/shadows';
+@import './components/helpers';
+@import './components/tables';
+@import './components/forms';
+@import './components/alerts';
+@import './components/badges';
+
+//--js widgets
+@import './components/accordion';
+@import './components/modals';
+@import './components/dropdown';
+@import './components/priority-plus';
+@import './components/priority-plus';
+@import './components/pagination';
+@import './components/tabs';
+
+@mixin CornerstoneUI_includeAll() {
+	@include CornerstoneUI_normalize();
+	@include CornerstoneUI_html5_boilerplate();
+	@include CornerstoneUI_screen_readers();
+	@include CornerstoneUI_base();
+	@include CornerstoneUI_columns();
+	@include CornerstoneUI_hidden();
+	@include CornerstoneUI_visible();
+	@include CornerstoneUI_colors(); //--required for any component that has contextual colors
+	@include CornerstoneUI_shadows();
+	@include CornerstoneUI_helpers();
+	@include CornerstoneUI_tables();
+	@include CornerstoneUI_forms();
+	@include CornerstoneUI_alerts();
+	@include CornerstoneUI_badges();
+
+	//--js widgets
+	@include CornerstoneUI_accordion();
+	@include CornerstoneUI_modals();
+	@include CornerstoneUI_dropdown();
+	@include CornerstoneUI_priority_plus();
+	@include CornerstoneUI_pagination();
+	@include CornerstoneUI_tabs();
+}
+
+@include CornerstoneUI_includeAll();

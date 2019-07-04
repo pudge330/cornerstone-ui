@@ -1,0 +1,19 @@
+<script>
+	var jLyte = bglib.jLyte;
+	jLyte(function() {
+		Cornerstone.onLoad(function() {
+			jLyte('[data-cs-instance="Pagination"]').each(function() {
+				var $this = jLyte(this);
+				var instance = Cornerstone.getInstance($elms[0], 'Pagination');
+				instance.on('itemClick', function(evt) {
+					evt.preventDefault();
+				});
+				instance.on('jumpTo', function(evt) {
+					console.log('jumpTo', evt.page);
+				});
+			});
+		});
+	});
+</script>
+</body>
+</html>

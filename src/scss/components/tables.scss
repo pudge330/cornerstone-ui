@@ -1,0 +1,80 @@
+@mixin CornerstoneUI_tables() {
+    table {
+    	border-collapse: collapse;
+    	border-spacing: 0;
+        width: 100%;
+        thead, tbody, tfoot {
+            tr {
+                border-bottom: 1px solid #ddd;
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+        thead tr:last-child {
+            border-bottom: 2px solid #ddd;   
+        }
+        tfoot tr:first-child {
+            border-top: 2px solid #ddd;   
+        }
+        tr th,
+        tr td {
+            padding: 1rem;
+            text-align: left;
+        }
+    }
+    table.#{$cs_prefix}table-outlined {
+        position: relative;
+        border: 2px solid #ddd;
+        th,
+        td {
+            border-right: 1px solid #ddd;
+            position: relative;
+            &:last-child {
+                border-right: none;
+            }
+        }
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+    }
+    table.#{$cs_prefix}table-compact {
+        width: auto;
+        th,
+        td {
+            padding: 0.25rem;
+        }   
+    }
+    table.#{$cs_prefix}table-alternate {
+        tbody tr:nth-child(even) {
+            background-color: #e5e5e5;
+        }
+        tbody tr,
+        tbody td {
+            border-bottom: none;
+        }
+    }
+    table.#{$cs_prefix}table-hover {
+        tbody tr { 
+            &:hover,
+            &:focus,
+            &.active {
+                &:not(.noHover) {
+                    background-color: #ddd;
+                }
+            }
+        }
+        tbody tr,
+        tbody td {
+            border-bottom: none;
+        }
+    }
+    #{$cs_prefix}.table-wrap {
+        width: 100%;
+        overflow: auto;
+        @include cs-px-fallback(margin-bottom, $cs_base_block_margin);
+        > table {
+            margin-bottom: 0;
+        }
+    }
+}

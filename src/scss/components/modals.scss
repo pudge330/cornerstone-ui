@@ -1,0 +1,116 @@
+@mixin CornerstoneUI_modals() {
+	body {
+		&.cs-modal-open {
+    		overflow: hidden;
+		}
+	}
+	.cs-modal-wrap {
+		background: rgba(0,0,0,0.25);
+		position: absolute;
+		z-index: 1001;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: none;
+		overflow: scroll;
+		&[data-parent="window"] {
+			position: fixed;
+		}
+	}
+	.cs-modal {
+		display: none;
+		overflow: auto;
+		background: #fff;
+		width: 90%;
+		margin: auto;
+		margin: 2rem auto;
+		&.modal-small {
+		}
+		&.modal-large {
+		}
+		&.modal-full {
+			width: 100%;
+			margin: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			max-height: unset;
+		}
+		@include cs-breakpoint(sm) {
+			width: 60%;
+			margin: 4rem auto;
+			&.modal-small {
+				width: 45%;
+			}
+			&.modal-large {
+				width: 70%;
+			}
+		}
+		@include cs-breakpoint(md) {
+			width: 50%;
+			margin: 6rem auto;
+			&.modal-small {
+				width: 35%;
+			}
+			&.modal-large {
+				width: 80%;
+			}
+		}
+		&.modal-fill {
+			flex-direction: column;
+		}
+		&.modal-fixed-header,
+		&.modal-fixed-footer {
+			flex-direction: column;
+			.modal-fixed-wrap {
+				flex-grow: 1;
+				overflow: auto;
+			}
+			@include cs-breakpoint(sm) {
+			}
+			@include cs-breakpoint(md) {
+			}
+		}
+		.modal-header {
+			border-bottom: 1px solid #ddd;
+			&:empty {
+				border-bottom: none;
+			}
+		}
+		.modal-content {
+
+		}
+		.modal-footer {
+			border-top: 1px solid #ddd;
+			&:empty {
+				border-top: none;
+			}
+		}
+		.modal-header-actions {
+			float: right;
+		}
+	}
+	.cs-js {
+		.cs-modal-wrap {
+			&[data-state="opened"] {
+				display: block;
+				&.modal-fill,
+				&.modal-fixed-header,
+				&.modal-fixed-footer {
+					display: flex;
+				}
+				.cs-modal {
+					display: block;
+					&.modal-fill,
+					&.modal-fixed-header,
+					&.modal-fixed-footer {
+						display: flex;
+					}
+				}
+			}
+		}
+	}
+}

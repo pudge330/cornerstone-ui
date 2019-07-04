@@ -1,0 +1,28 @@
+@mixin CornerstoneUI_badges() {
+	.#{$cs_prefix}badge {
+		padding: .25em .4em;
+		font-size: 75%;
+		line-height: 1;
+		display: inline-block;
+		background-color: csColor('gray', 'light');
+		color: csColor('gray', 'dark');
+		border-radius: .25rem;
+		white-space: nowrap;
+		vertical-align: text-bottom;
+	}
+	@each $name, $colors in $cs_colors {
+		.#{$cs_prefix}badge {
+			@if $name != 'generic' and $name != 'gray' {
+				&.#{$cs_prefix}badge-#{$name} {
+					background-color: csColor($name, 'base');
+					color: #fff;
+				}
+				&.#{$cs_prefix}badge-#{$name}-alt {
+					color: csColor($name, 'base');
+					background-color: unset;
+					border: 1px solid csColor($name, 'base');
+				}
+			}
+		}
+	}
+}

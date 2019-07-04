@@ -1,0 +1,93 @@
+
+//==base/common
+// $cs_prefix: '' !default;
+// $cs_rem_basePx: 16px !default;
+// $cs_rem_base: 16 !default;
+// $cs_rem_pxValue: 0.0625 !default;
+
+//==breakpoints
+// $cs_bp_sm: 40em !default;
+// $cs_bp_md: 64em !default;
+// $cs_bp_lg: 90em !default;
+// $cs_bp_xlg: 120em !default;
+// $cs_breakpoints: (
+// 	tn: null,
+// 	sm: $cs_bp_sm,
+// 	md: $cs_bp_md,
+// 	lg: $cs_bp_lg,
+// 	xlg: $cs_bp_xlg
+// );
+// $cs_breakpoints_max: (
+// 	tn: $cs_bp_sm - $cs_rem_pxValue,
+// 	sm: $cs_bp_md - $cs_rem_pxValue,
+// 	md: $cs_bp_lg - $cs_rem_pxValue,
+// 	lg: $cs_bp_xlg - $cs_rem_pxValue,
+// 	xlg: null
+// );
+
+//==fonts
+// $cs_font_map: (
+// 	base: sans-serif
+// 	,heading: sans-serif
+// ) !default;
+// $cs_font_map_ext: () !default;
+// $cs_font_map: map-merge($cs_font_map, $cs_font_map_ext);
+
+//==named colors
+// $cs_color_cornflowerBlue: #6EA0BD;
+
+//==colors
+//--shades can be fine-tuned instead of being auto generated
+//--by defining the {key} => {color} pairs
+// $cs_color_darkShadeConfig: (
+// 	"dark": 4%
+// 	,"dark-2x": 8%
+// 	,"dark-3x": 12%
+// 	,"dark-4x": 16%
+// );
+// $cs_color_lightShadeConfig: (
+// 	"light": 10%
+// 	,"light-2x": 20%
+// 	,"light-3x": 30%
+// 	,"light-4x": 36%
+// 	// ,"light-5x": 42%
+// );
+// $cs_colors: (
+// 	"generic": (
+// 		"white": #fff
+// 		,"black": #000
+// 		,"gray": #CCC
+// 	)
+// 	,"gray": (
+// 		"light-3x": #D6D6D6,
+// 		"light-2x": #E0E0E0,
+// 		"light": #EAEAEA,
+// 		"base": #CCC,
+// 		"dark": #A3A3A3,
+// 		"dark-2x": #7A7A7A,
+// 		"dark-3x": #515151
+// 	)
+// 	,"primary": ("base": #0099FF)
+// 	,"secondary": ("base": #999)
+// 	,"success": ("base": #4caf50)
+// 	,"danger": ("base": #FF4040)
+// 	,"warning": ("base": #fd9904)
+// 	,"info": ("base": #2DDBE1)
+// );
+// $cs_colors: csGenerateColorMap($cs_colors);
+// $cs_colors_ext: () !default;
+// $cs_colors_ext: csGenerateColorMap($cs_colors_ext);
+// $cs_colors: map_merge($cs_colors, $cs_colors_ext);
+
+//==base.scss
+// $cs_base_background_color: csColor('generic', 'white') !default;
+// $cs_base_text_color: #222 !default;
+// $cs_base_block_margin: 1rem !default;
+// $cs_base_link_color: $cs_color_cornflowerBlue !default;
+// $cs_base_font_base: csGetFont('base') !default;
+// $cs_base_font_header: csGetFont('heading') !default;
+
+//==columns.scss
+// $cs_grid_max_width: 1100px !default;
+// $cs_grid_column_size: 12 !default;
+// $cs_grid_gutter_size: 1.5rem !default;

@@ -1,0 +1,28 @@
+@mixin CornerstoneUI_screen_readers() {
+	/*! Source: BootStrap Screen Reader Snippet */
+	.#{$cs_prefix}show-for-sr,
+	.#{$cs_prefix}sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+	.#{$cs_prefix}show-for-sr-focusable:active,
+	.#{$cs_prefix}show-for-sr-focusable:focus,
+	.#{$cs_prefix}sr-only-focusable:active,
+	.#{$cs_prefix}sr-only-focusable:focus {
+		position: static;
+		width: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+	}
+	[role="button"] {
+		cursor: pointer;
+	}
+}

@@ -1,0 +1,50 @@
+@mixin cs-rem-fallback($attr, $size) {
+	#{$attr}: $size;
+	#{$attr}: csCalculateRem($size);
+}
+
+@mixin cs-px-fallback($attr, $size) {
+	#{$attr}: csCalculatePx($size);
+	#{$attr}: $size;
+}
+
+@mixin cs-font-size($size) {
+	font-size: $size;
+	font-size: csCalculateRem($size);
+}
+
+@mixin cs-transition($what, $time, $type) {
+    -webkit-transition: $what $time $type;
+    -o-transition: $what $time $type;
+    transition: $what $time $type;
+}
+
+@mixin cs-breakpoint($size) {
+    @media only screen and (min-width: csGetBreakpoint($size)) {
+    	@content;
+    }
+}
+
+@mixin cs-breakpoint-max($size) {
+    @media only screen and (max-width: csGetBreakpointMax($size)) {
+        @content;
+    }
+}
+
+@mixin cs-print() {
+	@media print {
+    	@content;
+    }
+}
+
+@mixin cs-print-breakpoint($size) {
+	@media only print and (min-width: csGetBreakpoint($size)) {
+    	@content;
+    }
+}
+
+@mixin cs-print-breakpoint-max($size) {
+    @media only print and (max-width: csGetBreakpointMax($size)) {
+        @content;
+    }
+}

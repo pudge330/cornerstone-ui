@@ -1,0 +1,66 @@
+@mixin CornerstoneUI_tabs() {
+	ul.cs-tabs,
+	.cs-tabs ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		overflow: auto;
+		li {
+			display: block;
+			float: left;
+			margin: 0;
+			a {
+				display: inline-block;
+				padding: 0.75rem 1.25rem;
+				cursor: pointer;
+				position: relative;
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.1);
+					text-decoration: none;
+				}
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					background-color: transparent;
+					height: 3px;
+					width: 100%;
+					transition: .3s background-color;
+				}
+			}
+			&.active {
+				a {
+					&:after {
+						background-color: csColor('primary', 'base');
+					}
+				}
+			}
+		}
+	}
+	.cs-tabs {
+		margin-bottom: 1rem;
+		ul {
+		}
+	}
+	ul.cs-tabs.vertical-tabs,
+	.cs-tabs.vertical-tabs ul {
+		li {
+			float: none;
+			a {
+				width: 100%;
+				&:after {
+					left: 0;
+					top: 0;
+					bottom: unset;
+					width: 3px;
+					height: 100%;
+				}
+			}
+		}
+	}	
+	.tabs-content {
+		padding: 1rem;
+	}
+}

@@ -1,0 +1,92 @@
+//==base
+@function csParseInt($n) { 
+	@return $n / ($n * 0 + 1);
+}
+
+@function csCalculateRem($size) {
+	$remSize: $size / $cs_rem_basePx;
+	@return $remSize * 1rem;
+}
+
+@function csCalculatePx($size) {
+	$value: csParseInt($size) * $cs_rem_basePx;
+	@return round($value);
+}
+
+@function csGetBreakpoint($size) {
+	@if map-has-key($cs_breakpoints, $size) {
+		@return map-get($cs_breakpoints, $size);
+	}
+	@else {
+		@warn "Unknown breakpoint size `#{$size}` in $cs_breakpoints, returned 1px instead";
+		@return '1px';
+	}
+}
+
+@function csGetBreakpointMax($size) {
+	@if map-has-key($cs_breakpoints_max, $size) {
+		@return map-get($cs_breakpoints_max, $size);
+	}
+	@else {
+		@warn "Unknown breakpoint size `#{$size}` in $cs_breakpoints_max, returned 1px instead";
+		@return '1px';
+	}
+}
+
+//==fonts
+@function csGetFont($key) {
+	@if map-has-key($cs_font_map, $key) {
+		@return map-get($cs_font_map, $key);
+	}
+	@else {
+		@warn "Unknown `#{$key}` in $cs_font_map, defaulting to `base`.";
+		@return map-get($cs_font_map, "base");
+	}
+}
+
+//==colors
+// usage: csColor("name_of_color", "type_of_color")
+// to avoid to repeating map-get($colors, ...)
+@function csColor($color, $type) {
+  @if map-has-key($cs_colors, $color) {
+    $curr_color: map-get($cs_colors, $color);
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  }
+  // @if map-has-key($cs_colors_ext, $color) {
+  //   $curr_color: map-get($cs_colors_ext, $color);
+  //   @if map-has-key($curr_color, $type) {
+  //     @return map-get($curr_color, $type);
+  //   }
+  // }
+  @warn "Unknown `#{$color}` - `#{$type}` in $colors";
+  @return null;
+}
+@function csGenerateColorMap($colors) {
+	@each $colorName, $colorValues in $colors {
+		@if $colorName != 'generic' {
+			@each $shadeName, $shadePercent in $cs_color_darkShadeConfig {
+				@if map-has-key($colorValues, $shadeName) == false {
+					$colorValues: map-merge($colorValues, (
+						$shadeName: darken(map-get($colorValues, "base"), $shadePercent)
+					));
+					$colors: map-merge($colors, (
+						$colorName: $colorValues
+					));
+				}
+			}
+			@each $shadeName, $shadePercent in $cs_color_lightShadeConfig {
+				@if map-has-key($colorValues, $shadeName) == false {
+					$colorValues: map-merge($colorValues, (
+						$shadeName: desaturate(lighten(map-get($colorValues, "base"), $shadePercent), 5%)
+					));
+					$colors: map-merge($colors, (
+						$colorName: $colorValues
+					));
+				}
+			}
+		}
+	}
+	@return $colors;
+}

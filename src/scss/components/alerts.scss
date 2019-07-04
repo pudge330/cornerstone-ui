@@ -1,0 +1,48 @@
+@mixin CornerstoneUI_alerts() {
+	.#{$cs_prefix}alert {
+		padding: 1rem;
+		border: 1px solid csColor('gray', 'dark');
+		display: block;
+		width: 100%;
+		background-color: csColor('gray', 'light');
+		color: csColor('gray', 'dark');
+		border-radius: 5px;
+		a {
+			color: csColor('gray', 'dark-3x');
+			&.animated {
+				&:after {
+					border-color: csColor('gray', 'dark-3x');
+				}
+			}
+		}
+		@include cs-px-fallback(margin-bottom, $cs_base_block_margin);
+	}
+	@each $name, $colors in $cs_colors {
+		.#{$cs_prefix}alert {
+			@if $name != 'generic' and $name != 'gray' {
+				&.#{$cs_prefix}alert-#{$name} {
+					@if $name == 'danger' {
+						background-color: csColor($name, 'light-3x');
+					}
+					@else {
+						background-color: csColor($name, 'light-4x');
+					}
+					color: csColor($name, 'base');
+					border-color: csColor($name, 'base');
+					hr {
+						border: 0;
+						border-top: 1px solid csColor($name, 'base');
+					}
+					a {
+						color: csColor($name, 'dark-3x');
+						&.animated {
+							&:after {
+								border-color: csColor($name, 'dark-3x');
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

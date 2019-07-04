@@ -1,0 +1,53 @@
+@mixin CornerstoneUI_priority_plus() {
+	.cs-priority-plus {
+		font-size: 0;
+		.priority-plus-items {
+			margin: 0;
+			padding: 0;
+			font-size: 1em;
+			position: relative;
+			white-space: nowrap;
+			.item {
+				margin-bottom: 0;
+				display: inline-block;
+				vertical-align: bottom;
+				button, a.button, input {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		.overflow-toggle-item {
+			position: absolute;
+			right: 0;
+			top: 0;
+			.dropdown-action {
+				margin-bottom: 0;
+				svg {
+					display: block;
+					width: 1em;
+					height: 1em;
+					fill: currentColor;
+				}
+			}
+			.dropdown-content {
+				ul.dropdown-content-wrap {
+					padding: 0;
+					margin: 0;
+				}
+				white-space: initial;
+				.item {
+					white-space: pre;
+					width: 100%;
+				}
+			}
+		}
+	}
+	.cs-js {
+		.cs-priority-plus {
+			.priority-plus-items {
+				padding-right: 45px;
+			}
+		}
+	}
+}

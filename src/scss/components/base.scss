@@ -1,0 +1,121 @@
+@mixin CornerstoneUI_base() {
+	//==base
+	*, *:before, *:after {
+		box-sizing: border-box;
+	}
+	html, body {
+		font-size: 100%;
+	}
+	html {
+		@if $cs_base_background_color {
+			background-color: $cs_base_background_color;
+		}
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		@if $cs_base_text_color {
+			color: $cs_base_text_color;
+		}
+		font-family: $cs_base_font_base;
+		line-height: 1.4;
+	}
+	//==block margins
+	h1, h2, h3, h4, h5, h6, .#{$cs_prefix}h1, .#{$cs_prefix}h2, .#{$cs_prefix}h3, .#{$cs_prefix}h4, .#{$cs_prefix}h5, .#{$cs_prefix}h6,
+	p, ul, ol, fieldset, pre, blockquote, dl, figure,
+	table, form {
+		margin: 0;
+		@include cs-px-fallback(margin-bottom, $cs_base_block_margin);
+	}
+	ol, ul {
+		@include cs-px-fallback(padding-left, 1.4rem);
+		@include cs-px-fallback(margin-left, $cs_base_block_margin);
+	}
+	input,
+	textarea,
+	select,
+	button,
+	.#{$cs_prefix}btn {
+		margin: 0;
+		@include cs-px-fallback(margin-bottom, $cs_base_block_margin / 2);
+	}
+	label {
+		margin: 0;
+		@include cs-px-fallback(margin-bottom, $cs_base_block_margin / 5);
+	}
+	//==headings
+	h1, h2, h3, h4, h5, h6,
+	.#{$cs_prefix}h1, .#{$cs_prefix}h2, .#{$cs_prefix}h3, .#{$cs_prefix}h4, .#{$cs_prefix}h5, .#{$cs_prefix}h6 {
+		font-weight: 400;
+		font-family: $cs_base_font_header;
+	}
+	h1, .#{$cs_prefix}h1 {
+		font-size: 38px;
+	}
+	h2, .#{$cs_prefix}h2 {
+		font-size: 32px;
+	}
+	h3, .#{$cs_prefix}h3 {
+		font-size: 28px;
+	}
+	h4, .#{$cs_prefix}h4 {
+		font-size: 24px;
+	}
+	h5, .#{$cs_prefix}h5 {
+		font-size: 20px;
+	}
+	h6, .#{$cs_prefix}h6 {
+		font-size: 16px;
+	}
+	//==fonts
+	@each $fontKey, $fontValue in $cs_font_map {
+		.#{$cs_prefix}font-#{$fontKey} {
+			font-family: $fontValue;
+		}
+	}
+	//==links
+	a {
+		text-decoration: none;
+		color: $cs_base_link_color;
+		&:hover {
+			text-decoration: underline;
+		}
+		&.#{$cs_prefix}animated {
+			position: relative;
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 0%;
+				bottom: -1px;
+				left: 0;
+				border-top: 1px solid $cs_base_link_color;
+				transition: width .6s;
+			}
+			&:hover {
+				text-decoration: none;
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
+	p, a, span, ul, li {
+		font-size: inherit;
+	}
+	li {
+		margin: 0;
+		@include cs-px-fallback(margin-bottom, 0.2rem);
+	}
+	pre > code {
+		margin: 0;
+		display: block;
+		white-space: pre;
+		overflow: scroll;
+		line-height: 1.4;
+		padding: 5px 10px;
+	}
+	.cornerstone-bp {
+		content: 'sm:#{$cs_bp_sm};md:#{$cs_bp_md};lg:#{$cs_bp_lg};xlg:#{$cs_bp_xlg}';
+	}
+}

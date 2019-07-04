@@ -1,0 +1,151 @@
+@mixin CornerstoneUI_columns() {
+	.#{$cs_prefix}container,
+	.#{$cs_prefix}container-fluid {
+		overflow: visible;
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+		padding-left: $cs_grid_gutter_size / 2;
+		padding-right: $cs_grid_gutter_size / 2;
+		&.grid-container {
+			padding-top: $cs_grid_gutter_size / 2;
+			padding-bottom: $cs_grid_gutter_size / 2;
+		}
+	}
+	.#{$cs_prefix}container {
+		max-width: $cs_grid_max_width;
+	}
+	.#{$cs_prefix}row {
+		overflow: visible;
+		position: relative;
+		margin-left: -($cs_grid_gutter_size / 2);
+		margin-right: -($cs_grid_gutter_size / 2);
+		font-size: 0;
+		.grid-container & {
+			margin-top: -($cs_grid_gutter_size / 2);
+			margin-bottom: -($cs_grid_gutter_size / 2);
+		}
+	}
+	.#{$cs_prefix}col-last {
+		float: right;
+	}
+	.#{$cs_prefix}clear-fix:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+	[class*="#{$cs_prefix}col-"] {
+		overflow: visible;
+		display: inline-block;
+		vertical-align: middle;
+		width: 100%;
+		position: relative;
+		min-height: 1px;
+		font-size: 1rem;
+		padding-left: ($cs_grid_gutter_size / 2);
+		padding-right: ($cs_grid_gutter_size / 2);	
+		.grid-container & {
+			padding-top: ($cs_grid_gutter_size / 2);
+			padding-bottom: ($cs_grid_gutter_size / 2);
+		}
+	}
+	[class*="#{$cs_prefix}col-"] {
+	    .#{$cs_prefix}container.#{$cs_prefix}no-gutter > .#{$cs_prefix}row &,
+	    .#{$cs_prefix}container-fluid.#{$cs_prefix}no-gutter > .#{$cs_prefix}row & {
+	    	padding-left: 0;
+	    	padding-right: 0;
+	    }
+	    .#{$cs_prefix}row.#{$cs_prefix}no-gutter > &,
+	    .#{$cs_prefix}row.#{$cs_prefix}no-gutter > & {
+	    	padding-left: 0;
+	    	padding-right: 0;
+	    }
+	}
+	.#{$cs_prefix}container.#{$cs_prefix}no-gutter,
+	.#{$cs_prefix}container-fluid.#{$cs_prefix}no-gutter {
+		padding-left: 0;
+	    padding-right: 0;
+	    > .row {
+	    	margin-left: 0;
+	    	margin-right: 0;
+	    }
+	}
+	.#{$cs_prefix}container,
+	.#{$cs_prefix}container-fluid {
+		&.align-top {
+			[class*="#{$cs_prefix}col-"] {
+				vertical-align: text-top;
+			}
+		}
+		&.align-bottom {
+			[class*="#{$cs_prefix}col-"] {
+				vertical-align: text-bottom;
+			}
+		}
+	}
+	//--calculate grid
+	@for $i from $cs_grid_column_size through 0 {
+		$calculatedWidth: ((100% / $cs_grid_column_size) * $i);
+
+		@if $i != 0 {
+			.#{$cs_prefix}col-tn-#{$i} {
+	            width: $calculatedWidth;
+	        }
+	        .#{$cs_prefix}offset-tn-#{$i} {
+	            margin-left: $calculatedWidth;
+	        }
+	        .#{$cs_prefix}pull-tn-#{$i} {
+	            right: $calculatedWidth;
+	        }
+	        .#{$cs_prefix}push-tn-#{$i} {
+	            left: $calculatedWidth;
+	        }
+		}
+		@else {
+			.#{$cs_prefix}offset-tn-#{$i} {
+	            margin-left: 0;
+	        }
+	        .#{$cs_prefix}pull-tn-#{$i} {
+	            right: 0;
+	        }
+	        .#{$cs_prefix}push-tn-#{$i} {
+	            left: 0;
+	        }
+		}
+	}
+	@each $bpKey, $bpSize in $cs_breakpoints {
+		@if $bpKey != 'tn' {
+			@include cs-breakpoint($bpKey) {
+				@for $i from $cs_grid_column_size through 0 {
+					$calculatedWidth: ((100% / $cs_grid_column_size) * $i);
+
+					@if $i != 0 {
+						.#{$cs_prefix}col-#{$bpKey}-#{$i} {
+				            width: $calculatedWidth;
+				        }
+				        .#{$cs_prefix}offset-#{$bpKey}-#{$i} {
+				            margin-left: $calculatedWidth;
+				        }
+				        .#{$cs_prefix}pull-#{$bpKey}-#{$i} {
+				            right: $calculatedWidth;
+				        }
+				        .#{$cs_prefix}push-#{$bpKey}-#{$i} {
+				            left: $calculatedWidth;
+				        }
+					}
+					@else {
+						.#{$cs_prefix}offset-#{$bpKey}-#{$i} {
+				            margin-left: 0;
+				        }
+				        .#{$cs_prefix}pull-#{$bpKey}-#{$i} {
+				            right: 0;
+				        }
+				        .#{$cs_prefix}push-#{$bpKey}-#{$i} {
+				            left: 0;
+				        }
+					}
+				}
+			}
+		}
+	}
+}

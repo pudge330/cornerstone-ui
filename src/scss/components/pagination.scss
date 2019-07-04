@@ -1,0 +1,97 @@
+@mixin CornerstoneUI_pagination() {
+	.cs-pagination {
+		margin-left: 0;
+		list-style: none;
+		li {
+			display: inline-block;
+			color: #333;
+			transition: background-color .2s;
+			font-size: 0.9em;
+			a {
+				color: #333;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+			> a, > button {
+				display: inline-block;
+				padding: 0.25rem 0.75rem;
+			}
+			&:not(.disabled):not(.current):not(.no-popup) {
+				cursor: pointer;
+			}
+			&.previous,
+			&.next {
+				&.disabled {
+					display: inline-block;
+					padding: 0.25rem 0.75rem;
+				}
+			}
+			&.ellipsis {
+				padding: 0.25rem 0.75rem;
+				position: relative;
+				&:after {
+					display: inline-block;
+					content: '…';
+				}
+				&.no-content {
+					&:after {
+						content: unset;
+					}
+				}
+				.ellipsis-input {
+					position: absolute;
+					top: 105%;
+					top: calc(100% + 5px);
+					left: 0;
+					left: calc(-25px + 50%);
+					width: 50px;
+					z-index: 1;
+					display: none;
+					&:before {
+						content: '';
+						position: absolute;
+						display: block;
+						top: -5px;
+						left: 50%;
+						left: calc(50% - 5px);
+						width: 0;
+						height: 0;
+						transition: border-color 0.25s ease-in-out;
+						border-left: 5px solid transparent;
+						border-right: 5px solid transparent;
+						border-bottom: 5px solid #8a8a8a;
+					}
+					input {
+						text-align: center;
+						margin: 0;
+						border: 1px solid #8a8a8a;
+					}
+					&[data-showing="true"] {
+						display: block;
+					}
+				}
+			}
+			&.current {
+				padding: 0.25rem 0.75rem;
+				background-color: csColor('primary', 'base');
+				color: #fff;
+				a {
+					color: #fff;
+				}
+			}
+			&.disabled {
+				color: #ccc;
+				a {
+					color: #ccc;
+				}
+			}
+			&:hover:not(.current):not(.disabled):not(.no-popup) {
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+			&.no-padding {
+				padding: 0 !important;
+			}
+		}
+	}
+}
