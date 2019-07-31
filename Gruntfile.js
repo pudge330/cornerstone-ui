@@ -72,6 +72,10 @@ var htmlConcats = {
 		src: ['src/html/parts/pagination.html'],
 		dest: 'examples/pagination.html'
 	}
+	,htmlToasts: {
+		src: ['src/html/parts/toasts.html'],
+		dest: 'examples/toasts.html'
+	}
 };
 
 for (var key in htmlConcats) {
@@ -156,10 +160,16 @@ module.exports = function(grunt) {
 			}
 		}
 		,copy: {
-			'js-deps': {
+			'sortablejs': {
 				expand: true,
 				cwd: 'node_modules/sortablejs',
 				src: ['Sortable.js', 'Sortable.min.js'],
+				dest: 'dist/js/'
+			},
+			'jquery': {
+				expand: true,
+				cwd: 'node_modules/jquery/dist',
+				src: ['jquery.js', 'jquery.min.js'],
 				dest: 'dist/js/'
 			}
 		}

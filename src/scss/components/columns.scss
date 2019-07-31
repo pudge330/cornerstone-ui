@@ -15,6 +15,9 @@
 	.#{$cs_prefix}container {
 		max-width: $cs_grid_max_width;
 	}
+	.#{$cs_prefix}container-fluid {
+		max-width: unset;
+	}
 	.#{$cs_prefix}row {
 		overflow: visible;
 		position: relative;
@@ -47,6 +50,10 @@
 		.grid-container & {
 			padding-top: ($cs_grid_gutter_size / 2);
 			padding-bottom: ($cs_grid_gutter_size / 2);
+		}
+		&.no-gutter {
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 	[class*="#{$cs_prefix}col-"] {
@@ -81,6 +88,23 @@
 			[class*="#{$cs_prefix}col-"] {
 				vertical-align: text-bottom;
 			}
+		}
+		.row {
+			&.align-top {
+				[class*="#{$cs_prefix}col-"] {
+					vertical-align: text-top;
+				}
+			}
+			&.align-middle {
+				[class*="#{$cs_prefix}col-"] {
+					vertical-align: middle;
+				}
+			}
+			&.align-bottom {
+				[class*="#{$cs_prefix}col-"] {
+					vertical-align: text-bottom;
+				}
+			}	
 		}
 	}
 	//--calculate grid

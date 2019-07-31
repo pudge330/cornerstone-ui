@@ -1,16 +1,16 @@
 @mixin CornerstoneUI_helpers() {
     .#{$cs_prefix}text {
         &-left {
-            text-align: left;
+            text-align: left !important;
         }
         &-right {
-            text-align: right;
+            text-align: right !important;
         }
         &-center {
-            text-align: center;
+            text-align: center !important;
         }
         &-justify {
-            text-align: justify;
+            text-align: justify !important;
         }
         &-break {
             word-break: break-all;
@@ -102,19 +102,19 @@
     }
     .#{$cs_prefix}width {
         &-25 {
-            width: 25%;
+            width: 25% !important;
         }
         &-50 {
-            width: 50%;
+            width: 50% !important;
         }
         &-75 {
-            width: 75%;
+            width: 75% !important;
         }
         &-100 {
-            width: 100%;
+            width: 100% !important;
         }
         &-100-max {
-            max-width: 100%;
+            max-width: 100% !important;
         }
     }
     .#{$cs_prefix}v-centered {
@@ -221,7 +221,7 @@
             padding-bottom: 0 !important; 
         }
         &-pleft { 
-            padding-left: 0 !important; 
+            padding-left: 0 !important;
         }
     }
     .#{$cs_prefix}display-inline {

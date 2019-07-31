@@ -87,6 +87,11 @@
 			padding: 0.5rem;
 			display: block;
 		}
+		.example-pages li a,
+		.example-pages li button,
+		.example-pages li input {
+			width: 100%;
+		}
 	</style>
 	<script>
 		window.onload = function() {
@@ -111,9 +116,9 @@
 <body>
 
 <div class="container">
-	<div class="row no-padding">
+	<div class="row no-gutter">
 		<div class="col-tn-12">
-			<div class="cs-priority-plus" data-priority-plus>
+			<div class="cs-priority-plus example-pages" data-priority-plus>
 				<ul class="priority-plus-items">
 					<li class="item"><a href="/examples/general.html" class="cs-button clear-mbottom">General</a></li>
 					<li class="item"><a href="/examples/forms.html" class="cs-button clear-mbottom">Forms</a></li>
@@ -126,6 +131,7 @@
 					<li class="item"><a href="/examples/tabs.html" class="cs-button clear-mbottom">Tabs</a></li>
 					<li class="item"><a href="/examples/modals.html" class="cs-button clear-mbottom">Modals</a></li>
 					<li class="item"><a href="/examples/pagination.html" class="cs-button clear-mbottom">Pagination</a></li>
+					<li class="item"><a href="/examples/toasts.html" class="cs-button clear-mbottom">Toasts</a></li>
 					<li class="item"><a href="/examples/" class="cs-button clear-mbottom">Directory</a></li>
 				</ul>
 			</div>
@@ -140,7 +146,7 @@
 	</div>
 	<div class="row">
 		<div class="col-tn-12">
-			<table>
+			<div class="table-wrap"><table>
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -233,8 +239,8 @@
 						<td>Hamburg</td>
 					</tr>
 				</tbody>
-			</table>
-			<table class="table-outlined">
+			</table></div>
+			<div class="table-wrap"><table class="table-outlined">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -327,8 +333,8 @@
 						<td>Hamburg</td>
 					</tr>
 				</tbody>
-			</table>
-			<table class="table-compact">
+			</table></div>
+			<div class="table-wrap"><table class="table-compact">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -421,8 +427,8 @@
 						<td>Hamburg</td>
 					</tr>
 				</tbody>
-			</table>
-			<table class="table-alternate">
+			</table></div>
+			<div class="table-wrap"><table class="table-alternate">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -515,8 +521,8 @@
 						<td>Hamburg</td>
 					</tr>
 				</tbody>
-			</table>
-			<table class="table-alternate table-hover">
+			</table></div>
+			<div class="table-wrap"><table class="table-alternate table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -609,8 +615,8 @@
 						<td>Hamburg</td>
 					</tr>
 				</tbody>
-			</table>
-			<table class="">
+			</table></div>
+			<div class="table-wrap"><table class="">
 				<thead>
 					<tr>
 						<th>Ref Num</th>
@@ -688,7 +694,7 @@
 						<td>$37,412.00</td>
 					</tr>
 				</tfoot>
-			</table>
+			</table></div>
 		</div>
 	</div>
 </div>

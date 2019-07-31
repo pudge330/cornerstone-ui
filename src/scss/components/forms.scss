@@ -74,6 +74,8 @@
 		// height: 149px;
 		resize: both;
 		min-width: 39px;
+		line-height: 1.3;
+		padding: 0.5rem;
 		&[rows] {
     		height: auto;
     	}
