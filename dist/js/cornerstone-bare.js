@@ -833,11 +833,11 @@ Cornerstone.BaseModule = module2;
 			});
 			this.$el.on('keydown', '.ellipsis-input input', function (evt){
 				_this = this;
-				if (evt.originalEvent.keyCode == 13) {
+				if (evt.originalEvent.keyCode == 13 && _this.value.trim() != '') {
 					_self.trigger('jumpTo', {
 						target: _this
 						,caller: _self
-						,page: _this.value || ''
+						,page: _this.value
 					});
 				}
 			});
@@ -860,9 +860,9 @@ Cornerstone.BaseModule = module2;
 				_self.renderItem(evt);
 			});
 			window['m' + this.instanceId] = this;
-			window['getPagination'] = this.getPagination;
 		}
 		,render: function(current, maxPages) {
+			var _self = this;
 			/* needs tested */
 			maxPages = maxPages || this.getOption('maxPages');
 			current = current < 0 ? 0 : current;
@@ -878,6 +878,7 @@ Cornerstone.BaseModule = module2;
 			var prevDisabled = (current < 2);
 			var nextDisabled = (current == maxPages);
 			this.$el.find('li:not(.cs-template)').remove();
+			console.log(arr);
 			for (var i = 0; i < arr.length; i++) {
 				var $item = jLyte('<li></li>');
 				if (arr[i] == '...') {
@@ -896,9 +897,10 @@ Cornerstone.BaseModule = module2;
 					}
 					type = arr[i] == 'prev' ? 'prev' : type;
 					type = arr[i] == 'next' ? 'next' : type;
-					_self.trigger('renderItem', {
+					this.trigger('renderItem', {
 						caller: _self
 						,el: $item[0]
+						,current: current
 						,item: {
 							value: arr[i]
 							,type: type
@@ -922,7 +924,7 @@ Cornerstone.BaseModule = module2;
 			}
 			else if (evt.type == 'prev') {
 				if (!item.disabled) {
-					inner = '<a href="?page=previous">Previous</a>';
+					inner = '<a href="?page=' + (evt.current - 1) + '">Previous</a>';
 				}
 				else {
 					inner = '<span data-page="previous">Previous</span>';
@@ -930,15 +932,15 @@ Cornerstone.BaseModule = module2;
 			}
 			else if (evt.type == 'next') {
 				if (!item.disabled) {
-					inner = '<a href="?page=next">Next</a>';
+					inner = '<a href="?page=' + (evt.current + 1) + '">Next</a>';
 				}
 				else {
 					inner = '<span data-page="next">Next</span>';
 				}
 			}
-			el.innerHTML = inner;
+			evt.el.innerHTML = inner;
 			if (item.disabled) {
-				bglib.El.addClass(el, 'disabled');
+				bglib.El.addClass(evt.el, 'disabled');
 			}
 		}
 		,isEllipsisTextboxShowing: function() {

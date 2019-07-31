@@ -533,9 +533,20 @@ bglib.fn.htmlEntities = function(s) {
 };
 bglib.fn.interpolate = function(tpl, data) {
     for (var key in data) {
-        tpl = tpl.replace(new RegExp('{{' + key + '}}', 'g'), data[key]);
+        tpl = tpl.replace(new RegExp('{{' + key + '}}', 'gm'), data[key]);
     }
     return tpl;
+};
+bglib.fn.iosVersion = function(max) {
+    //--@ https://stackoverflow.com/questions/8348139/detect-ios-version-less-than-5-with-javascript
+	if (/iP(hone|od|ad)/.test(navigator.platform)) {
+		// supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+		var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+		return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+	}
+	else {
+		return null;
+	}
 };
 bglib.fn.rand = function(max) {
     max = max || 100000000;
@@ -1679,7 +1690,7 @@ bglib.EventUtil = {
 	    elData.set(e, key, val);
 	};
 	m.data.has = function(e, key) {
-	    elData.has(e, key);
+	    return elData.has(e, key);
 	};
 	m.data.remove = function(e, key) {
 	    elData.remove(e, key);
