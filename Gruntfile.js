@@ -9,6 +9,8 @@ var csModules = [
 	,'src/js/components/PriorityPlus.js'
 	,'src/js/components/Pagination.js'
 	,'src/js/components/Tabs.js'
+	,'src/js/components/Toasts.js'
+	,'src/js/components/Tooltips.js'
 ];
 var csFullModules = [
 	'src/js/wrap-start.js'
@@ -75,6 +77,14 @@ var htmlConcats = {
 	,htmlToasts: {
 		src: ['src/html/parts/toasts.html'],
 		dest: 'examples/toasts.html'
+	}
+	,htmlTooltips: {
+		src: ['src/html/parts/tooltips.html'],
+		dest: 'examples/tooltips.html'
+	}
+	,htmlBreadcrumb: {
+		src: ['src/html/parts/breadcrumbs.html'],
+		dest: 'examples/breadcrumbs.html'
 	}
 };
 

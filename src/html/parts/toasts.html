@@ -6,7 +6,14 @@
 	</div>
 	<div class="row">
 		<div class="col-tn-12">
-			
+			<button class="cs-button button-primary" type="button" onclick="createNewToast()">Toast</button>
+			<script>
+				var toastCount = 0;
+				function createNewToast() {
+					toastCount++;
+					(new Cornerstone.Toast({html: 'This is a toast [' + toastCount + '].'}));
+				}
+			</script>
 		</div>
 	</div>
 </div>

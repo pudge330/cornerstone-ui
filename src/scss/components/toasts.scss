@@ -1,0 +1,29 @@
+@mixin CornerstoneUI_toasts() {
+	.cs-toast {
+		padding: 0.25rem;
+		width: 100%;
+		.cs-toast-content {
+			background: #444;
+			color: #fff;
+			padding: 1rem;
+			border-radius: 3px;
+			@extend .shadow-1;
+		}
+		&:not(.removing) {
+			+ .cs-toast {
+				margin-top: 1rem;
+			}
+		}
+	}
+	.cs-toast-container {
+		display: block;
+		width: 70%;
+		max-width: 300px;
+		position: fixed;
+		top: 10%;
+		right: 10%;
+		@include cs-breakpoint(sm) {
+			width: 30%;
+		}
+	}
+}

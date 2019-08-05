@@ -102,20 +102,26 @@ var module = EventModule.extend({
 	Name: undefined
 	,instanceId: undefined
 	,$el: undefined
+	,dataValue: undefined
 	,defaultOptions: undefined
 	,options: undefined
 	,constructor: function(element, options) {
-		this.$el = bglib.jLyte(element);
-		element = this.$el[0];
+		if (element) {
+			this.$el = bglib.jLyte(element);
+			element = this.$el[0];
+		}
 		this.defaultOptions = {};
 		this.options = options || {};
 		if (!bglib.DT.isObject(options)) {
 			this.options = {};
 		}
 		this.instanceId = bglib.fn.rand();
-		Cornerstone.setInstance(element, this.Name, this);
-		this.$el.attr('data-cs-instance', this.Name);
-		this.$el.removeAttr('data-' + this.Name.lowercaseFirst(), this.Name);
+		if (element) {
+			Cornerstone.setInstance(element, this.Name, this);
+			this.$el.attr('data-cs-instance', this.Name);
+			this.dataValue = this.$el.attr('data-' + this.Name.lowercaseFirst());
+			this.$el.removeAttr('data-' + this.Name.lowercaseFirst());
+		}
 		EventModule.apply(this, arguments);
 	}
 	,getOption: function(o) {
@@ -131,6 +137,33 @@ var module = EventModule.extend({
 	}
 });
 Cornerstone.BaseComponent = module;
+var jsModule = EventModule.extend({
+	Name: undefined
+	,instanceId: undefined
+	,defaultOptions: undefined
+	,options: undefined
+	,constructor: function(options) {
+		this.defaultOptions = {};
+		this.options = options || {};
+		if (!bglib.DT.isObject(options)) {
+			this.options = {};
+		}
+		this.instanceId = bglib.fn.rand();
+		EventModule.apply(this, arguments);
+	}
+	,getOption: function(o) {
+		if (this.options.hasOwnProperty(o))
+			return this.options[o];
+		else if (this.defaultOptions.hasOwnProperty(o))
+			return this.defaultOptions[o];
+		else
+			return null;
+	}
+	,setOption: function(o, v) {
+		this.options[o] = v;
+	}
+});
+Cornerstone.JsComponent = jsModule;
 var module2 = EventModule.extend({
 	Name: undefined
 	,defaultOptions: undefined

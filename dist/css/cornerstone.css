@@ -755,7 +755,7 @@ pre > code {
 }
 
 .cornerstone-bp {
-  content: "sm:40em;md:64em;lg:90em;xlg:120em";
+  content: "sm:40em;md:64em;lg:90em;xlg:105em";
 }
 
 .container,
@@ -1683,7 +1683,7 @@ pre > code {
     left: 0;
   }
 }
-@media only screen and (min-width: 120em) {
+@media only screen and (min-width: 105em) {
   .col-xlg-12 {
     width: 100%;
   }
@@ -1903,12 +1903,12 @@ pre > code {
     display: none;
   }
 }
-@media (min-width: 90em) and (max-width: 119.9375em) {
+@media (min-width: 90em) and (max-width: 104.9375em) {
   .hidden-lg {
     display: none;
   }
 }
-@media (min-width: 120em) {
+@media (min-width: 105em) {
   .hidden-xlg {
     display: none;
   }
@@ -1956,7 +1956,7 @@ pre > code {
     display: block;
   }
 }
-@media (min-width: 90em) and (max-width: 119.9375em) {
+@media (min-width: 90em) and (max-width: 104.9375em) {
   .visible-lg-i {
     display: inline;
   }
@@ -1969,7 +1969,7 @@ pre > code {
     display: block;
   }
 }
-@media (min-width: 120em) {
+@media (min-width: 105em) {
   .visible-xlg-i {
     display: inline;
   }
@@ -3026,7 +3026,7 @@ a.animated.text-info-light-4x:after {
   border-color: #cff5f7;
 }
 
-.shadow-1, .cs-js .cs-dropdown[data-state="opened"] .dropdown-content {
+.shadow-1, .cs-js .cs-dropdown[data-state="opened"] .dropdown-content, .cs-toast .cs-toast-content {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -4519,6 +4519,51 @@ a.cs-button.button-info.outline:active.fill {
   border: 1px solid #2DDBE1;
 }
 
+.breadcrumbs {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  font-size: 0;
+}
+.breadcrumbs .breadcrumb-item {
+  font-size: 1rem;
+  display: inline-block;
+  color: #A3A3A3;
+}
+.breadcrumbs .breadcrumb-item + .breadcrumb-item:before {
+  content: '/';
+  margin: 0 0.35rem;
+}
+.breadcrumbs .breadcrumb-item a {
+  color: #0099FF;
+}
+.breadcrumbs[data-separator="lessthan"] .breadcrumb-item + .breadcrumb-item:before, .breadcrumbs[data-separator=">"] .breadcrumb-item + .breadcrumb-item:before {
+  content: '>';
+  position: relative;
+  top: -1px;
+  margin: 0 0.25rem;
+}
+.breadcrumbs[data-separator="square"] .breadcrumb-item + .breadcrumb-item:before {
+  content: '▪';
+  line-height: 0;
+  display: inline-block;
+  font-size: 1.5em;
+  vertical-align: middle;
+  top: -2px;
+  position: relative;
+  margin: 0 0.25rem;
+}
+.breadcrumbs[data-separator="dot"] .breadcrumb-item + .breadcrumb-item:before {
+  content: '•';
+  line-height: 0;
+  display: inline-block;
+  font-size: 1.75em;
+  vertical-align: middle;
+  top: -1px;
+  position: relative;
+  margin: 0 0.25rem;
+}
+
 .cs-accordion .accordion-title {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -4926,4 +4971,47 @@ ul.cs-tabs.vertical-tabs li a:after,
 .tabs-content.no-h-padding {
   padding-left: 0;
   padding-right: 0;
+}
+
+.cs-toast {
+  padding: 0.25rem;
+  width: 100%;
+}
+.cs-toast .cs-toast-content {
+  background: #444;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 3px;
+}
+.cs-toast:not(.removing) + .cs-toast {
+  margin-top: 1rem;
+}
+
+.cs-toast-container {
+  display: block;
+  width: 70%;
+  max-width: 300px;
+  position: fixed;
+  top: 10%;
+  right: 10%;
+}
+@media only screen and (min-width: 40em) {
+  .cs-toast-container {
+    width: 30%;
+  }
+}
+
+.cs-tooltip {
+  position: fixed;
+  padding: 0.75rem;
+}
+.cs-tooltip .tooltipContent {
+  position: relative;
+  background-color: #333;
+  padding: 0.5rem;
+  border-radius: 3px;
+  color: #fff;
+}
+.cs-tooltip[data-position="top"], .cs-tooltip[data-position="bottom"] {
+  max-width: calc(100vw - 8px);
 }

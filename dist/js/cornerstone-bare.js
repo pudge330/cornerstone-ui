@@ -102,20 +102,26 @@ var module = EventModule.extend({
 	Name: undefined
 	,instanceId: undefined
 	,$el: undefined
+	,dataValue: undefined
 	,defaultOptions: undefined
 	,options: undefined
 	,constructor: function(element, options) {
-		this.$el = bglib.jLyte(element);
-		element = this.$el[0];
+		if (element) {
+			this.$el = bglib.jLyte(element);
+			element = this.$el[0];
+		}
 		this.defaultOptions = {};
 		this.options = options || {};
 		if (!bglib.DT.isObject(options)) {
 			this.options = {};
 		}
 		this.instanceId = bglib.fn.rand();
-		Cornerstone.setInstance(element, this.Name, this);
-		this.$el.attr('data-cs-instance', this.Name);
-		this.$el.removeAttr('data-' + this.Name.lowercaseFirst(), this.Name);
+		if (element) {
+			Cornerstone.setInstance(element, this.Name, this);
+			this.$el.attr('data-cs-instance', this.Name);
+			this.dataValue = this.$el.attr('data-' + this.Name.lowercaseFirst());
+			this.$el.removeAttr('data-' + this.Name.lowercaseFirst());
+		}
 		EventModule.apply(this, arguments);
 	}
 	,getOption: function(o) {
@@ -131,6 +137,33 @@ var module = EventModule.extend({
 	}
 });
 Cornerstone.BaseComponent = module;
+var jsModule = EventModule.extend({
+	Name: undefined
+	,instanceId: undefined
+	,defaultOptions: undefined
+	,options: undefined
+	,constructor: function(options) {
+		this.defaultOptions = {};
+		this.options = options || {};
+		if (!bglib.DT.isObject(options)) {
+			this.options = {};
+		}
+		this.instanceId = bglib.fn.rand();
+		EventModule.apply(this, arguments);
+	}
+	,getOption: function(o) {
+		if (this.options.hasOwnProperty(o))
+			return this.options[o];
+		else if (this.defaultOptions.hasOwnProperty(o))
+			return this.defaultOptions[o];
+		else
+			return null;
+	}
+	,setOption: function(o, v) {
+		this.options[o] = v;
+	}
+});
+Cornerstone.JsComponent = jsModule;
 var module2 = EventModule.extend({
 	Name: undefined
 	,defaultOptions: undefined
@@ -161,18 +194,23 @@ Cornerstone.BaseModule = module2;
 	var jLyte = bglib.jLyte;
 	var module = CS.BaseModule.extend({
 		Name: 'Accordion'
-		,__breakpoints: undefined
+		,breakpoints: undefined
+		,breakpointsPx: undefined
+		,current: undefined
+		,$html: undefined
 		,init: function() {
 			var _self = this;
 			this.defaultOptions = {
-				breakpoints: {
-					sm: '40em'
-					,md: '64em'
-					,lg: '90em'
-					,xlg: '120em'
-				}
+				breakpoints: [
+					['sm', '40em']
+					,['md', '64em']
+					,['lg', '90em']
+					,['xlg', '105em']
+					// ,['xlg', '120em']
+				]
 			};
-			this.__breakpoints = this.getOption('breakpoints');
+			this.breakpoints = this.getOption('breakpoints');
+			this.breakpointsPx = [];
 			DomEvents.document.on('ready', function() {
 				var $tmp = jLyte('<div class="cornerstone-bp"></div>');
 				$tmp.css({
@@ -187,26 +225,83 @@ Cornerstone.BaseModule = module2;
 				var match = bps ? bps.match(/sm:(\w+);md:(\w+);lg:(\w+);xlg:(\w+)/) : null;
 				$tmp.remove();
 				if (match) {
-					_self.__breakpoints = {
-						sm: match[1]
-						,md: match[2]
-						,lg: match[3]
-						,xlg: match[4]
-					};
+					_self.breakpoints = [
+						['sm', match[1]]
+						,['md', match[2]]
+						,['lg', match[3]]
+						,['xlg', match[4]]
+					];
+				}
+				for (var i = 0; i < _self.breakpoints.length; i++) {
+					var point = _self.breakpoints[i][0], pointValue = _self.breakpoints[i][1];
+					if (!pointValue.match(/\d+px/)) {
+						_self.breakpointsPx.push([point, parseInt(bglib.fn.toPx(pointValue), 10)]);
+					}
+					else {
+						_self.breakpointsPx.push([point, parseInt(pointValue, 10)]);
+					}
+				}
+				_self.$html = jLyte('html');
+				_self.current = _self.determineBreakPoint();
+				_self.$html.addClass('cs-bp-' + _self.current);
+				_self.trigger('load', {
+					caller: _self
+					,current: _self.current
+				});
+			});
+			bglib.EventUtil.addHandler(window, 'resize', function(e) {
+				var bp = _self.determineBreakPoint();
+				if (bp != _self.current) {
+					if (typeof _self.current === 'undefined') {
+						_self.current = bp;
+					}
+					_self.handleBreakpointChange(bp);
+					_self.current = bp;
 				}
 			});
-			DomEvents.window.on('resize', function() {
-
+			this.on('change', function(e) {
+				if (e.old) {
+					_self.$html.removeClass('cs-bp-' + e.old);
+					_self.$html.addClass('cs-bp-' + e.current);
+				}
 			});
 		}
-		,handleResize: function(evt) {
-			
+		,handleBreakpointChange: function(bp) {
+			this.trigger('change', {
+				caller: this
+				,old: this.current
+				,current: bp
+			});
 		}
-		,handleBreakpointChange: function(evt) {
-			
+		,getBreakPoint: function(refresh) {
+			var breakpoint;
+			if(refresh || !this.current){
+				breakpoint = this.determineBreakPoint();
+				if(this.current !== breakpoint) {
+					if (typeof _self.current === 'undefined') {
+						this.current = bp;
+					}
+					this.handleBreakpointChange(breakpoint);
+					this.current = breakpoint;
+				}
+			}
+			return this.current;
+		}
+		,determineBreakPoint: function() {
+			var windowWidth = window.innerWidth, maxPoint = null;
+			for (var i = 0; i < this.breakpointsPx.length; i++) {
+				var point = this.breakpointsPx[i][0], pointValue = this.breakpointsPx[i][1];
+				if (windowWidth >= pointValue) {
+					maxPoint = point;
+				}
+			}
+			if (!maxPoint) {
+				maxPoint = 'tn';
+			}
+			return maxPoint;
 		}
 	}, {});
-	CS.Breakpoint = new module();
+	CS.BreakPoint = new module();
 })(Cornerstone);
 (function(CS) {
 	var jLyte = bglib.jLyte;
@@ -1069,4 +1164,227 @@ Cornerstone.BaseModule = module2;
 	}, {});
 	CS.Tabs = component;
 	CS.autoload.Tabs = CS.autoload.factory(component, '[data-tabs]', 'data-tabs');
+})(Cornerstone);
+(function(CS) {
+	/*
+		To Do:
+			- Add close button functionality
+			- Add swipe to close functionality
+			- Add different positions
+				- left | center
+	*/
+	var jLyte = bglib.jLyte;
+	var component = CS.JsComponent.extend({
+		Name: 'Toast'
+		,$container: undefined
+		,init: function() {
+			var _self = this;
+			this.defaultOptions = {
+				html: 'This is a toast.'
+				,displayLength: 4000 //--milliseconds
+				,class: null
+				,closeCallback: null
+				,position: 'right' //--left,center,right
+			};
+			this.$el = jLyte('<div></div>');
+			this.$el.addClass('cs-toast');
+			this.$el.addClass('cs-toast-' + this.instanceId);
+			this.$el.append('<div class="cs-toast-content">' + this.getOption('html') + '</div>');
+			if (this.getOption('class')) {
+				this.$el.addClass(this.getOption('class'));
+			}
+			//--check if toast container is present if not add it
+			this.$container = jLyte('body').find('.cs-toast-container');
+			if (!this.$container.length) {
+				this.$container = jLyte('<div class="cs-toast-container"></div>');
+				jLyte('body').append(this.$container);
+			}
+			this.$container.append(this.$el);
+			var _self = this;
+			setTimeout(function() {
+				if (typeof anime !== 'undefined') {
+					console.log('anime exists');
+					var animate = anime({
+						targets: _self.$el[0]
+						,duration: 2000
+						,translateY: -50
+						,opacity: 0
+						,update: function() {
+							_self.$el.addClass('removing');
+							_self.$el.css('position', 'absolute');
+						}
+					});
+					animate.finished.then(function() {
+						_self.$el.remove();
+						if (_self.getOption('closeCallback')) {
+							(_self.getOption('closeCallback'))();
+						}
+					});
+				}
+				else {
+					_self.$el.remove();
+					if (_self.getOption('closeCallback')) {
+						(_self.getOption('closeCallback'))();
+					}
+				}
+			}, this.getOption('displayLength'));
+			return this;
+		}
+	}, {});
+	CS.Toast = component;
+})(Cornerstone);
+(function(CS) {
+	/*
+		Few issue needs to be worked out with the left/right positioning but overall it works fairley well.
+		 - top position in some instances of the right-pos overlaps the item that gets hovered
+	*/
+	var jLyte = bglib.jLyte;
+	var DomEvents = bglib.DomEvents;
+	var component = CS.BaseComponent.extend({
+		Name: 'Tooltip'
+		,tooltip: undefined
+		,$tooltip: undefined
+		,init: function() {
+			var _self = this;
+			this.defaultOptions = {
+				'html': null,
+				'position': 'top' //--top|bottom|left|right
+			};
+			if (this.dataValue) {
+				this.tooltip = this.dataValue;
+			}
+			else if (this.$el.attr('title')) {
+				this.tooltip = this.$el.attr('title');
+				this.$el.removeAttr('title');
+			}
+			if (this.tooltip) {
+				this.$el.on('mouseenter', function() {
+					_self.showTooltip();
+				});
+				this.$el.on('mouseleave', function() {
+					_self.hideTooltip();
+				});
+			}
+			DomEvents.window.on('resize', function() {
+				if (_self.$tooltip) {
+					var pos = _self.determinePosition();
+					_self.$tooltip.css(_self.calculatePosition(pos));
+				}
+			});
+			console.log('tooltip-item-position', this.$el[0].getBoundingClientRect());
+			return this;
+		}
+		,calculatePosition: function($tooltip, pos) {
+			var _self = this;
+			var itemPos = _self.$el[0].getBoundingClientRect();
+			var tooltipCss = { left: itemPos.x + 'px', top: itemPos.y + 'px' };
+			console.log(pos);
+			var calcPositionTop = function() {
+				var css = {};
+				css.top = (itemPos.y - _self.$tooltip[0].clientHeight) + 'px';
+				var left = itemPos.x;
+				if (_self.$el.clientWidth < _self.$tooltip[0].clientWidth) {
+					left = left - ((_self.$tooltip[0].getBoundingClientRect().width - (_self.$el[0].getBoundingClientRect().width / 2)) / 2);
+				}
+				else {
+					left = left + ((_self.$el[0].clientWidth - _self.$tooltip[0].clientWidth) / 2);
+				}
+				if (left < 0 || left + _self.$tooltip.clientWidth > window.innerWidth) {
+					left = 4;
+				}
+				css.left = left + 'px';
+				return css;
+			};
+			var calcPositionBottom = function() {
+				var css = {};
+				css.top = (itemPos.y + _self.$el[0].clientHeight) + 'px';
+				var left = itemPos.x;
+				if (_self.$el.clientWidth < _self.$tooltip[0].clientWidth) {
+					left = left - ((_self.$tooltip[0].clientWidth - _self.$el[0].clientWidth) / 2);
+				}
+				else {
+					left = left + ((_self.$el[0].clientWidth - _self.$tooltip[0].clientWidth) / 2);
+				}
+				if (left < 0 || left + _self.$tooltip.clientWidth > window.innerWidth) {
+					left = 4;
+				}
+				css.left = left + 'px';
+				return css;
+			};
+			switch (pos) {
+				case 'top':
+					tooltipCss = Object.assign(tooltipCss, calcPositionTop());
+				break;
+				case 'bottom':
+					tooltipCss = Object.assign(tooltipCss, calcPositionBottom());
+				break;
+				case 'left':
+					var maxWidth = itemPos.x - 8;
+					if (maxWidth < 150 && $tooltip[0].clientWidth > maxWidth) {
+						console.log(1);
+						tooltipCss = Object.assign(tooltipCss, calcPositionTop());
+					}
+					else {
+						$tooltip.css('max-width', maxWidth + 'px');
+						var top;
+						if (_self.$el.clientHeight < $tooltip[0].clientHeight) {
+							top = itemPos.y - (Math.ceil($tooltip[0].clientHeight - _self.$el[0].clientHeight) / 2);
+						}
+						else {
+							top = itemPos.y + (Math.ceil(_self.$el[0].clientHeight - $tooltip[0].clientHeight) / 2);
+						}
+						tooltipCss.top = top + 'px';
+						tooltipCss.left = itemPos.x - 4 - $tooltip[0].clientWidth;
+						tooltipCss.left = tooltipCss.left + 'px';
+					}
+				break;
+				case 'right':
+					var maxWidth = window.innerWidth - itemPos.x - this.$el[0].clientWidth - 8;
+					if (maxWidth < 150 && $tooltip[0].clientWidth > maxWidth) {
+						console.log(1);
+						tooltipCss = Object.assign(tooltipCss, calcPositionTop());
+					}
+					else {
+						console.log(2);
+						$tooltip.css('max-width', maxWidth + 'px');
+						var top;
+						if (_self.$el.clientHeight < $tooltip[0].clientHeight) {
+							top = itemPos.y - (Math.ceil($tooltip[0].clientHeight - _self.$el[0].clientHeight) / 2);
+						}
+						else {
+							top = itemPos.y + (Math.ceil(_self.$el[0].clientHeight - $tooltip[0].clientHeight) / 2);
+						}
+						tooltipCss.top = top + 'px';
+						tooltipCss.left = itemPos.x + this.$el[0].clientWidth + 4;
+						tooltipCss.left = tooltipCss.left + 'px';
+					}
+				break;
+			}
+			return tooltipCss;
+		}
+		,showTooltip: function() {
+			if (!this.$tooltip) {
+				this.$tooltip = jLyte('<div class="cs-tooltip"></div>');
+				this.$tooltip.addClass('cs-tooltip-' + this.instanceId);
+				this.$tooltip.append('<div class="tooltipContent">' + this.tooltip + '</div>');
+				var pos = this.determinePosition();
+				this.$tooltip.attr('data-position', pos);
+				jLyte('body').append(this.$tooltip);
+				this.$tooltip.css(this.calculatePosition(this.$tooltip, pos));
+			}
+		}
+		,hideTooltip: function() {
+			this.$tooltip.remove();
+			this.$tooltip = null;
+		}
+		,determinePosition: function() {
+			var pos = this.getOption('position');
+			if (this.$el.attr('data-position')) {
+				pos = this.$el.attr('data-position');
+			}
+			return pos;
+		}
+	}, {});
+	CS.Tooltip = component;
+	CS.autoload.Tooltip = CS.autoload.factory(component, '[data-tooltip]', 'data-tooltip');
 })(Cornerstone);

@@ -4,6 +4,7 @@
 	<meta charset="utf8">
 	<title>Examples - CornerstoneUI</title>
 	<link href="/dist/css/cornerstone.css" rel="stylesheet" type="text/css">
+	<script src="/src/js/deps/anime.min.js"></script>
 	<script src="/dist/js/cornerstone-deps.js"></script>
 	<script src="/dist/js/cornerstone-nodeps.js"></script>
 	<style>
@@ -132,6 +133,8 @@
 					<li class="item"><a href="/examples/modals.html" class="cs-button clear-mbottom">Modals</a></li>
 					<li class="item"><a href="/examples/pagination.html" class="cs-button clear-mbottom">Pagination</a></li>
 					<li class="item"><a href="/examples/toasts.html" class="cs-button clear-mbottom">Toasts</a></li>
+					<li class="item"><a href="/examples/tooltips.html" class="cs-button clear-mbottom">Tooltips</a></li>
+					<li class="item"><a href="/examples/breadcrumbs.html" class="cs-button clear-mbottom">Breadcrumbs</a></li>
 					<li class="item"><a href="/examples/" class="cs-button clear-mbottom">Directory</a></li>
 				</ul>
 			</div>
@@ -146,7 +149,14 @@
 	</div>
 	<div class="row">
 		<div class="col-tn-12">
-			
+			<button class="cs-button button-primary" type="button" onclick="createNewToast()">Toast</button>
+			<script>
+				var toastCount = 0;
+				function createNewToast() {
+					toastCount++;
+					(new Cornerstone.Toast({html: 'This is a toast [' + toastCount + '].'}));
+				}
+			</script>
 		</div>
 	</div>
 </div>

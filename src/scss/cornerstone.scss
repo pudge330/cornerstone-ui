@@ -19,6 +19,7 @@
 @import './components/forms';
 @import './components/alerts';
 @import './components/badges';
+@import './components/breadcrumbs';
 
 //--js widgets
 @import './components/accordion';
@@ -27,6 +28,8 @@
 @import './components/priority-plus';
 @import './components/pagination';
 @import './components/tabs';
+@import './components/toasts';
+@import './components/tooltips';
 
 @mixin CornerstoneUI_includeAll() {
 	@include CornerstoneUI_normalize();
@@ -43,6 +46,7 @@
 	@include CornerstoneUI_forms();
 	@include CornerstoneUI_alerts();
 	@include CornerstoneUI_badges();
+	@include CornerstoneUI_breadcrumbs();
 
 	//--js widgets
 	@include CornerstoneUI_accordion();
@@ -51,6 +55,8 @@
 	@include CornerstoneUI_priority_plus();
 	@include CornerstoneUI_pagination();
 	@include CornerstoneUI_tabs();
+	@include CornerstoneUI_toasts();
+	@include CornerstoneUI_tooltips();
 }
 
 @include CornerstoneUI_includeAll();
