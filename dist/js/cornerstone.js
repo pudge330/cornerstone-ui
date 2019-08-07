@@ -3435,9 +3435,9 @@ Cornerstone.BaseModule = module2;
 			var $children = this.getChildren();
 			$children.each(function() {
 				var $item = jLyte(this);
-				var $wrap = $item.find('.content-wrap');
+				var $wrap = $item.find('.accordion-content-wrap');
 				if (!$wrap.length) {
-					$wrap = jLyte('<div class="content-wrap"></div>');
+					$wrap = jLyte('<div class="accordion-content-wrap"></div>');
 					$wrap.append($item.find('.accordion-content').children());
 					$item.find('.accordion-content').append($wrap);
 				}
@@ -3483,7 +3483,7 @@ Cornerstone.BaseModule = module2;
 		}
 		,setHeight: function($item) {
 			var $content = $item.find('.accordion-content');
-			$content.css('height', $content.find('.content-wrap').css('height'));
+			$content.css('height', $content.find('.accordion-content-wrap').css('height'));
 		}
 		,toggleItem: function($item) {
 			if (!($item instanceof jLyte)) { $item = jLyte($item); }
@@ -4361,11 +4361,13 @@ Cornerstone.BaseModule = module2;
 		Name: 'Tooltip'
 		,tooltip: undefined
 		,$tooltip: undefined
+		,delayTimer: undefined
 		,init: function() {
 			var _self = this;
 			this.defaultOptions = {
 				'html': null,
-				'position': 'top' //--top|bottom|left|right
+				'position': 'top', //--top|bottom|left|right
+				'delay': 100 //--ms
 			};
 			if (this.dataValue) {
 				this.tooltip = this.dataValue;
@@ -4376,9 +4378,16 @@ Cornerstone.BaseModule = module2;
 			}
 			if (this.tooltip) {
 				this.$el.on('mouseenter', function() {
-					_self.showTooltip();
+					var delay = _self.getOption('delay');
+					_self.delayTimer = setTimeout(function() {
+						_self.delayTimer = null;
+						_self.showTooltip();
+					}, delay);
 				});
 				this.$el.on('mouseleave', function() {
+					if (_self.delayTimer) {
+						clearTimeout(_self.delayTimer);
+					}
 					_self.hideTooltip();
 				});
 			}
@@ -4491,8 +4500,10 @@ Cornerstone.BaseModule = module2;
 			}
 		}
 		,hideTooltip: function() {
-			this.$tooltip.remove();
-			this.$tooltip = null;
+			if (this.$tooltip) {
+				this.$tooltip.remove();
+				this.$tooltip = null;
+			}
 		}
 		,determinePosition: function() {
 			var pos = this.getOption('position');

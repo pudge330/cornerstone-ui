@@ -9,11 +9,13 @@
 		Name: 'Tooltip'
 		,tooltip: undefined
 		,$tooltip: undefined
+		,delayTimer: undefined
 		,init: function() {
 			var _self = this;
 			this.defaultOptions = {
 				'html': null,
-				'position': 'top' //--top|bottom|left|right
+				'position': 'top', //--top|bottom|left|right
+				'delay': 100 //--ms
 			};
 			if (this.dataValue) {
 				this.tooltip = this.dataValue;
@@ -24,9 +26,16 @@
 			}
 			if (this.tooltip) {
 				this.$el.on('mouseenter', function() {
-					_self.showTooltip();
+					var delay = _self.getOption('delay');
+					_self.delayTimer = setTimeout(function() {
+						_self.delayTimer = null;
+						_self.showTooltip();
+					}, delay);
 				});
 				this.$el.on('mouseleave', function() {
+					if (_self.delayTimer) {
+						clearTimeout(_self.delayTimer);
+					}
 					_self.hideTooltip();
 				});
 			}
@@ -139,8 +148,10 @@
 			}
 		}
 		,hideTooltip: function() {
-			this.$tooltip.remove();
-			this.$tooltip = null;
+			if (this.$tooltip) {
+				this.$tooltip.remove();
+				this.$tooltip = null;
+			}
 		}
 		,determinePosition: function() {
 			var pos = this.getOption('position');

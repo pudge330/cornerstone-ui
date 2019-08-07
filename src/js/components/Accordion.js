@@ -13,9 +13,9 @@
 			var $children = this.getChildren();
 			$children.each(function() {
 				var $item = jLyte(this);
-				var $wrap = $item.find('.content-wrap');
+				var $wrap = $item.find('.accordion-content-wrap');
 				if (!$wrap.length) {
-					$wrap = jLyte('<div class="content-wrap"></div>');
+					$wrap = jLyte('<div class="accordion-content-wrap"></div>');
 					$wrap.append($item.find('.accordion-content').children());
 					$item.find('.accordion-content').append($wrap);
 				}
@@ -61,7 +61,7 @@
 		}
 		,setHeight: function($item) {
 			var $content = $item.find('.accordion-content');
-			$content.css('height', $content.find('.content-wrap').css('height'));
+			$content.css('height', $content.find('.accordion-content-wrap').css('height'));
 		}
 		,toggleItem: function($item) {
 			if (!($item instanceof jLyte)) { $item = jLyte($item); }

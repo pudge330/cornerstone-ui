@@ -4570,6 +4570,7 @@ a.cs-button.button-info.outline:active.fill {
   display: block;
   font-size: 1.15rem;
   font-weight: 300;
+  cursor: pointer;
 }
 .cs-accordion .accordion-title:hover, .cs-accordion .accordion-title:focus {
   background-color: rgba(0, 0, 0, 0.1);
@@ -4599,7 +4600,7 @@ a.cs-button.button-info.outline:active.fill {
   transition: height .3s, margin .3s;
   overflow: hidden;
 }
-.cs-accordion .accordion-content .content-wrap {
+.cs-accordion .accordion-content .accordion-content-wrap {
   padding: 1rem;
 }
 
@@ -4744,7 +4745,6 @@ body.cs-modal-open {
 }
 .cs-dropdown .dropdown-content-wrap {
   padding: 1rem;
-  border: 1px solid #ccc;
 }
 
 .cs-js .cs-dropdown .dropdown-content {
@@ -4984,7 +4984,7 @@ ul.cs-tabs.vertical-tabs li a:after,
   border-radius: 3px;
 }
 .cs-toast:not(.removing) + .cs-toast {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .cs-toast-container {

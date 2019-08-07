@@ -6,6 +6,7 @@
 			display: block;
 			font-size: 1.15rem;
 			font-weight: 300;
+			cursor: pointer;
 			&:hover,
 			&:focus {
 				background-color: rgba(0, 0, 0, 0.1);
@@ -33,7 +34,7 @@
 		.accordion-content {
 			transition: height .3s, margin .3s;
 			overflow: hidden;
-			.content-wrap {
+			.accordion-content-wrap {
 				padding: 1rem;
 			}
 		}
