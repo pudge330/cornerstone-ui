@@ -1,10 +1,10 @@
 @mixin CornerstoneUI_modals() {
 	body {
-		&.cs-modal-open {
+		&.modal-open {
     		overflow: hidden;
 		}
 	}
-	.cs-modal-wrap {
+	.modal-wrap {
 		background: rgba(0,0,0,0.25);
 		position: absolute;
 		z-index: 1001;
@@ -14,11 +14,12 @@
 		height: 100%;
 		display: none;
 		overflow: scroll;
+		opacity: 0;
 		&[data-parent="window"] {
 			position: fixed;
 		}
 	}
-	.cs-modal {
+	.modal {
 		display: none;
 		overflow: auto;
 		background: #fff;
@@ -94,7 +95,12 @@
 		}
 	}
 	.cs-js {
-		.cs-modal-wrap {
+		.modal-wrap {
+			&[data-state="opening"] {
+				opacity: 0;
+				display: block;
+			}
+			&[data-state="opening"],
 			&[data-state="opened"] {
 				display: block;
 				&.modal-fill,
@@ -102,7 +108,7 @@
 				&.modal-fixed-footer {
 					display: flex;
 				}
-				.cs-modal {
+				.modal {
 					display: block;
 					&.modal-fill,
 					&.modal-fixed-header,

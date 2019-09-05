@@ -1,8 +1,7 @@
 (function(CS) {
 	var DomEvents = bglib.DomEvents;
-	var jLyte = bglib.jLyte;
 	var module = CS.BaseModule.extend({
-		Name: 'Accordion'
+		Name: 'Breakpoint'
 		,breakpoints: undefined
 		,breakpointsPx: undefined
 		,current: undefined
@@ -21,7 +20,8 @@
 			this.breakpoints = this.getOption('breakpoints');
 			this.breakpointsPx = [];
 			DomEvents.document.on('ready', function() {
-				var $tmp = jLyte('<div class="cornerstone-bp"></div>');
+				_self.$html = jQuery('html');
+				var $tmp = jQuery('<div class="cornerstone-bp"></div>');
 				$tmp.css({
 					position: 'fixed'
 					,top: '-999px'
@@ -50,7 +50,6 @@
 						_self.breakpointsPx.push([point, parseInt(pointValue, 10)]);
 					}
 				}
-				_self.$html = jLyte('html');
 				_self.current = _self.determineBreakPoint();
 				_self.$html.addClass('cs-bp-' + _self.current);
 				_self.trigger('load', {

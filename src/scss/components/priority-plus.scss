@@ -1,5 +1,5 @@
 @mixin CornerstoneUI_priority_plus() {
-	.cs-priority-plus {
+	.priority-plus {
 		font-size: 0;
 		.priority-plus-items {
 			margin: 0;
@@ -44,7 +44,7 @@
 		}
 	}
 	.cs-js {
-		.cs-priority-plus {
+		.priority-plus {
 			.priority-plus-items {
 				padding-right: 45px;
 			}

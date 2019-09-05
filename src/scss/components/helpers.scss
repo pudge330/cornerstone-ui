@@ -1,5 +1,5 @@
 @mixin CornerstoneUI_helpers() {
-    .#{$cs_prefix}text {
+    .text {
         &-left {
             text-align: left !important;
         }
@@ -61,14 +61,14 @@
             }
         }
     }
-    .#{$cs_prefix}height-auto {
+    .height-auto {
         height: auto;
     }
 
-    .#{$cs_prefix}width-auto {
+    .width-auto {
         width: auto;
     }
-    .#{$cs_prefix}float {
+    .float {
         &-right {
             float: right;
         }
@@ -79,28 +79,28 @@
         	float: none;
         }
     }
-    .#{$cs_prefix}centered {
+    .centered {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    .#{$cs_prefix}overflow-hidden {
+    .overflow-hidden {
         overflow: hidden;
     }
-    .#{$cs_prefix}overflow-scroll {
+    .overflow-scroll {
         overflow: scroll;
     }
-    .#{$cs_prefix}overflow-auto {
+    .overflow-auto {
         overflow: auto;
     }
-    .#{$cs_prefix}responsive-img {
+    .responsive-img {
         width: 100%;
         height: auto;
     }
-    .#{$cs_prefix}image-circle { 
+    .image-circle { 
         border-radius: 50%;
     }
-    .#{$cs_prefix}width {
+    .width {
         &-25 {
             width: 25% !important;
         }
@@ -117,14 +117,14 @@
             max-width: 100% !important;
         }
     }
-    .#{$cs_prefix}v-centered {
+    .v-centered {
         position: relative;
         top: 50%;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%); 
         transform: translateY(-50%);
     }
-    .#{$cs_prefix}position {
+    .position {
     	&-static {
     		position: static;
     	}
@@ -138,35 +138,35 @@
     		position: fixed;
     	}
     }
-    .#{$cs_prefix}rounded {
+    .rounded {
         border-radius: 4px;
     }
-    .#{$cs_prefix}unrounded {
+    .unrounded {
         border-radius: 0;
     }
-    .#{$cs_prefix}no-border {
+    .no-border {
         border-width: 0 !important;
     }
-    .#{$cs_prefix}hide {
+    .hide {
         display: none !important;
     }
-    .#{$cs_prefix}show {
+    .show {
         display: block !important;
     }
-    .#{$cs_prefix}invisible {
+    .invisible {
         visibility: hidden !important;
     }
-    .#{$cs_prefix}visible {
+    .visible {
         visibility: visible !important;
     }
-    .#{$cs_prefix}text-hide {
+    .text-hide {
         font: 0/0 a !important;
         color: transparent !important;
         text-shadow: none !important;
         background-color: transparent !important;
         border: 0 !important;
     }
-    .#{$cs_prefix}border {
+    .border {
         &-tiny {
             border-width: 1px; 
         }
@@ -183,10 +183,10 @@
             border-width: 5px;
         }
     }
-    .#{$cs_prefix}p-indent {
+    .p-indent {
         text-indent: 2.5rem;
     }
-    .#{$cs_prefix}clear {
+    .clear {
         &-float {
             float: none !important;
         }
@@ -224,22 +224,22 @@
             padding-left: 0 !important;
         }
     }
-    .#{$cs_prefix}display-inline {
+    .display-inline {
     	display: inline !important;
     }
-    .#{$cs_prefix}display-inline-block {
+    .display-inline-block {
     	display: inline-block !important;
     }
-    .#{$cs_prefix}display-block {
+    .display-block {
     	display: block !important;
     }
-    .#{$cs_prefix}table {
+    .table {
     	display: table !important;
     }
-    .#{$cs_prefix}table-row {
+    .table-row {
     	display: table-row !important;
     }
-    .#{$cs_prefix}table-cell {
+    .table-cell {
     	display: table-cell !important;
     }
 }

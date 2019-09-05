@@ -3026,7 +3026,7 @@ a.animated.text-info-light-4x:after {
   border-color: #cff5f7;
 }
 
-.shadow-1, .cs-js .cs-dropdown[data-state="opened"] .dropdown-content, .cs-toast .cs-toast-content {
+.shadow-1, .cs-js .dropdown[data-state="opened"] .dropdown-content, .toast .toast-content {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -3486,7 +3486,7 @@ textarea.cs-textarea.size-4x {
 }
 
 input.cs-input::-webkit-input-placeholder,
-textarea.cs_textarea::-webkit-input-placeholder,
+textarea.cs-textarea::-webkit-input-placeholder,
 input.cs-input::-moz-placeholder,
 textarea.cs_textarea::-moz-placeholder,
 input.cs-input:-ms-input-placeholder,
@@ -4564,7 +4564,7 @@ a.cs-button.button-info.outline:active.fill {
   margin: 0 0.25rem;
 }
 
-.cs-accordion .accordion-title {
+.accordion .accordion-title {
   width: 100%;
   padding: 0.75rem 1rem;
   display: block;
@@ -4572,16 +4572,16 @@ a.cs-button.button-info.outline:active.fill {
   font-weight: 300;
   cursor: pointer;
 }
-.cs-accordion .accordion-title:hover, .cs-accordion .accordion-title:focus {
+.accordion .accordion-title:hover, .accordion .accordion-title:focus {
   background-color: rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
 @media only screen and (min-width: 40em) {
-  .cs-accordion .accordion-title {
+  .accordion .accordion-title {
     font-size: 1.3rem;
   }
 }
-.cs-accordion .accordion-title .open-indicator {
+.accordion .accordion-title .open-indicator {
   display: block;
   width: 0.75em;
   height: 0.75em;
@@ -4591,16 +4591,16 @@ a.cs-button.button-info.outline:active.fill {
   transform: rotate(180deg);
   transition: transform .3s;
 }
-.cs-accordion .accordion-title .open-indicator svg {
+.accordion .accordion-title .open-indicator svg {
   display: block;
   width: 0.75em;
   height: 0.75em;
 }
-.cs-accordion .accordion-content {
+.accordion .accordion-content {
   transition: height .3s, margin .3s;
   overflow: hidden;
 }
-.cs-accordion .accordion-content .accordion-content-wrap {
+.accordion .accordion-content .accordion-content-wrap {
   padding: 1rem;
 }
 
@@ -4612,11 +4612,11 @@ a.cs-button.button-info.outline:active.fill {
   height: 0 !important;
 }
 
-body.cs-modal-open {
+body.modal-open {
   overflow: hidden;
 }
 
-.cs-modal-wrap {
+.modal-wrap {
   background: rgba(0, 0, 0, 0.25);
   position: absolute;
   z-index: 1001;
@@ -4626,12 +4626,13 @@ body.cs-modal-open {
   height: 100%;
   display: none;
   overflow: scroll;
+  opacity: 0;
 }
-.cs-modal-wrap[data-parent="window"] {
+.modal-wrap[data-parent="window"] {
   position: fixed;
 }
 
-.cs-modal {
+.modal {
   display: none;
   overflow: auto;
   background: #fff;
@@ -4639,7 +4640,7 @@ body.cs-modal-open {
   margin: auto;
   margin: 2rem auto;
 }
-.cs-modal.modal-full {
+.modal.modal-full {
   width: 100%;
   margin: 0;
   position: absolute;
@@ -4650,73 +4651,77 @@ body.cs-modal-open {
   max-height: unset;
 }
 @media only screen and (min-width: 40em) {
-  .cs-modal {
+  .modal {
     width: 60%;
     margin: 4rem auto;
   }
-  .cs-modal.modal-small {
+  .modal.modal-small {
     width: 45%;
   }
-  .cs-modal.modal-large {
+  .modal.modal-large {
     width: 70%;
   }
 }
 @media only screen and (min-width: 64em) {
-  .cs-modal {
+  .modal {
     width: 50%;
     margin: 6rem auto;
   }
-  .cs-modal.modal-small {
+  .modal.modal-small {
     width: 35%;
   }
-  .cs-modal.modal-large {
+  .modal.modal-large {
     width: 80%;
   }
 }
-.cs-modal.modal-fill {
+.modal.modal-fill {
   flex-direction: column;
 }
-.cs-modal.modal-fixed-header, .cs-modal.modal-fixed-footer {
+.modal.modal-fixed-header, .modal.modal-fixed-footer {
   flex-direction: column;
 }
-.cs-modal.modal-fixed-header .modal-fixed-wrap, .cs-modal.modal-fixed-footer .modal-fixed-wrap {
+.modal.modal-fixed-header .modal-fixed-wrap, .modal.modal-fixed-footer .modal-fixed-wrap {
   flex-grow: 1;
   overflow: auto;
 }
-.cs-modal .modal-header {
+.modal .modal-header {
   border-bottom: 1px solid #ddd;
 }
-.cs-modal .modal-header:empty {
+.modal .modal-header:empty {
   border-bottom: none;
 }
-.cs-modal .modal-footer {
+.modal .modal-footer {
   border-top: 1px solid #ddd;
 }
-.cs-modal .modal-footer:empty {
+.modal .modal-footer:empty {
   border-top: none;
 }
-.cs-modal .modal-header-actions {
+.modal .modal-header-actions {
   float: right;
 }
 
-.cs-js .cs-modal-wrap[data-state="opened"] {
+.cs-js .modal-wrap[data-state="opening"] {
+  opacity: 0;
   display: block;
 }
-.cs-js .cs-modal-wrap[data-state="opened"].modal-fill, .cs-js .cs-modal-wrap[data-state="opened"].modal-fixed-header, .cs-js .cs-modal-wrap[data-state="opened"].modal-fixed-footer {
+.cs-js .modal-wrap[data-state="opening"], .cs-js .modal-wrap[data-state="opened"] {
+  display: block;
+}
+.cs-js .modal-wrap[data-state="opening"].modal-fill, .cs-js .modal-wrap[data-state="opening"].modal-fixed-header, .cs-js .modal-wrap[data-state="opening"].modal-fixed-footer, .cs-js .modal-wrap[data-state="opened"].modal-fill, .cs-js .modal-wrap[data-state="opened"].modal-fixed-header, .cs-js .modal-wrap[data-state="opened"].modal-fixed-footer {
   display: flex;
 }
-.cs-js .cs-modal-wrap[data-state="opened"] .cs-modal {
+.cs-js .modal-wrap[data-state="opening"] .modal, .cs-js .modal-wrap[data-state="opened"] .modal {
   display: block;
 }
-.cs-js .cs-modal-wrap[data-state="opened"] .cs-modal.modal-fill, .cs-js .cs-modal-wrap[data-state="opened"] .cs-modal.modal-fixed-header, .cs-js .cs-modal-wrap[data-state="opened"] .cs-modal.modal-fixed-footer {
+.cs-js .modal-wrap[data-state="opening"] .modal.modal-fill, .cs-js .modal-wrap[data-state="opening"] .modal.modal-fixed-header, .cs-js .modal-wrap[data-state="opening"] .modal.modal-fixed-footer, .cs-js .modal-wrap[data-state="opened"] .modal.modal-fill, .cs-js .modal-wrap[data-state="opened"] .modal.modal-fixed-header, .cs-js .modal-wrap[data-state="opened"] .modal.modal-fixed-footer {
   display: flex;
 }
 
-.cs-dropdown {
+.dropdown {
   position: relative;
   display: inline-block;
 }
-.cs-dropdown .dropdown-content {
+.dropdown .dropdown-content {
   overflow: hidden;
   position: absolute;
   top: 100%;
@@ -4726,123 +4731,123 @@ body.cs-modal-open {
   z-index: 100;
   background-color: #efefef;
 }
-.cs-dropdown[data-anchor="bottom-right"] .dropdown-content {
+.dropdown[data-anchor="bottom-right"] .dropdown-content {
   left: unset;
   right: 0;
 }
-.cs-dropdown[data-anchor="top-left"] .dropdown-content {
+.dropdown[data-anchor="top-left"] .dropdown-content {
   top: unset;
   bottom: 100%;
 }
-.cs-dropdown[data-anchor="top-right"] .dropdown-content {
+.dropdown[data-anchor="top-right"] .dropdown-content {
   top: unset;
   left: unset;
   bottom: 100%;
   right: 0;
 }
-.cs-dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: block;
 }
-.cs-dropdown .dropdown-content-wrap {
+.dropdown .dropdown-content-wrap {
   padding: 1rem;
 }
 
-.cs-js .cs-dropdown .dropdown-content {
+.cs-js .dropdown .dropdown-content {
   display: block;
   transition: height .3s;
 }
-.cs-js .cs-dropdown[data-state="closed"] .dropdown-content {
+.cs-js .dropdown[data-state="closed"] .dropdown-content {
   height: 0 !important;
 }
 
-.cs-priority-plus {
+.priority-plus {
   font-size: 0;
 }
-.cs-priority-plus .priority-plus-items {
+.priority-plus .priority-plus-items {
   margin: 0;
   padding: 0;
   font-size: 1em;
   position: relative;
   white-space: nowrap;
 }
-.cs-priority-plus .priority-plus-items .item {
+.priority-plus .priority-plus-items .item {
   margin-bottom: 0;
   display: inline-block;
   vertical-align: bottom;
 }
-.cs-priority-plus .priority-plus-items .item button, .cs-priority-plus .priority-plus-items .item a.button, .cs-priority-plus .priority-plus-items .item input {
+.priority-plus .priority-plus-items .item button, .priority-plus .priority-plus-items .item a.button, .priority-plus .priority-plus-items .item input {
   display: block;
   width: 100%;
 }
-.cs-priority-plus .overflow-toggle-item {
+.priority-plus .overflow-toggle-item {
   position: absolute;
   right: 0;
   top: 0;
 }
-.cs-priority-plus .overflow-toggle-item .dropdown-action {
+.priority-plus .overflow-toggle-item .dropdown-action {
   margin-bottom: 0;
 }
-.cs-priority-plus .overflow-toggle-item .dropdown-action svg {
+.priority-plus .overflow-toggle-item .dropdown-action svg {
   display: block;
   width: 1em;
   height: 1em;
   fill: currentColor;
 }
-.cs-priority-plus .overflow-toggle-item .dropdown-content {
+.priority-plus .overflow-toggle-item .dropdown-content {
   white-space: initial;
 }
-.cs-priority-plus .overflow-toggle-item .dropdown-content ul.dropdown-content-wrap {
+.priority-plus .overflow-toggle-item .dropdown-content ul.dropdown-content-wrap {
   padding: 0;
   margin: 0;
 }
-.cs-priority-plus .overflow-toggle-item .dropdown-content .item {
+.priority-plus .overflow-toggle-item .dropdown-content .item {
   white-space: pre;
   width: 100%;
 }
 
-.cs-js .cs-priority-plus .priority-plus-items {
+.cs-js .priority-plus .priority-plus-items {
   padding-right: 45px;
 }
 
-.cs-pagination {
+.pagination {
   margin-left: 0;
   list-style: none;
 }
-.cs-pagination li {
+.pagination li {
   display: inline-block;
   color: #333;
   transition: background-color .2s;
   font-size: 0.9em;
 }
-.cs-pagination li a {
+.pagination li a {
   color: #333;
 }
-.cs-pagination li a:hover {
+.pagination li a:hover {
   text-decoration: none;
 }
-.cs-pagination li > a, .cs-pagination li > button {
+.pagination li > a, .pagination li > button {
   display: inline-block;
   padding: 0.25rem 0.75rem;
 }
-.cs-pagination li:not(.disabled):not(.current):not(.no-popup) {
+.pagination li:not(.disabled):not(.current):not(.no-popup) {
   cursor: pointer;
 }
-.cs-pagination li.previous.disabled, .cs-pagination li.next.disabled {
+.pagination li.previous.disabled, .pagination li.next.disabled {
   display: inline-block;
   padding: 0.25rem 0.75rem;
 }
-.cs-pagination li.ellipsis {
+.pagination li.ellipsis {
   padding: 0.25rem 0.75rem;
   position: relative;
 }
-.cs-pagination li.ellipsis:after {
+.pagination li.ellipsis:after {
   display: inline-block;
   content: '…';
 }
-.cs-pagination li.ellipsis.no-content:after {
+.pagination li.ellipsis.no-content:after {
   content: unset;
 }
-.cs-pagination li.ellipsis .ellipsis-input {
+.pagination li.ellipsis .ellipsis-input {
   position: absolute;
   top: 105%;
   top: calc(100% + 5px);
@@ -4852,7 +4857,7 @@ body.cs-modal-open {
   z-index: 1;
   display: none;
 }
-.cs-pagination li.ellipsis .ellipsis-input:before {
+.pagination li.ellipsis .ellipsis-input:before {
   content: '';
   position: absolute;
   display: block;
@@ -4866,62 +4871,62 @@ body.cs-modal-open {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #8a8a8a;
 }
-.cs-pagination li.ellipsis .ellipsis-input input {
+.pagination li.ellipsis .ellipsis-input input {
   text-align: center;
   margin: 0;
   border: 1px solid #8a8a8a;
 }
-.cs-pagination li.ellipsis .ellipsis-input[data-showing="true"] {
+.pagination li.ellipsis .ellipsis-input[data-showing="true"] {
   display: block;
 }
-.cs-pagination li.current {
+.pagination li.current {
   padding: 0.25rem 0.75rem;
   background-color: #0099FF;
   color: #fff;
 }
-.cs-pagination li.current a {
+.pagination li.current a {
   color: #fff;
 }
-.cs-pagination li.disabled {
+.pagination li.disabled {
   color: #ccc;
 }
-.cs-pagination li.disabled a {
+.pagination li.disabled a {
   color: #ccc;
 }
-.cs-pagination li:hover:not(.current):not(.disabled):not(.no-popup) {
+.pagination li:hover:not(.current):not(.disabled):not(.no-popup) {
   background-color: rgba(0, 0, 0, 0.1);
 }
-.cs-pagination li.no-padding {
+.pagination li.no-padding {
   padding: 0 !important;
 }
 
-ul.cs-tabs,
-.cs-tabs ul {
+ul.tabs,
+.tabs ul {
   list-style: none;
   margin: 0;
   padding: 0;
   overflow: auto;
 }
-ul.cs-tabs li,
-.cs-tabs ul li {
+ul.tabs li,
+.tabs ul li {
   display: block;
   float: left;
   margin: 0;
 }
-ul.cs-tabs li a,
-.cs-tabs ul li a {
+ul.tabs li a,
+.tabs ul li a {
   display: inline-block;
   padding: 0.75rem 1.25rem;
   cursor: pointer;
   position: relative;
 }
-ul.cs-tabs li a:hover,
-.cs-tabs ul li a:hover {
+ul.tabs li a:hover,
+.tabs ul li a:hover {
   background-color: rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
-ul.cs-tabs li a:after,
-.cs-tabs ul li a:after {
+ul.tabs li a:after,
+.tabs ul li a:after {
   content: '';
   display: block;
   position: absolute;
@@ -4932,25 +4937,25 @@ ul.cs-tabs li a:after,
   width: 100%;
   transition: .3s background-color;
 }
-ul.cs-tabs li.active a:after,
-.cs-tabs ul li.active a:after {
+ul.tabs li.active a:after,
+.tabs ul li.active a:after {
   background-color: #0099FF;
 }
 
-.cs-tabs {
+.tabs {
   margin-bottom: 1rem;
 }
 
-ul.cs-tabs.vertical-tabs li,
-.cs-tabs.vertical-tabs ul li {
+ul.tabs.vertical-tabs li,
+.tabs.vertical-tabs ul li {
   float: none;
 }
-ul.cs-tabs.vertical-tabs li a,
-.cs-tabs.vertical-tabs ul li a {
+ul.tabs.vertical-tabs li a,
+.tabs.vertical-tabs ul li a {
   width: 100%;
 }
-ul.cs-tabs.vertical-tabs li a:after,
-.cs-tabs.vertical-tabs ul li a:after {
+ul.tabs.vertical-tabs li a:after,
+.tabs.vertical-tabs ul li a:after {
   left: 0;
   top: 0;
   bottom: unset;
@@ -4973,21 +4978,21 @@ ul.cs-tabs.vertical-tabs li a:after,
   padding-right: 0;
 }
 
-.cs-toast {
+.toast {
   padding: 0.25rem;
   width: 100%;
 }
-.cs-toast .cs-toast-content {
+.toast .toast-content {
   background: #444;
   color: #fff;
   padding: 1rem;
   border-radius: 3px;
 }
-.cs-toast:not(.removing) + .cs-toast {
+.toast:not(.removing) + .toast {
   margin-top: 0.5rem;
 }
 
-.cs-toast-container {
+.toast-container {
   display: block;
   width: 70%;
   max-width: 300px;
@@ -4996,22 +5001,22 @@ ul.cs-tabs.vertical-tabs li a:after,
   right: 10%;
 }
 @media only screen and (min-width: 40em) {
-  .cs-toast-container {
+  .toast-container {
     width: 30%;
   }
 }
 
-.cs-tooltip {
+.tooltip {
   position: fixed;
   padding: 0.75rem;
 }
-.cs-tooltip .tooltipContent {
+.tooltip .tooltipContent {
   position: relative;
   background-color: #333;
   padding: 0.5rem;
   border-radius: 3px;
   color: #fff;
 }
-.cs-tooltip[data-position="top"], .cs-tooltip[data-position="bottom"] {
+.tooltip[data-position="top"], .tooltip[data-position="bottom"] {
   max-width: calc(100vw - 8px);
 }

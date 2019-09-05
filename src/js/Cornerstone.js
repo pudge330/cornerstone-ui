@@ -107,7 +107,7 @@ var module = EventModule.extend({
 	,options: undefined
 	,constructor: function(element, options) {
 		if (element) {
-			this.$el = bglib.jLyte(element);
+			this.$el = jQuery(element);
 			element = this.$el[0];
 		}
 		this.defaultOptions = {};

@@ -1,5 +1,4 @@
 (function(CS) {
-	var jLyte = bglib.jLyte;
 	var component = CS.BaseComponent.extend({
 		Name: 'Pagination'
 		,$ellipsis: undefined
@@ -8,7 +7,7 @@
 			if (!$ellipsis.hasClass('ellipsis')) {
 				$ellipsis.addClass('ellipsis');
 			}
-			var $ellipsisTextbox = jLyte(
+			var $ellipsisTextbox = jQuery(
 				'<div class="ellipsis-input" data-showing="false"><input class="cs-input" type="text"></div>'
 			);
 			$ellipsisTextbox.appendTo($ellipsis);
@@ -23,14 +22,14 @@
 				,maxPages: 1
 				,ellipsisTop: false
 			};
-			this.$el.addClass('cs-pagination-' + this.instanceId);
+			this.$el.addClass('pagination-' + this.instanceId);
 			this.$ellipsis = this.$el.find('li.ellipsis:not(.no-popup)');
 			this.$ellipsis.each(function() {
-				_self.initEllipsis(jLyte(this));
+				_self.initEllipsis(jQuery(this));
 			});
 			this.$el.on('click', 'li.ellipsis:not(.no-popup)', function(evt) {
-				var $this = jLyte(this);
-				var $inputWrap = jLyte(evt.originalEvent.target);
+				var $this = jQuery(this);
+				var $inputWrap = jQuery(evt.originalEvent.target);
 				if (!$inputWrap.hasClass('ellipsis-input')) {
 					$inputWrap = $inputWrap.closest('.ellipsis-input');
 				}
@@ -40,12 +39,12 @@
 			});
 			bglib.DomEvents.window.on('click', function(evt) {
 				if (_self.isEllipsisTextboxShowing()) {
-					var $inputWrap = jLyte(evt.originalEvent.target);
+					var $inputWrap = jQuery(evt.originalEvent.target);
 					if (!$inputWrap.hasClass('ellipsis')) {
 						$inputWrap = $inputWrap.closest('.ellipsis');
 					}
 					_self.$ellipsis.each(function() {
-						var $this = jLyte(this);
+						var $this = jQuery(this);
 						var $wrap = $this.find('.ellipsis-input')
 						if ($wrap.attr('data-showing') == 'true') {
 							if (!$inputWrap.length || ($inputWrap.length && $inputWrap[0] != $this[0])) {
@@ -67,7 +66,7 @@
 			});
 			this.$el.on('click', 'li > a', function(evt) {
 				var _this = this,
-					$this = jLyte(this),
+					$this = jQuery(this),
 					$li = $this.closest('li');
 				if (!$li.hasClass('disabled') && !$li.hasClass('current') && !$li.hasClass('ellipsis')) {
 					var preventDefault = _self.trigger('itemClick', {
@@ -101,10 +100,10 @@
 			arr.push('next');
 			var prevDisabled = (current < 2);
 			var nextDisabled = (current == maxPages);
-			this.$el.find('li:not(.cs-template)').remove();
+			this.$el.find('li:not(.template)').remove();
 			console.log(arr);
 			for (var i = 0; i < arr.length; i++) {
-				var $item = jLyte('<li></li>');
+				var $item = jQuery('<li></li>');
 				if (arr[i] == '...') {
 					this.initEllipsis($item);
 				}
@@ -170,7 +169,7 @@
 		,isEllipsisTextboxShowing: function() {
 			var isOpen = false;
 			this.$ellipsis.each(function() {
-				if (jLyte(this).find('.ellipsis-input').attr('data-showing') == 'true') {
+				if (jQuery(this).find('.ellipsis-input').attr('data-showing') == 'true') {
 					isOpen = true;
 				}
 			});

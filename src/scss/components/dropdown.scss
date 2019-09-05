@@ -1,5 +1,5 @@
 @mixin CornerstoneUI_dropdown() {
-	.cs-dropdown {
+	.dropdown {
 		position: relative;
 		display: inline-block;
 		.dropdown-content {
@@ -42,7 +42,7 @@
 		}
 	}
 	.cs-js {
-		.cs-dropdown {
+		.dropdown {
 			.dropdown-content {
 				display: block;
 				transition: height .3s;

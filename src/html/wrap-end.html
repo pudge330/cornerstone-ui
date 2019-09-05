@@ -1,9 +1,8 @@
 <script>
-	var jLyte = bglib.jLyte;
-	jLyte(function() {
+	jQuery(function() {
 		Cornerstone.onLoad(function() {
-			jLyte('[data-cs-instance="Pagination"]').each(function() {
-				var $this = jLyte(this);
+			jQuery('[data-cs-instance="Pagination"]').each(function() {
+				var $this = jQuery(this);
 				var instance = Cornerstone.getInstance($elms[0], 'Pagination');
 				instance.on('itemClick', function(evt) {
 					evt.preventDefault();

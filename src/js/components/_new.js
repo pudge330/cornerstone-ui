@@ -1,5 +1,4 @@
 (function(CS) {
-	var jLyte = bglib.jLyte;
 	var component = CS.BaseComponent.extend({
 		Name: 'COMPONENT_NAME'
 		,init: function() {

@@ -1,5 +1,5 @@
 @mixin CornerstoneUI_visible() {
-    [class*="#{$cs_prefix}visible-"] {
+    [class*="visible-"] {
         display: none;
     }
     @each $bpKey, $bpSize in $cs_breakpoints {
@@ -8,26 +8,26 @@
         	@if ($tmp-bpMax) {
         		@if ($bpSize) {
         			@media (min-width: $bpSize) and (max-width: $tmp-bpMax) {
-                        .#{$cs_prefix}visible-#{$bpKey}-i {
+                        .visible-#{$bpKey}-i {
                             display: inline;
                         }
-                        .#{$cs_prefix}visible-#{$bpKey}-ib {
+                        .visible-#{$bpKey}-ib {
                             display: inline-block;
                         }
-                        .#{$cs_prefix}visible-#{$bpKey} {
+                        .visible-#{$bpKey} {
                             display: block;
                         }
                     }
         		}
         		@else {
         			@media (max-width: $tmp-bpMax) {
-                        .#{$cs_prefix}visible-#{$bpKey}-i {
+                        .visible-#{$bpKey}-i {
                             display: inline;
                         }
-                        .#{$cs_prefix}visible-#{$bpKey}-ib {
+                        .visible-#{$bpKey}-ib {
                             display: inline-block;
                         }
-                        .#{$cs_prefix}visible-#{$bpKey} {
+                        .visible-#{$bpKey} {
                             display: block;
                         }
                     }
@@ -35,13 +35,13 @@
         	}
         	@else {
         		@media (min-width: $bpSize) {
-                    .#{$cs_prefix}visible-#{$bpKey}-i {
+                    .visible-#{$bpKey}-i {
                         display: inline;
                     }
-                    .#{$cs_prefix}visible-#{$bpKey}-ib {
+                    .visible-#{$bpKey}-ib {
                         display: inline-block;
                     }
-                    .#{$cs_prefix}visible-#{$bpKey} {
+                    .visible-#{$bpKey} {
                         display: block;
                     }
                 }
@@ -50,13 +50,13 @@
         @else {
             $tmp-bpMax: csGetBreakpointMax($bpKey);
             @media (max-width: $tmp-bpMax) {
-                .#{$cs_prefix}visible-#{$bpKey}-i {
+                .visible-#{$bpKey}-i {
                     display: inline;
                 }
-                .#{$cs_prefix}visible-#{$bpKey}-ib {
+                .visible-#{$bpKey}-ib {
                     display: inline-block;
                 }
-                .#{$cs_prefix}visible-#{$bpKey} {
+                .visible-#{$bpKey} {
                     display: block;
                 }
             }

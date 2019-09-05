@@ -23,7 +23,7 @@
             text-align: left;
         }
     }
-    table.#{$cs_prefix}table-outlined {
+    table.table-outlined {
         position: relative;
         border: 2px solid #ddd;
         th,
@@ -38,14 +38,14 @@
             border-bottom: none;
         }
     }
-    table.#{$cs_prefix}table-compact {
+    table.table-compact {
         width: auto;
         th,
         td {
             padding: 0.25rem;
         }   
     }
-    table.#{$cs_prefix}table-alternate {
+    table.table-alternate {
         tbody tr:nth-child(even) {
             background-color: #e5e5e5;
         }
@@ -54,7 +54,7 @@
             border-bottom: none;
         }
     }
-    table.#{$cs_prefix}table-hover {
+    table.table-hover {
         tbody tr { 
             &:hover,
             &:focus,
@@ -69,7 +69,7 @@
             border-bottom: none;
         }
     }
-    #{$cs_prefix}.table-wrap {
+    .table-wrap {
         width: 100%;
         overflow: auto;
         @include cs-px-fallback(margin-bottom, $cs_base_block_margin);

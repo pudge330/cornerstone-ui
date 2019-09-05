@@ -4,14 +4,14 @@
 			@if ($tmp-bpMax) {
 				@if ($bpSize) {
 					@media (min-width: $bpSize) and (max-width: $tmp-bpMax) {
-		                .#{$cs_prefix}hidden-#{$bpKey} {
+		                .hidden-#{$bpKey} {
 		                    display: none;
 		                }
 		            }
 				}
 				@else {
 					@media (max-width: $tmp-bpMax) {
-		                .#{$cs_prefix}hidden-#{$bpKey} {
+		                .hidden-#{$bpKey} {
 		                    display: none;
 		                }
 		            }
@@ -19,7 +19,7 @@
 			}
 			@else {
 				@media (min-width: $bpSize) {
-		            .#{$cs_prefix}hidden-#{$bpKey} {
+		            .hidden-#{$bpKey} {
 		                display: none;
 		            }
 		        }

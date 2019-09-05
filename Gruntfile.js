@@ -1,5 +1,27 @@
 var timer = require("grunt-timer");
 
+var processResourcesFunc = function(src, path) {
+	if (match = path.match('src\/svg\/icons\/([a-zA-Z0-9-_]+).svg')) {
+		//--process svg
+		var svg = src.replace(/(\r\n|\n|\r)/gm,"")
+				 .replace(/\s\s+/gm, ' ')
+				 .replace(/\t/gm, ' ')
+				 .replace(/\> \</gm, '><')
+		return "\tCornerstoneResources.icons['" + match[1] + "'] = '" + svg + "';\n";
+	}
+	// else if (match = path.match('src\/html\/([a-zA-Z0-9-_]+).html')) {
+	// 	//--process html template
+	// 	var svg = src.replace(/(\r\n|\n|\r)/gm,"")
+	// 			 .replace(/\s\s+/gm, ' ')
+	// 			 .replace(/\t/gm, ' ')
+	// 			 .replace(/\> \</gm, '><')
+	// 	return "\tCornerstoneResources.templates['" + match[1] + "'] = '" + svg + "';\n";
+	// }
+	else {
+		return src;
+	}
+};
+
 var csModules = [
 	'src/js/components/Breakpoint.js'
 	,'src/js/components/Accordion.js'
@@ -14,7 +36,7 @@ var csModules = [
 ];
 var csFullModules = [
 	'src/js/wrap-start.js'
-	,'src/js/deps/bglib.js'
+	// ,'src/js/deps/bglib.js'
 	,'src/js/Cornerstone.js'
 ].concat(csModules).concat(['src/js/wrap-end.js']);
 var csNoDepsModules = [
@@ -140,6 +162,9 @@ module.exports = function(grunt) {
 			,deps: {
 				src: [
 					'src/js/deps/bglib.js'
+					,'src/js/deps/anime.min.js'
+					,'node_modules/sortablejs/Sortable.js'
+					,'node_modules/jquery/dist/jquery.js'
 				]
 				,dest: 'dist/js/cornerstone-deps.js',
 			}
@@ -147,14 +172,36 @@ module.exports = function(grunt) {
 				src: csFullModules,
 				dest: 'dist/js/cornerstone.js',
 			}
-			,'dist-only': {
-				src: csNoDepsModules,
-				dest: 'dist/js/cornerstone-nodeps.js',
+			,resources: {
+				src: [
+					'src/svg/icons/wrap-start.js'
+					,'src/svg/icons/arrow.svg'
+					,'src/svg/icons/wrap-end.js'
+				]
+				,dest: 'dist/js/cornerstone-resources.js'
+				,options: {
+					process: processResourcesFunc
+				}
 			}
-			,'bare': {
-				src: csBareModules
-				,dest: 'dist/js/cornerstone-bare.js'
+			,'resources-all': {
+				src: [
+					'src/svg/icons/wrap-start.js'
+					,'src/svg/icons/*.svg'
+					,'src/svg/icons/wrap-end.js'
+				]
+				,dest: 'dist/js/cornerstone-resources-all.js'
+				,options: {
+					process: processResourcesFunc
+				}
 			}
+			// ,'dist-only': {
+			// 	src: csNoDepsModules,
+			// 	dest: 'dist/js/cornerstone-nodeps.js',
+			// }
+			// ,'bare': {
+			// 	src: csBareModules
+			// 	,dest: 'dist/js/cornerstone-bare.js'
+			// }
 		}, htmlConcats)
 		,uglify: {
 			options: {
@@ -164,12 +211,25 @@ module.exports = function(grunt) {
 				files: {
 					'dist/js/cornerstone.min.js': ['dist/js/cornerstone.js']
 					,'dist/js/cornerstone-deps.min.js': ['dist/js/cornerstone-deps.js']
-					,'dist/js/cornerstone-nodeps.min.js': ['dist/js/cornerstone-nodeps.js']
-					,'dist/js/cornerstone-bare.min.js': ['dist/js/cornerstone-bare.js']
+					,'dist/js/cornerstone-resources.min.js': ['dist/js/cornerstone-resources.js']
+					// ,'dist/js/cornerstone-nodeps.min.js': ['dist/js/cornerstone-nodeps.js']
+					// ,'dist/js/cornerstone-bare.min.js': ['dist/js/cornerstone-bare.js']
 				}
 			}
 		}
 		,copy: {
+			'bglib': {
+				expand: true,
+				cwd: 'src/js/deps',
+				src: ['bglib.js', 'bglib.min.js'],
+				dest: 'dist/js/'
+			},
+			'anime': {
+				expand: true,
+				cwd: 'src/js/deps',
+				src: ['anime.js', 'anime.min.js'],
+				dest: 'dist/js/'
+			},
 			'sortablejs': {
 				expand: true,
 				cwd: 'node_modules/sortablejs',

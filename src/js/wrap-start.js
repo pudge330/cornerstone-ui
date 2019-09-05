@@ -1,9 +1,9 @@
 (function (root, factory) {
 	var noConflict = root.Cornerstone_NoConflict !== 'undefined' && root.Cornerstone_NoConflict;
     if (typeof define === 'function' && define.amd) {
-        define(['bglib'], factory);
+        define(['bglib', 'jquery'], factory);
     } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory(require('bglib'));
+        module.exports = factory(require('bglib'), require('jquery'));
     } else {
         root.Cornerstone = factory(root.bglib);
         if (!noConflict) {

@@ -1,5 +1,5 @@
 @mixin CornerstoneUI_alerts() {
-	.#{$cs_prefix}alert {
+	.alert {
 		padding: 1rem;
 		border: 1px solid csColor('gray', 'dark');
 		display: block;
@@ -18,9 +18,9 @@
 		@include cs-px-fallback(margin-bottom, $cs_base_block_margin);
 	}
 	@each $name, $colors in $cs_colors {
-		.#{$cs_prefix}alert {
+		.alert {
 			@if $name != 'generic' and $name != 'gray' {
-				&.#{$cs_prefix}alert-#{$name} {
+				&.alert-#{$name} {
 					@if $name == 'danger' {
 						background-color: csColor($name, 'light-3x');
 					}

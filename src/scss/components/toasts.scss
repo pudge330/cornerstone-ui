@@ -1,8 +1,8 @@
 @mixin CornerstoneUI_toasts() {
-	.cs-toast {
+	.toast {
 		padding: 0.25rem;
 		width: 100%;
-		.cs-toast-content {
+		.toast-content {
 			background: #444;
 			color: #fff;
 			padding: 1rem;
@@ -10,12 +10,12 @@
 			@extend .shadow-1;
 		}
 		&:not(.removing) {
-			+ .cs-toast {
+			+ .toast {
 				margin-top: 0.5rem;
 			}
 		}
 	}
-	.cs-toast-container {
+	.toast-container {
 		display: block;
 		width: 70%;
 		max-width: 300px;

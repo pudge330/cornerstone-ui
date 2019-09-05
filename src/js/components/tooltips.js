@@ -3,7 +3,6 @@
 		Few issue needs to be worked out with the left/right positioning but overall it works fairley well.
 		 - top position in some instances of the right-pos overlaps the item that gets hovered
 	*/
-	var jLyte = bglib.jLyte;
 	var DomEvents = bglib.DomEvents;
 	var component = CS.BaseComponent.extend({
 		Name: 'Tooltip'
@@ -45,105 +44,120 @@
 					_self.$tooltip.css(_self.calculatePosition(pos));
 				}
 			});
-			console.log('tooltip-item-position', this.$el[0].getBoundingClientRect());
 			return this;
 		}
 		,calculatePosition: function($tooltip, pos) {
 			var _self = this;
-			var itemPos = _self.$el[0].getBoundingClientRect();
-			var tooltipCss = { left: itemPos.x + 'px', top: itemPos.y + 'px' };
-			console.log(pos);
+			var itemOffset = _self.$el[0].getBoundingClientRect();
+			itemOffset.top = itemOffset.top - window.scrollY;
+			itemOffset.left = itemOffset.top - window.scrollX;
+			var tooltipCss = {};
 			var calcPositionTop = function() {
 				var css = {};
-				css.top = (itemPos.y - _self.$tooltip[0].clientHeight) + 'px';
-				var left = itemPos.x;
-				if (_self.$el.clientWidth < _self.$tooltip[0].clientWidth) {
-					left = left - ((_self.$tooltip[0].getBoundingClientRect().width - (_self.$el[0].getBoundingClientRect().width / 2)) / 2);
+				css.top = (itemOffset.top - _self.$tooltip.outerHeight()) + 'px';
+				var left = itemOffset.left;
+				if (_self.$el.outerWidth() < _self.$tooltip.outerWidth()) {
+					left = left - ((_self.$tooltip.outerWidth() - _self.$el.outerWidth()) / 2);
 				}
 				else {
-					left = left + ((_self.$el[0].clientWidth - _self.$tooltip[0].clientWidth) / 2);
+					left = left + ((_self.$el.outerWidth() - _self.$tooltip.outerWidth()) / 2);
 				}
-				if (left < 0 || left + _self.$tooltip.clientWidth > window.innerWidth) {
-					left = 4;
+				if (left < 0 || left + _self.$tooltip.outerWidth() > window.innerWidth) {
+					left = 0;
 				}
 				css.left = left + 'px';
 				return css;
 			};
 			var calcPositionBottom = function() {
 				var css = {};
-				css.top = (itemPos.y + _self.$el[0].clientHeight) + 'px';
-				var left = itemPos.x;
-				if (_self.$el.clientWidth < _self.$tooltip[0].clientWidth) {
-					left = left - ((_self.$tooltip[0].clientWidth - _self.$el[0].clientWidth) / 2);
+				css.top = (itemOffset.top + _self.$el.outerHeight()) + 'px';
+				var left = itemOffset.left;
+				if (_self.$el.outerWidth() < _self.$tooltip.outerWidth()) {
+					left = left - ((_self.$tooltip.outerWidth() - _self.$el.outerWidth()) / 2);
 				}
 				else {
-					left = left + ((_self.$el[0].clientWidth - _self.$tooltip[0].clientWidth) / 2);
+					left = left + ((_self.$el.outerWidth() - _self.$tooltip.outerWidth()) / 2);
 				}
-				if (left < 0 || left + _self.$tooltip.clientWidth > window.innerWidth) {
-					left = 4;
+				if (left < 0 || left + _self.$tooltip.outerWidth() > window.innerWidth) {
+					left = 0;
 				}
 				css.left = left + 'px';
 				return css;
 			};
+			var calcPositionLeft = function() {
+				var css = {};
+				var maxWidth = itemOffset.left - 8;
+				if (maxWidth < 150 && $tooltip.outerWidth() > maxWidth) {
+					css = calcPositionTop();
+				}
+				else {
+					$tooltip.css('max-width', maxWidth + 'px');
+					var top;
+					if (_self.$el.outerHeight() < $tooltip.outerHeight()) {
+						top = itemOffset.top - (Math.ceil($tooltip.outerHeight() - _self.$el.outerHeight()) / 2);
+					}
+					else {
+						top = itemOffset.top + (Math.ceil(_self.$el.outerHeight() - $tooltip.outerHeight()) / 2);
+					}
+					css.top = top + 'px';
+					css.left = itemOffset.left - 4 - $tooltip.outerWidth();
+					css.left = css.left + 'px';
+				}
+				return css;
+			};
+			var calcPositionRight = function() {
+				var css = {};
+				var maxWidth = window.innerWidth - itemOffset.left - _self.$el.outerWidth() - 8;
+				if (maxWidth < 150 && $tooltip.outerWidth() > maxWidth) {
+					css = calcPositionTop();
+				}
+				else {
+					$tooltip.css('max-width', maxWidth + 'px');
+					var top;
+					if (_self.$el.outerHeight() < $tooltip.outerHeight()) {
+						top = itemOffset.top - (Math.ceil($tooltip.outerHeight() - _self.$el.outerHeight()) / 2);
+					}
+					else {
+						top = itemOffset.top + (Math.ceil(_self.$el.outerHeight() - $tooltip.outerHeight()) / 2);
+					}
+					css.top = top + 'px';
+					css.left = itemOffset.left + _self.$el.outerWidth() + 4;
+					css.left = css.left + 'px';
+				}
+				if (css.left == '4px') {
+					delete css.left;
+					css.right = '4px';
+				}
+				if (css.left == '0px') {
+					delete css.left;
+					css.right = '0px';
+				}
+				return css;
+			};
 			switch (pos) {
 				case 'top':
-					tooltipCss = Object.assign(tooltipCss, calcPositionTop());
+					tooltipCss = calcPositionTop();
 				break;
 				case 'bottom':
-					tooltipCss = Object.assign(tooltipCss, calcPositionBottom());
+					tooltipCss = calcPositionBottom();
 				break;
 				case 'left':
-					var maxWidth = itemPos.x - 8;
-					if (maxWidth < 150 && $tooltip[0].clientWidth > maxWidth) {
-						console.log(1);
-						tooltipCss = Object.assign(tooltipCss, calcPositionTop());
-					}
-					else {
-						$tooltip.css('max-width', maxWidth + 'px');
-						var top;
-						if (_self.$el.clientHeight < $tooltip[0].clientHeight) {
-							top = itemPos.y - (Math.ceil($tooltip[0].clientHeight - _self.$el[0].clientHeight) / 2);
-						}
-						else {
-							top = itemPos.y + (Math.ceil(_self.$el[0].clientHeight - $tooltip[0].clientHeight) / 2);
-						}
-						tooltipCss.top = top + 'px';
-						tooltipCss.left = itemPos.x - 4 - $tooltip[0].clientWidth;
-						tooltipCss.left = tooltipCss.left + 'px';
-					}
+					tooltipCss = calcPositionLeft();
 				break;
 				case 'right':
-					var maxWidth = window.innerWidth - itemPos.x - this.$el[0].clientWidth - 8;
-					if (maxWidth < 150 && $tooltip[0].clientWidth > maxWidth) {
-						console.log(1);
-						tooltipCss = Object.assign(tooltipCss, calcPositionTop());
-					}
-					else {
-						console.log(2);
-						$tooltip.css('max-width', maxWidth + 'px');
-						var top;
-						if (_self.$el.clientHeight < $tooltip[0].clientHeight) {
-							top = itemPos.y - (Math.ceil($tooltip[0].clientHeight - _self.$el[0].clientHeight) / 2);
-						}
-						else {
-							top = itemPos.y + (Math.ceil(_self.$el[0].clientHeight - $tooltip[0].clientHeight) / 2);
-						}
-						tooltipCss.top = top + 'px';
-						tooltipCss.left = itemPos.x + this.$el[0].clientWidth + 4;
-						tooltipCss.left = tooltipCss.left + 'px';
-					}
+					tooltipCss = calcPositionRight();
 				break;
 			}
 			return tooltipCss;
 		}
 		,showTooltip: function() {
 			if (!this.$tooltip) {
-				this.$tooltip = jLyte('<div class="cs-tooltip"></div>');
-				this.$tooltip.addClass('cs-tooltip-' + this.instanceId);
+				this.$tooltip = jQuery('<div class="tooltip"></div>');
+				this.$tooltip.addClass('tooltip-' + this.instanceId);
 				this.$tooltip.append('<div class="tooltipContent">' + this.tooltip + '</div>');
 				var pos = this.determinePosition();
 				this.$tooltip.attr('data-position', pos);
-				jLyte('body').append(this.$tooltip);
+				jQuery('body').append(this.$tooltip);
 				this.$tooltip.css(this.calculatePosition(this.$tooltip, pos));
 			}
 		}

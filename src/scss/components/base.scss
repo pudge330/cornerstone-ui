@@ -21,7 +21,7 @@
 		line-height: 1.4;
 	}
 	//==block margins
-	h1, h2, h3, h4, h5, h6, .#{$cs_prefix}h1, .#{$cs_prefix}h2, .#{$cs_prefix}h3, .#{$cs_prefix}h4, .#{$cs_prefix}h5, .#{$cs_prefix}h6,
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
 	p, ul, ol, fieldset, pre, blockquote, dl, figure,
 	table, form {
 		margin: 0;
@@ -35,7 +35,7 @@
 	textarea,
 	select,
 	button,
-	.#{$cs_prefix}btn {
+	.btn {
 		margin: 0;
 		@include cs-px-fallback(margin-bottom, $cs_base_block_margin / 2);
 	}
@@ -45,31 +45,31 @@
 	}
 	//==headings
 	h1, h2, h3, h4, h5, h6,
-	.#{$cs_prefix}h1, .#{$cs_prefix}h2, .#{$cs_prefix}h3, .#{$cs_prefix}h4, .#{$cs_prefix}h5, .#{$cs_prefix}h6 {
+	.h1, .h2, .h3, .h4, .h5, .h6 {
 		font-weight: 400;
 		font-family: $cs_base_font_header;
 	}
-	h1, .#{$cs_prefix}h1 {
+	h1, .h1 {
 		font-size: 38px;
 	}
-	h2, .#{$cs_prefix}h2 {
+	h2, .h2 {
 		font-size: 32px;
 	}
-	h3, .#{$cs_prefix}h3 {
+	h3, .h3 {
 		font-size: 28px;
 	}
-	h4, .#{$cs_prefix}h4 {
+	h4, .h4 {
 		font-size: 24px;
 	}
-	h5, .#{$cs_prefix}h5 {
+	h5, .h5 {
 		font-size: 20px;
 	}
-	h6, .#{$cs_prefix}h6 {
+	h6, .h6 {
 		font-size: 16px;
 	}
 	//==fonts
 	@each $fontKey, $fontValue in $cs_font_map {
-		.#{$cs_prefix}font-#{$fontKey} {
+		.font-#{$fontKey} {
 			font-family: $fontValue;
 		}
 	}
@@ -80,7 +80,7 @@
 		&:hover {
 			text-decoration: underline;
 		}
-		&.#{$cs_prefix}animated {
+		&.animated {
 			position: relative;
 			&:after {
 				content: '';

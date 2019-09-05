@@ -1,5 +1,4 @@
 (function(CS) {
-	var jLyte = bglib.jLyte;
 	var DomEvents = bglib.DomEvents;
 	var component = CS.BaseComponent.extend({
 		Name: 'Dropdown'
@@ -7,7 +6,7 @@
 		,$content: undefined
 		,init: function() {
 			var _self = this;
-			this.$el.addClass('cs-dropdown-' + this.instanceId);
+			this.$el.addClass('dropdown-' + this.instanceId);
 			this.defaultOptions = {
 				action: 'click'
 				,anchor: 'bottom-left'
@@ -47,10 +46,10 @@
 					}
 				});
 				DomEvents.window.on('click', function(e) {
-					var $this = jLyte(e.originalEvent.target);
+					var $this = jQuery(e.originalEvent.target);
 					var target = e.originalEvent.target;
 					var shouldClose = false,
-						iclass = 'cs-dropdown-' + _self.instanceId;
+						iclass = 'dropdown-' + _self.instanceId;
 					if (!$this.hasClass(iclass)) {
 						shouldClose = ($this.closest('.' + iclass).length == 0);
 					}

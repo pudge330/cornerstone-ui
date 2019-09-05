@@ -1,7 +1,7 @@
 @mixin CornerstoneUI_screen_readers() {
 	/*! Source: BootStrap Screen Reader Snippet */
-	.#{$cs_prefix}show-for-sr,
-	.#{$cs_prefix}sr-only {
+	.show-for-sr,
+	.sr-only {
 		position: absolute;
 		width: 1px;
 		height: 1px;
@@ -11,10 +11,10 @@
 		clip: rect(0, 0, 0, 0);
 		border: 0;
 	}
-	.#{$cs_prefix}show-for-sr-focusable:active,
-	.#{$cs_prefix}show-for-sr-focusable:focus,
-	.#{$cs_prefix}sr-only-focusable:active,
-	.#{$cs_prefix}sr-only-focusable:focus {
+	.show-for-sr-focusable:active,
+	.show-for-sr-focusable:focus,
+	.sr-only-focusable:active,
+	.sr-only-focusable:focus {
 		position: static;
 		width: auto;
 		height: auto;

@@ -1,6 +1,6 @@
 @mixin CornerstoneUI_columns() {
-	.#{$cs_prefix}container,
-	.#{$cs_prefix}container-fluid {
+	.container,
+	.container-fluid {
 		overflow: visible;
 		position: relative;
 		width: 100%;
@@ -12,13 +12,13 @@
 			padding-bottom: $cs_grid_gutter_size / 2;
 		}
 	}
-	.#{$cs_prefix}container {
+	.container {
 		max-width: $cs_grid_max_width;
 	}
-	.#{$cs_prefix}container-fluid {
+	.container-fluid {
 		max-width: unset;
 	}
-	.#{$cs_prefix}row {
+	.row {
 		overflow: visible;
 		position: relative;
 		margin-left: -($cs_grid_gutter_size / 2);
@@ -29,15 +29,15 @@
 			margin-bottom: -($cs_grid_gutter_size / 2);
 		}
 	}
-	.#{$cs_prefix}col-last {
+	.col-last {
 		float: right;
 	}
-	.#{$cs_prefix}clear-fix:after {
+	.clear-fix:after {
 	  content: "";
 	  display: table;
 	  clear: both;
 	}
-	[class*="#{$cs_prefix}col-"] {
+	[class*="col-"] {
 		overflow: visible;
 		display: inline-block;
 		vertical-align: middle;
@@ -56,20 +56,20 @@
 			padding-right: 0;
 		}
 	}
-	[class*="#{$cs_prefix}col-"] {
-	    .#{$cs_prefix}container.#{$cs_prefix}no-gutter > .#{$cs_prefix}row &,
-	    .#{$cs_prefix}container-fluid.#{$cs_prefix}no-gutter > .#{$cs_prefix}row & {
+	[class*="col-"] {
+	    .container.no-gutter > .row &,
+	    .container-fluid.no-gutter > .row & {
 	    	padding-left: 0;
 	    	padding-right: 0;
 	    }
-	    .#{$cs_prefix}row.#{$cs_prefix}no-gutter > &,
-	    .#{$cs_prefix}row.#{$cs_prefix}no-gutter > & {
+	    .row.no-gutter > &,
+	    .row.no-gutter > & {
 	    	padding-left: 0;
 	    	padding-right: 0;
 	    }
 	}
-	.#{$cs_prefix}container.#{$cs_prefix}no-gutter,
-	.#{$cs_prefix}container-fluid.#{$cs_prefix}no-gutter {
+	.container.no-gutter,
+	.container-fluid.no-gutter {
 		padding-left: 0;
 	    padding-right: 0;
 	    > .row {
@@ -77,31 +77,31 @@
 	    	margin-right: 0;
 	    }
 	}
-	.#{$cs_prefix}container,
-	.#{$cs_prefix}container-fluid {
+	.container,
+	.container-fluid {
 		&.align-top {
-			[class*="#{$cs_prefix}col-"] {
+			[class*="col-"] {
 				vertical-align: text-top;
 			}
 		}
 		&.align-bottom {
-			[class*="#{$cs_prefix}col-"] {
+			[class*="col-"] {
 				vertical-align: text-bottom;
 			}
 		}
 		.row {
 			&.align-top {
-				[class*="#{$cs_prefix}col-"] {
+				[class*="col-"] {
 					vertical-align: text-top;
 				}
 			}
 			&.align-middle {
-				[class*="#{$cs_prefix}col-"] {
+				[class*="col-"] {
 					vertical-align: middle;
 				}
 			}
 			&.align-bottom {
-				[class*="#{$cs_prefix}col-"] {
+				[class*="col-"] {
 					vertical-align: text-bottom;
 				}
 			}	
@@ -112,27 +112,27 @@
 		$calculatedWidth: ((100% / $cs_grid_column_size) * $i);
 
 		@if $i != 0 {
-			.#{$cs_prefix}col-tn-#{$i} {
+			.col-tn-#{$i} {
 	            width: $calculatedWidth;
 	        }
-	        .#{$cs_prefix}offset-tn-#{$i} {
+	        .offset-tn-#{$i} {
 	            margin-left: $calculatedWidth;
 	        }
-	        .#{$cs_prefix}pull-tn-#{$i} {
+	        .pull-tn-#{$i} {
 	            right: $calculatedWidth;
 	        }
-	        .#{$cs_prefix}push-tn-#{$i} {
+	        .push-tn-#{$i} {
 	            left: $calculatedWidth;
 	        }
 		}
 		@else {
-			.#{$cs_prefix}offset-tn-#{$i} {
+			.offset-tn-#{$i} {
 	            margin-left: 0;
 	        }
-	        .#{$cs_prefix}pull-tn-#{$i} {
+	        .pull-tn-#{$i} {
 	            right: 0;
 	        }
-	        .#{$cs_prefix}push-tn-#{$i} {
+	        .push-tn-#{$i} {
 	            left: 0;
 	        }
 		}
@@ -144,27 +144,27 @@
 					$calculatedWidth: ((100% / $cs_grid_column_size) * $i);
 
 					@if $i != 0 {
-						.#{$cs_prefix}col-#{$bpKey}-#{$i} {
+						.col-#{$bpKey}-#{$i} {
 				            width: $calculatedWidth;
 				        }
-				        .#{$cs_prefix}offset-#{$bpKey}-#{$i} {
+				        .offset-#{$bpKey}-#{$i} {
 				            margin-left: $calculatedWidth;
 				        }
-				        .#{$cs_prefix}pull-#{$bpKey}-#{$i} {
+				        .pull-#{$bpKey}-#{$i} {
 				            right: $calculatedWidth;
 				        }
-				        .#{$cs_prefix}push-#{$bpKey}-#{$i} {
+				        .push-#{$bpKey}-#{$i} {
 				            left: $calculatedWidth;
 				        }
 					}
 					@else {
-						.#{$cs_prefix}offset-#{$bpKey}-#{$i} {
+						.offset-#{$bpKey}-#{$i} {
 				            margin-left: 0;
 				        }
-				        .#{$cs_prefix}pull-#{$bpKey}-#{$i} {
+				        .pull-#{$bpKey}-#{$i} {
 				            right: 0;
 				        }
-				        .#{$cs_prefix}push-#{$bpKey}-#{$i} {
+				        .push-#{$bpKey}-#{$i} {
 				            left: 0;
 				        }
 					}
