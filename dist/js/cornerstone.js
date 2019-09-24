@@ -57,6 +57,9 @@ Cornerstone.onLoad = function(cb) {
 			_cornerstone.__onLoadHandlers.push(cb);
 		}
 	}
+	else {
+		cb();
+	}
 };
 Cornerstone.fn = {};
 Cornerstone.autoload = {};
@@ -372,6 +375,19 @@ Cornerstone.BaseModule = module2;
 		}
 		,getChildren: function($item) {
 			return this.$el.find(this.getOption('childSelector'));
+		}
+		,updateHeights: function(isOpened) {
+			var _self = this;
+			isOpened = isOpened || false;
+			this.getChildren().each(function() {
+				var $item = jQuery(this);
+				if (isOpened && $item.hasClass('opened-item')) {
+					_self.setHeight($item);
+				}
+				else if (!isOpened) {
+					_self.setHeight($item);
+				}
+			});
 		}
 		,closeAll: function($item) {
 			var _self = this;

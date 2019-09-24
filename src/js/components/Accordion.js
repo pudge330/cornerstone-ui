@@ -54,6 +54,19 @@
 		,getChildren: function($item) {
 			return this.$el.find(this.getOption('childSelector'));
 		}
+		,updateHeights: function(isOpened) {
+			var _self = this;
+			isOpened = isOpened || false;
+			this.getChildren().each(function() {
+				var $item = jQuery(this);
+				if (isOpened && $item.hasClass('opened-item')) {
+					_self.setHeight($item);
+				}
+				else if (!isOpened) {
+					_self.setHeight($item);
+				}
+			});
+		}
 		,closeAll: function($item) {
 			var _self = this;
 			if ($item && !($item instanceof jQuery)) { $item = jQuery($item); }

@@ -42,6 +42,9 @@ Cornerstone.onLoad = function(cb) {
 			_cornerstone.__onLoadHandlers.push(cb);
 		}
 	}
+	else {
+		cb();
+	}
 };
 Cornerstone.fn = {};
 Cornerstone.autoload = {};

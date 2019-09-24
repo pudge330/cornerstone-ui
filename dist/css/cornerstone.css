@@ -3606,6 +3606,7 @@ a.cs-button {
   background-color: #A3A3A3;
   color: #fefefe;
   width: auto;
+  text-decoration: none;
 }
 input.cs-button:hover
 , input.cs-button:focus,
@@ -3616,17 +3617,17 @@ a.cs-button:hover
 ,
 a.cs-button:focus {
   background-color: #7A7A7A;
-  text-decoration: underline;
-}
-input.cs-button:hover.no-underline
-, input.cs-button:focus.no-underline,
-button.cs-button:hover.no-underline
-,
-button.cs-button:focus.no-underline,
-a.cs-button:hover.no-underline
-,
-a.cs-button:focus.no-underline {
   text-decoration: none;
+}
+input.cs-button:hover.underline
+, input.cs-button:focus.underline,
+button.cs-button:hover.underline
+,
+button.cs-button:focus.underline,
+a.cs-button:hover.underline
+,
+a.cs-button:focus.underline {
+  text-decoration: underline;
 }
 input.cs-button:active,
 button.cs-button:active,
@@ -4349,6 +4350,17 @@ a.cs-button.button-info.outline:active.fill {
 }
 .alert a.animated:after {
   border-color: #515151;
+}
+.alert.alert-clear {
+  background-color: unset;
+  color: #222;
+  border: 1px solid #222;
+}
+.alert.alert-clear a {
+  color: #3c3c3c;
+}
+.alert.alert-clear a.animated:after {
+  border-color: #3c3c3c;
 }
 
 .alert.alert-primary {

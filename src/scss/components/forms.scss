@@ -213,12 +213,13 @@
 		background-color: csColor('gray', 'dark');
 		color: #fefefe;
 		width: auto;
+		text-decoration: none;
 		&:hover
 		,&:focus {
 		    background-color: csColor('gray', 'dark-2x');
-			text-decoration: underline;
-			&.no-underline {
-				text-decoration: none;
+			text-decoration: none;
+			&.underline {
+				text-decoration: underline;
 			}
 		}
 		&:active {

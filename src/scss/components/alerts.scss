@@ -16,6 +16,19 @@
 			}
 		}
 		@include cs-px-fallback(margin-bottom, $cs_base_block_margin);
+		&.alert-clear {
+			background-color: unset;
+			color: $cs_base_text_color;
+			border: 1px solid $cs_base_text_color;
+			a {
+				color: lighten($cs_base_text_color, 10%);
+				&.animated {
+					&:after {
+						border-color: lighten($cs_base_text_color, 10%);
+					}
+				}
+			}
+		}
 	}
 	@each $name, $colors in $cs_colors {
 		.alert {
