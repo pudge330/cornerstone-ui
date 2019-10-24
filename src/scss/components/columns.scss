@@ -29,6 +29,23 @@
 			margin-bottom: -($cs_grid_gutter_size / 2);
 		}
 	}
+	.container-flex {
+		.row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			&.same-height {
+				> *:first-child {
+					height: 100%;
+				}
+			}
+		}
+	}
+	.row-flex {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
 	.col-last {
 		float: right;
 	}

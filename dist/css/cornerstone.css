@@ -793,6 +793,21 @@ pre > code {
   margin-bottom: -0.75rem;
 }
 
+.container-flex .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.container-flex .row.same-height > *:first-child {
+  height: 100%;
+}
+
+.row-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .col-last {
   float: right;
 }
@@ -4631,7 +4646,7 @@ body.modal-open {
 .modal-wrap {
   background: rgba(0, 0, 0, 0.25);
   position: absolute;
-  z-index: 1001;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
@@ -4740,7 +4755,7 @@ body.modal-open {
   left: 0;
   width: auto;
   display: none;
-  z-index: 100;
+  z-index: 1000;
   background-color: #efefef;
 }
 .dropdown[data-anchor="bottom-right"] .dropdown-content {
