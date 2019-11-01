@@ -3441,7 +3441,7 @@ label {
   margin-bottom: 0.2rem;
 }
 
-input.cs-input:not([type="file"]) {
+input.cs-input {
   padding: 0.5rem;
 }
 input.cs-input[type="file"] {

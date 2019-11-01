@@ -39,9 +39,7 @@
 		margin-bottom: 0.2rem;
 	}
 	input.cs-input {
-		&:not([type="file"]) {
-			padding: 0.5rem;
-		}
+		padding: 0.5rem;
 		@extend %input_placeholder;
 		&[type="file"] {
 			border: none;
