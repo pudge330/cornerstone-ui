@@ -802,7 +802,7 @@ pre > code {
   height: 100%;
 }
 
-.row-flex {
+.row.row-flex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -877,6 +877,26 @@ pre > code {
 .container .row.align-bottom [class*="col-"],
 .container-fluid .row.align-bottom [class*="col-"] {
   vertical-align: text-bottom;
+}
+.container.align-center .row,
+.container-fluid.align-center .row {
+  text-align: center;
+}
+.container.align-right,
+.container-fluid.align-right {
+  text-align: right;
+}
+.container .row.align-left,
+.container-fluid .row.align-left {
+  text-align: left;
+}
+.container .row.align-center,
+.container-fluid .row.align-center {
+  text-align: center;
+}
+.container .row.align-right,
+.container-fluid .row.align-right {
+  text-align: right;
 }
 
 .col-tn-12 {

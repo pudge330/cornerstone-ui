@@ -41,7 +41,7 @@
 			}
 		}
 	}
-	.row-flex {
+	.row.row-flex {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -121,6 +121,25 @@
 				[class*="col-"] {
 					vertical-align: text-bottom;
 				}
+			}	
+		}
+		&.align-center {
+			.row {
+				text-align: center;
+			}
+		}
+		&.align-right {
+			text-align: right;
+		}
+		.row {
+			&.align-left {
+				text-align: left;
+			}
+			&.align-center {
+				text-align: center;
+			}
+			&.align-right {
+				text-align: right;
 			}	
 		}
 	}
