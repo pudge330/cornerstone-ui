@@ -13,9 +13,6 @@
         module.exports = factory(require(dependencies.common.bglib), require(dependencies.common.jquery));
     } else {
         root.Cornerstone = factory(root.bglib, root.jQuery);
-        if (!noConflict) {
-            root.CS = root.Cornerstone;
-        }
     }
 }(global = typeof self !== 'undefined' ? self : this, function (_bglib, jQuery) {
 var Sortable = global.Sortable !== 'undefined' ? global.Sortable : null;
@@ -1242,7 +1239,9 @@ Cornerstone.BaseModule = module2;
 				,class: null
 				,closeCallback: null
 				,position: 'right' //--left,center,right
+				,closeButton: true
 			};
+			this.active = false;
 			this.$el = jQuery('<div></div>');
 			this.$el.addClass('toast');
 			this.$el.addClass('toast-' + this.instanceId);
@@ -1256,27 +1255,49 @@ Cornerstone.BaseModule = module2;
 				this.$container = jQuery('<div class="toast-container"></div>');
 				jQuery('body').append(this.$container);
 			}
+			if (this.getOption('closeButton')) {
+				var $close = jQuery('<button class="cs-close cs-button">X</button>');
+				this.$el.find('.toast-content').append($close);
+				CornerstoneResources.icon('md-close', $close);
+			}
+			Cornerstone.setInstance(this.$el[0], this.Name, this);
+			this.$el.attr('data-cs-instance', this.Name);
 			this.$container.append(this.$el);
+			this.active = true;
 			var _self = this;
 			setTimeout(function() {
-				_self.$el.animate({
-					top: -50,
-					opacity: 0
-				}, {
-					queue: false,
-					start: function() {
-						_self.$el.addClass('removing');
-						_self.$el.css('position', 'absolute');
-					},
-					done: function () {
-						_self.$el.remove();
-						if (_self.getOption('closeCallback')) {
-							(_self.getOption('closeCallback'))();
-						}
-					}
-				});
+				if (this.active) {
+					// _self.remove();
+				}
 			}, this.getOption('displayLength'));
 			return this;
+		},
+		remove: function(props) {
+			var _self = this;
+			props = props || {
+				top: -50,
+				opacity: 0
+			};
+			_self.active = false;
+			_self.$el.animate(props, {
+				queue: false,
+				start: function() {
+					_self.$el.addClass('removing');
+					_self.$el.css('position', 'absolute');
+				},
+				done: function () {
+					_self.$el.remove();
+					if (_self.getOption('closeCallback')) {
+						(_self.getOption('closeCallback'))();
+					}
+				}
+			});
+		},
+		handleCloseAction: function() {
+			console.log('[toasts] close clicked');
+			if (this.active) {
+				this.remove();
+			}
 		}
 	}, {});
 	CS.Toast = component;

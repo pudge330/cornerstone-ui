@@ -13,9 +13,6 @@
         module.exports = factory(require(dependencies.common.bglib), require(dependencies.common.jquery));
     } else {
         root.Cornerstone = factory(root.bglib, root.jQuery);
-        if (!noConflict) {
-            root.CS = root.Cornerstone;
-        }
     }
 }(global = typeof self !== 'undefined' ? self : this, function (_bglib, jQuery) {
 var Sortable = global.Sortable !== 'undefined' ? global.Sortable : null;

@@ -176,6 +176,8 @@ module.exports = function(grunt) {
 				src: [
 					'src/svg/icons/wrap-start.js'
 					,'src/svg/icons/arrow.svg'
+					,'src/svg/icons/ios-close.svg'
+					,'src/svg/icons/md-close.svg'
 					,'src/svg/icons/wrap-end.js'
 				]
 				,dest: 'dist/js/cornerstone-resources.js'
