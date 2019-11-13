@@ -73,8 +73,10 @@ Cornerstone.autoload.factory = function(component, sel, dataAttr, dataAttrOption
 		var elements = document.querySelectorAll(sel);
 		for (var i = 0; i < elements.length; i++) {
 			var opts = elements[i].getAttribute(dataAttr);
+			console.log(sel, opts);
 			if (opts && opts.trim() != '') {
 				opts = JSON.safeParse(opts.trim());
+				console.log(sel, opts);
 			}
 			else {
 				opts = {};
@@ -1221,6 +1223,51 @@ Cornerstone.BaseModule = module2;
 	CS.autoload.Tabs = CS.autoload.factory(component, '[data-tabs]', 'data-tabs');
 })(Cornerstone);
 (function(CS) {
+	var component = CS.BaseComponent.extend({
+		Name: 'Table'
+		,init: function() {
+			var _self = this;
+			this.defaultOptions = {
+				breakpoint: 'sm'
+			};
+			this.$el.addClass('cs-table-' + this.instanceId);
+			if (this.$el.hasClass('cs-table-responsive')) {
+				this.initResponsive();
+			}
+			if (this.$el.hasClass('cs-table-fixed')) {
+				this.initFixed();
+			}
+			return this;
+		},
+		initResponsive: function() {
+			// this.populateResponsiveHeaders();
+			CS.BreakPoint.on('change', function(e) {
+
+			});
+		},
+		populateResponsiveHeaders: function() {
+			var _self = this;
+			this.$el.find('thead tr th').each(function(index) {
+				var $this = jQuery(this);
+				console.log('tbody tr td:nth-child(' + (index + 1) + ')');
+				_self.$el.find('tbody tr td:nth-child(' + (index + 1) + ')').each(function() {
+					var $td = jQuery(this);
+					$td.html('<span>' + $this.html() + $td.html() + '</span>');
+				});
+			});
+
+		},
+		initFixedHeader: function() {
+		},
+		initFixedFooter: function() {
+		}
+	}, {});
+	CS.Table = component;
+	CS.autoload.Table = CS.autoload.factory(component, '[data-cs-table]', 'data-cs-table', [
+		'breakpoint'
+	]);
+})(Cornerstone);
+(function(CS) {
 	/*
 		To Do:
 			- Add close button functionality
@@ -1266,8 +1313,8 @@ Cornerstone.BaseModule = module2;
 			this.active = true;
 			var _self = this;
 			setTimeout(function() {
-				if (this.active) {
-					// _self.remove();
+				if (_self.active) {
+					_self.remove();
 				}
 			}, this.getOption('displayLength'));
 			return this;
@@ -1294,7 +1341,6 @@ Cornerstone.BaseModule = module2;
 			});
 		},
 		handleCloseAction: function() {
-			console.log('[toasts] close clicked');
 			if (this.active) {
 				this.remove();
 			}

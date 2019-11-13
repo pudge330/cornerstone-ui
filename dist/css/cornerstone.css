@@ -2710,19 +2710,19 @@ a.animated.text-danger-dark-4x:after {
 }
 
 .text-danger-light {
-  color: #fc7777;
+  color: #fb7777;
 }
 
 .background-danger-light {
-  background: #fc7777;
+  background: #fb7777;
 }
 
 .border-danger-light {
-  border: 1px solid #fc7777;
+  border: 1px solid #fb7777;
 }
 
 a.animated.text-danger-light:after {
-  border-color: #fc7777;
+  border-color: #fb7777;
 }
 
 .text-danger-light-2x {
@@ -5041,18 +5041,21 @@ ul.tabs.vertical-tabs li a:after,
 }
 .toast .cs-button.cs-close {
   margin-bottom: 0;
-  padding: 0.1em;
+  padding: 0.25em;
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 0;
+  right: 0;
   background: none;
-  color: #fff;
+  color: #999;
 }
 .toast .cs-button.cs-close svg {
   fill: currentColor;
   display: block;
   width: 1em;
   height: auto;
+}
+.toast .cs-button.cs-close:hover {
+  color: #fff;
 }
 
 .toast-container {

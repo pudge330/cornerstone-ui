@@ -54,8 +54,10 @@ Cornerstone.autoload.factory = function(component, sel, dataAttr, dataAttrOption
 		var elements = document.querySelectorAll(sel);
 		for (var i = 0; i < elements.length; i++) {
 			var opts = elements[i].getAttribute(dataAttr);
+			console.log(sel, opts);
 			if (opts && opts.trim() != '') {
 				opts = JSON.safeParse(opts.trim());
+				console.log(sel, opts);
 			}
 			else {
 				opts = {};

@@ -44,7 +44,7 @@
 			this.active = true;
 			var _self = this;
 			setTimeout(function() {
-				if (this.active) {
+				if (_self.active) {
 					_self.remove();
 				}
 			}, this.getOption('displayLength'));

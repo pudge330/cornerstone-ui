@@ -17,17 +17,20 @@
 		}
 		.cs-button.cs-close {
 			margin-bottom: 0;
-			padding: 0.1em;
+			padding: 0.25em;
 			position: absolute;
-			top: 2px;
-			right: 2px;
+			top: 0;
+			right: 0;
 			background: none;
-			color: #fff;
+			color: #999;
 			svg {
 				fill: currentColor;
 				display: block;
 				width: 1em;
 				height: auto;
+			}
+			&:hover {
+				color: #fff;
 			}
 		}
 	}

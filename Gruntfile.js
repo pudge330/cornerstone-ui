@@ -6,8 +6,10 @@ var processResourcesFunc = function(src, path) {
 		var svg = src.replace(/(\r\n|\n|\r)/gm,"")
 				 .replace(/\s\s+/gm, ' ')
 				 .replace(/\t/gm, ' ')
-				 .replace(/\> \</gm, '><')
-		return "\tCornerstoneResources.icons['" + match[1] + "'] = '" + svg + "';\n";
+				 .replace(/\> \</gm, '><');
+				 // .replace(/(<svg.*<\/svg>)/gm, "$1");
+		var svgMatch = svg.match(/(\<svg.*\<\/svg\>)/gm);
+		return "\tCornerstoneResources.icons['" + match[1] + "'] = '" + svgMatch[0] + "';\n";
 	}
 	// else if (match = path.match('src\/html\/([a-zA-Z0-9-_]+).html')) {
 	// 	//--process html template
@@ -31,6 +33,7 @@ var csModules = [
 	,'src/js/components/PriorityPlus.js'
 	,'src/js/components/Pagination.js'
 	,'src/js/components/Tabs.js'
+	,'src/js/components/Tables.js'
 	,'src/js/components/Toasts.js'
 	,'src/js/components/Tooltips.js'
 ];
@@ -214,6 +217,7 @@ module.exports = function(grunt) {
 					'dist/js/cornerstone.min.js': ['dist/js/cornerstone.js']
 					,'dist/js/cornerstone-deps.min.js': ['dist/js/cornerstone-deps.js']
 					,'dist/js/cornerstone-resources.min.js': ['dist/js/cornerstone-resources.js']
+					,'dist/js/cornerstone-resources-all.min.js': ['dist/js/cornerstone-resources-all.js']
 					// ,'dist/js/cornerstone-nodeps.min.js': ['dist/js/cornerstone-nodeps.js']
 					// ,'dist/js/cornerstone-bare.min.js': ['dist/js/cornerstone-bare.js']
 				}
