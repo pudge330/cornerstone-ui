@@ -15,6 +15,16 @@
 				}
 			}
 		}
+		.alert-title {
+			margin-bottom: 0.5rem;
+			line-height: 1;
+		}
+		.alert-message {
+			margin-bottom: 0;
+			> *:last-child {
+				margin-bottom: 0;
+			}
+		}
 		@include cs-px-fallback(margin-bottom, $cs_base_block_margin);
 		&.alert-clear {
 			background-color: unset;

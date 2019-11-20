@@ -4386,6 +4386,16 @@ a.cs-button.button-info.outline:active.fill {
 .alert a.animated:after {
   border-color: #515151;
 }
+.alert .alert-title {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+.alert .alert-message {
+  margin-bottom: 0;
+}
+.alert .alert-message > *:last-child {
+  margin-bottom: 0;
+}
 .alert.alert-clear {
   background-color: unset;
   color: #222;
