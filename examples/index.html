@@ -139,7 +139,7 @@
 		Cornerstone.onLoad(function() {
 			jQuery('[data-cs-instance="Pagination"]').each(function() {
 				var $this = jQuery(this);
-				var instance = Cornerstone.getInstance($elms[0], 'Pagination');
+				var instance = Cornerstone.getInstance($this[0], 'Pagination');
 				instance.on('itemClick', function(evt) {
 					evt.preventDefault();
 				});

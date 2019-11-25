@@ -1290,16 +1290,16 @@ Cornerstone.BaseModule = module2;
 			};
 			this.active = false;
 			this.$el = jQuery('<div></div>');
-			this.$el.addClass('toast');
-			this.$el.addClass('toast-' + this.instanceId);
+			this.$el.addClass('cs-toast');
+			this.$el.addClass('cs-toast-' + this.instanceId);
 			this.$el.append('<div class="toast-content">' + this.getOption('html') + '</div>');
 			if (this.getOption('class')) {
 				this.$el.addClass(this.getOption('class'));
 			}
 			//--check if toast container is present if not add it
-			this.$container = jQuery('body').find('.toast-container');
+			this.$container = jQuery('body').find('.cs-toast-container');
 			if (!this.$container.length) {
-				this.$container = jQuery('<div class="toast-container"></div>');
+				this.$container = jQuery('<div class="cs-toast-container"></div>');
 				jQuery('body').append(this.$container);
 			}
 			if (this.getOption('closeButton')) {
@@ -1502,7 +1502,7 @@ Cornerstone.BaseModule = module2;
 		}
 		,showTooltip: function() {
 			if (!this.$tooltip) {
-				this.$tooltip = jQuery('<div class="tooltip"></div>');
+				this.$tooltip = jQuery('<div class="cs-tooltip"></div>');
 				this.$tooltip.addClass('tooltip-' + this.instanceId);
 				this.$tooltip.append('<div class="tooltipContent">' + this.tooltip + '</div>');
 				var pos = this.determinePosition();

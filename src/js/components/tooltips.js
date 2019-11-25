@@ -152,7 +152,7 @@
 		}
 		,showTooltip: function() {
 			if (!this.$tooltip) {
-				this.$tooltip = jQuery('<div class="tooltip"></div>');
+				this.$tooltip = jQuery('<div class="cs-tooltip"></div>');
 				this.$tooltip.addClass('tooltip-' + this.instanceId);
 				this.$tooltip.append('<div class="tooltipContent">' + this.tooltip + '</div>');
 				var pos = this.determinePosition();

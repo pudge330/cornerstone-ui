@@ -3061,7 +3061,7 @@ a.animated.text-info-light-4x:after {
   border-color: #cff5f7;
 }
 
-.shadow-1, .cs-js .dropdown[data-state="opened"] .dropdown-content, .toast .toast-content {
+.shadow-1, .cs-js .dropdown[data-state="opened"] .dropdown-content, .cs-toast .toast-content {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -4576,31 +4576,31 @@ a.cs-button.button-info.outline:active.fill {
   border: 1px solid #2DDBE1;
 }
 
-.breadcrumbs {
+.cs-breadcrumbs {
   list-style: none;
   margin: 1rem 0;
   padding: 0;
   font-size: 0;
 }
-.breadcrumbs .breadcrumb-item {
+.cs-breadcrumbs .breadcrumb-item {
   font-size: 1rem;
   display: inline-block;
   color: #A3A3A3;
 }
-.breadcrumbs .breadcrumb-item + .breadcrumb-item:before {
+.cs-breadcrumbs .breadcrumb-item + .breadcrumb-item:before {
   content: '/';
   margin: 0 0.35rem;
 }
-.breadcrumbs .breadcrumb-item a {
+.cs-breadcrumbs .breadcrumb-item a {
   color: #0099FF;
 }
-.breadcrumbs[data-separator="lessthan"] .breadcrumb-item + .breadcrumb-item:before, .breadcrumbs[data-separator=">"] .breadcrumb-item + .breadcrumb-item:before {
+.cs-breadcrumbs[data-separator="lessthan"] .breadcrumb-item + .breadcrumb-item:before, .cs-breadcrumbs[data-separator=">"] .breadcrumb-item + .breadcrumb-item:before {
   content: '>';
   position: relative;
   top: -1px;
   margin: 0 0.25rem;
 }
-.breadcrumbs[data-separator="square"] .breadcrumb-item + .breadcrumb-item:before {
+.cs-breadcrumbs[data-separator="square"] .breadcrumb-item + .breadcrumb-item:before {
   content: '▪';
   line-height: 0;
   display: inline-block;
@@ -4610,7 +4610,7 @@ a.cs-button.button-info.outline:active.fill {
   position: relative;
   margin: 0 0.25rem;
 }
-.breadcrumbs[data-separator="dot"] .breadcrumb-item + .breadcrumb-item:before {
+.cs-breadcrumbs[data-separator="dot"] .breadcrumb-item + .breadcrumb-item:before {
   content: '•';
   line-height: 0;
   display: inline-block;
@@ -5035,21 +5035,21 @@ ul.tabs.vertical-tabs li a:after,
   padding-right: 0;
 }
 
-.toast {
+.cs-toast {
   padding: 0.25rem;
   width: 100%;
 }
-.toast .toast-content {
+.cs-toast .toast-content {
   position: relative;
   background: #444;
   color: #fff;
   padding: 1rem;
   border-radius: 3px;
 }
-.toast:not(.removing) + .toast {
+.cs-toast:not(.removing) + .toast {
   margin-top: 0.5rem;
 }
-.toast .cs-button.cs-close {
+.cs-toast .cs-button.cs-close {
   margin-bottom: 0;
   padding: 0.25em;
   position: absolute;
@@ -5058,17 +5058,17 @@ ul.tabs.vertical-tabs li a:after,
   background: none;
   color: #999;
 }
-.toast .cs-button.cs-close svg {
+.cs-toast .cs-button.cs-close svg {
   fill: currentColor;
   display: block;
   width: 1em;
   height: auto;
 }
-.toast .cs-button.cs-close:hover {
+.cs-toast .cs-button.cs-close:hover {
   color: #fff;
 }
 
-.toast-container {
+.cs-toast-container {
   display: block;
   width: 70%;
   max-width: 300px;
@@ -5077,22 +5077,22 @@ ul.tabs.vertical-tabs li a:after,
   right: 10%;
 }
 @media only screen and (min-width: 40em) {
-  .toast-container {
+  .cs-toast-container {
     width: 30%;
   }
 }
 
-.tooltip {
+.cs-tooltip {
   position: fixed;
   padding: 0.75rem;
 }
-.tooltip .tooltipContent {
+.cs-tooltip .tooltipContent {
   position: relative;
   background-color: #333;
   padding: 0.5rem;
   border-radius: 3px;
   color: #fff;
 }
-.tooltip[data-position="top"], .tooltip[data-position="bottom"] {
+.cs-tooltip[data-position="top"], .cs-tooltip[data-position="bottom"] {
   max-width: calc(100vw - 8px);
 }

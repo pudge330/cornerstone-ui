@@ -150,43 +150,43 @@
 	<div class="row">
 		<div class="col-tn-12">
 			<nav aria-label="Breadcrumb Navigation">
-				<ol class="breadcrumbs">
+				<ol class="cs-breadcrumbs">
 					<li class="breadcrumb-item">Home</li>
 				</ol>
 			</nav>
 			<nav aria-label="Breadcrumb Navigation">
-				<ol class="breadcrumbs">
+				<ol class="cs-breadcrumbs">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item">Users</li>
 				</ol>
 			</nav>
 			<nav aria-label="Breadcrumb Navigation">
-				<ol class="breadcrumbs">
+				<ol class="cs-breadcrumbs">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item"><a href="#">Users</a></li>
 					<li class="breadcrumb-item">Groups</li>
 				</ol>
 			</nav>
 			<nav aria-label="Breadcrumb Navigation">
-				<ol class="breadcrumbs" data-separator=">">
+				<ol class="cs-breadcrumbs" data-separator=">">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item"><a href="#">Users</a></li>
 					<li class="breadcrumb-item">Groups</li>
 				</ol>
 			</nav>
 			<nav aria-label="Breadcrumb Navigation">
-				<ol class="breadcrumbs" data-separator="square">
+				<ol class="cs-breadcrumbs" data-separator="square">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item"><a href="#">Users</a></li>
 					<li class="breadcrumb-item">Groups</li>
 				</ol>
 			</nav>
 			<nav aria-label="Breadcrumb Navigation">
-				<ol class="breadcrumbs" data-separator="dot">
+				<ul class="cs-breadcrumbs" data-separator="dot">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item"><a href="#">Users</a></li>
 					<li class="breadcrumb-item">Groups</li>
-				</ol>
+				</ul>
 			</nav>
 		</div>
 	</div>
@@ -196,7 +196,7 @@
 		Cornerstone.onLoad(function() {
 			jQuery('[data-cs-instance="Pagination"]').each(function() {
 				var $this = jQuery(this);
-				var instance = Cornerstone.getInstance($elms[0], 'Pagination');
+				var instance = Cornerstone.getInstance($this[0], 'Pagination');
 				instance.on('itemClick', function(evt) {
 					evt.preventDefault();
 				});

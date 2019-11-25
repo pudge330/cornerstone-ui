@@ -1603,7 +1603,6 @@ bglib.EventUtil = {
 	var m = {};
 	m.getAttributes = function(e) {
 	    var a = {};
-	    var el = null;
 	    e = m.element(e);
 	    if (e) {
 	        for (var i = 0, atts = e.attributes, n = atts.length; i < n; i++){
