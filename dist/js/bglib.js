@@ -550,6 +550,39 @@ bglib.fn.rand = function(max) {
     max = max || 100000000;
     return Math.floor((Math.random() * max) + 1);
 };
+bglib.fn.compileTemplate = function(tpl) {
+	var str = tpl;
+	str = str.replace(/\{\{/g, "' + ");
+	str = str.replace(/\}\}/g, " + '");
+	str = str.replace(/\<\%/g, "'; ");
+	str = str.replace(/\%\>/g, " __bglib_template__ += '");
+	str = str.replace(/\<\*/g, "'; /*");
+	str = str.replace(/\*\>/g, "*/ __bglib_template__ += '");
+	str = str.replace(/\\\{\\\{/g, "{{");
+	str = str.replace(/\\\}\\\}/g, "}}");
+	str = str.replace(/\r\n/g, "\n");
+	str = str.replace(/\n/g, "\\\n");
+	return 'var __bglib_template__ = \'' + str + '\';';
+};
+bglib.fn.renderTemplate = function(tpl, data) {
+	var helpers = bglib.fn.renderTemplate.helpers,
+		format = bglib.fn.renderTemplate.format;
+	tpl = tpl.match(/^var __bglib_template__ = \'/) ? tpl : bglib.fn.compileTemplate(tpl);
+	return function() {
+		return eval(tpl);
+	}.call(data);
+};
+bglib.fn.renderTemplate.helpers = {};
+bglib.fn.renderTemplate.helpers.htmlEntities = bglib.fn.htmlEntities;
+bglib.fn.renderTemplate.helpers.rand = bglib.fn.rand;
+bglib.fn.renderTemplate.helpers.toEm = bglib.fn.toEm;
+bglib.fn.renderTemplate.helpers.toPx = bglib.fn.toPx;
+bglib.fn.renderTemplate.helpers.dt = bglib.DT;
+bglib.fn.renderTemplate.format = {};
+bglib.fn.renderTemplate.format.camelCase = bglib.fn.toCamelCase;
+bglib.fn.renderTemplate.format.properCase = bglib.fn.toProperCase;
+bglib.fn.renderTemplate.format.decimal = bglib.fn.formatDecimal;
+bglib.fn.renderTemplate.format.price = bglib.fn.formatPrice;
 bglib.fn.request = function(url, cb, data, type) {
     data = data || {};
     type = type || 'GET';
