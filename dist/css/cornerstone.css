@@ -755,6 +755,10 @@ pre > code {
   padding: 5px 10px;
 }
 
+code {
+  color: #0099FF;
+}
+
 .cornerstone-bp {
   content: "sm:40em;md:64em;lg:90em;xlg:105em";
 }

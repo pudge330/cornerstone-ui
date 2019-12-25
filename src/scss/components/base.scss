@@ -116,6 +116,9 @@
 		line-height: 1.4;
 		padding: 5px 10px;
 	}
+	code {
+		color: csColor('primary', 'base');
+	}
 	.cornerstone-bp {
 		content: 'sm:#{$cs_bp_sm};md:#{$cs_bp_md};lg:#{$cs_bp_lg};xlg:#{$cs_bp_xlg}';
 	}
