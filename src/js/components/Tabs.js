@@ -16,6 +16,9 @@
 
 			var $active = this.$el.find('li.active');
 			var displayStyle = this.$el.hasClass('vertical-tabs') ? 'inline-block' : 'block';
+			if (displayStyle == 'block' && this.$el.hasClass('flex-tabs')) {
+				displayStyle = 'flex';
+			}
 			jQuery(this.selector).each(function(i) {
 				var $this = jQuery(this);
 				var $li = $this.closest('li');
@@ -34,6 +37,9 @@
 		,openTab: function(tab) {
 			var $active = this.$el.find('li.active');
 			var displayStyle = this.$el.hasClass('vertical-tabs') ? 'inline-block' : 'block';
+			if (displayStyle == 'block' && this.$el.hasClass('flex-tabs')) {
+				displayStyle = 'flex';
+			}
 			jQuery(this.selector).each(function(i) {
 				var $this = jQuery(this);
 				var $li = $this.closest('li');

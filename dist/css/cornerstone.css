@@ -3412,6 +3412,18 @@ table.table-hover tbody td {
   border-bottom: none;
 }
 
+.table-fixed-wrap .table-wrap {
+  height: 500px;
+}
+
+.cs-table-fixedwrap {
+  overflow: hidden;
+}
+.cs-table-fixedwrap table {
+  table-layout: fixed;
+  margin-bottom: 0;
+}
+
 .table-wrap {
   width: 100%;
   overflow: auto;
@@ -3419,6 +3431,9 @@ table.table-hover tbody td {
   margin-bottom: 1rem;
 }
 .table-wrap > table {
+  margin-bottom: 0;
+}
+.table-wrap.table-scroll-wrap {
   margin-bottom: 0;
 }
 

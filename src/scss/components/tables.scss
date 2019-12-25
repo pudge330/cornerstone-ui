@@ -69,11 +69,34 @@
             border-bottom: none;
         }
     }
+    .cs-table-fixed {
+        // position: relative;
+        // .fixed-thead {
+        //     position: absolute;
+        //     top: 0;
+        //     width: 100%;
+        // }
+    }
+    .table-fixed-wrap {
+        .table-wrap {
+            height: 500px;
+        }
+    }
+    .cs-table-fixedwrap {
+        overflow: hidden;
+        table {
+            table-layout: fixed;
+            margin-bottom: 0;
+        }
+    }
     .table-wrap {
         width: 100%;
         overflow: auto;
         @include cs-px-fallback(margin-bottom, $cs_base_block_margin);
         > table {
+            margin-bottom: 0;
+        }
+        &.table-scroll-wrap {
             margin-bottom: 0;
         }
     }
