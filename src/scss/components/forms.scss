@@ -1,26 +1,75 @@
 @mixin CornerstoneUI_forms() {
+	%inputColor_placeholder {
+		color: #0a0a0a;
+		background-color: #fefefe;
+		border: 1px solid #cacaca;
+		box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+		transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+		&:focus {
+			border: 1px solid #8a8a8a;
+			outline: none;
+			box-shadow: 0 0 5px #cacaca;
+		}
+		&[type="file"] {
+			border: none;
+			outline: 1px solid #cacaca;
+			transition: outline 0.25s ease-in-out;
+			&:focus {
+				outline: 1px solid #8a8a8a;
+			}
+		}
+		&.input-success {
+			color: csColor('success', 'base');
+			border-color: csColor('success', 'base');
+			&:focus {
+				box-shadow: 0 0 5px csColor('success', 'base');
+			}
+			&[type="file"] {
+				border: none;
+				outline: 1px solid csColor('success', 'base');
+				&:focus {
+					box-shadow: 0 0 5px csColor('success', 'base');
+				}
+			}
+		}
+		&.input-danger {
+			color: csColor('danger', 'base');
+			border-color: csColor('danger', 'base');
+			&:focus {
+				box-shadow: 0 0 5px csColor('danger', 'base');
+			}
+			&[type="file"] {
+				border: none;
+				outline: 1px solid csColor('danger', 'base');
+				&:focus {
+					box-shadow: 0 0 5px csColor('danger', 'base');
+				}
+			}
+		}
+		&.input-warning {
+			color: csColor('warning', 'base');
+			border-color: csColor('warning', 'base');
+			&:focus {
+				box-shadow: 0 0 5px csColor('warning', 'base');
+			}
+			&[type="file"] {
+				border: none;
+				outline: 1px solid csColor('warning', 'base');
+				&:focus {
+					box-shadow: 0 0 5px csColor('warning', 'base');
+				}
+			}
+		}
+	}
 	%input_placeholder {
 		display: block;
 		box-sizing: border-box;
 		width: 100%;
 		height: 2.4375rem;
-		border: 1px solid #cacaca;
 		margin: 0 0 1rem 0;
 		font-family: inherit;
 		font-size: 1rem;
-		color: #0a0a0a;
-		background-color: #fefefe;
-		box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
 		border-radius: 0;
-		transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
-		&:focus {
-			border: 1px solid #8a8a8a;
-			background-color: #fefefe;
-			outline: none;
-			box-shadow: 0 0 5px #cacaca;
-			// box-shadow: 0 0 0 .2rem rgba(80, 78, 78, 0.25);
-			transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
-		}
 		&:not([type="range"]) {
 			-webkit-appearance: none;
 			-moz-appearance: none;
@@ -38,22 +87,22 @@
 		display: inline-block;
 		margin-bottom: 0.2rem;
 	}
-	input.cs-input {
+	.cs-input {
 		padding: 0.5rem;
 		@extend %input_placeholder;
+		@extend %inputColor_placeholder;
 		&[type="file"] {
-			border: none;
-			outline: 1px solid #cacaca;
-			transition: outline 0.25s ease-in-out;
 			font-size: .85rem;
-			&:focus {
-				outline: 1px solid #8a8a8a;
-			}
+			width: 99%;
+			width: calc(100% - 2px);
+			position: relative;
+			left: 1px;
 		}
 	}
-	textarea.cs-textarea {
+	.cs-textarea {
 		padding: 0.5rem;
 		@extend %input_placeholder;
+		@extend %inputColor_placeholder;
 	}
 	.input-wrap {
   		display: block;
@@ -64,7 +113,7 @@
 		border: 1px solid #cacaca;
 		margin: 0 0 1rem 0;
   	}
-	textarea.cs-textarea {
+	.cs-textarea {
 		border-radius: 0;
 		min-height: 39px;
 		max-width: 100%;
@@ -96,18 +145,18 @@
     		height: 204px;
     	}
 	}
-	input.cs-input::-webkit-input-placeholder,
-	textarea.cs-textarea::-webkit-input-placeholder,
-	input.cs-input::-moz-placeholder,
-	textarea.cs_textarea::-moz-placeholder,
-	input.cs-input:-ms-input-placeholder,
-	textarea.cs_textarea:-ms-input-placeholder,
-	input.cs-input::placeholder,
-	textarea.cs_textarea::placeholder {
+	.cs-input::-webkit-input-placeholder,
+	.cs-textarea::-webkit-input-placeholder,
+	.cs-input::-moz-placeholder,
+	.cs_textarea::-moz-placeholder,
+	.cs-input:-ms-input-placeholder,
+	.cs_textarea:-ms-input-placeholder,
+	.cs-input::placeholder,
+	.cs_textarea::placeholder {
 		color: #cacaca;
   	}
-  	input.cs-checkbox,
-  	input.cs-radio {
+  	.cs-checkbox,
+  	.cs-radio {
   		display: inline-block;
   		height: 1rem;
   		width: 1rem;
@@ -133,19 +182,19 @@
 			box-shadow: 0 0 5px #cacaca;
 		}
   	}
-  	input.cs-checkbox {
+  	.cs-checkbox {
   		border-radius: 0;
   		&:checked {
   			background-image: url('data:image/svg+xml;utf8,%3Csvg%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%20512%20512%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3Aserif%3D%22http%3A%2F%2Fwww.serif.com%2F%22%20style%3D%22fill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3Bstroke-linejoin%3Around%3Bstroke-miterlimit%3A1.41421%3B%22%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22512%22%20height%3D%22512%22%20style%3D%22fill%3A%2309f%3B%22%2F%3E%3Cpath%20d%3D%22M512%2C512l-512%2C0l0%2C-512l512%2C0l0%2C512Zm-502%2C-502l0%2C492l492%2C0l0%2C-492l-492%2C0Z%22%20style%3D%22fill%3A%2309f%3B%22%2F%3E%3Cpath%20d%3D%22M261.687%2C393.289l-163.83%2C-114.716l-31.547%2C45.054l163.83%2C114.715l31.547%2C-45.053Z%22%20style%3D%22fill%3A%23fff%3B%22%2F%3E%3Cpath%20d%3D%22M414.518%2C79.135l-229.431%2C327.66l45.053%2C31.547l229.431%2C-327.661l-45.053%2C-31.546Z%22%20style%3D%22fill%3A%23fff%3B%22%2F%3E%3C%2Fsvg%3E');
   		}
   	}
-  	input.cs-radio {
+  	.cs-radio {
   		border-radius: 50%;
   		&:checked {
   			background-image: url('data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20viewBox%3D%220%200%20682.667%20682.667%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cpath%20fill%3D%22%230099ff%22%20d%3D%22M682.67%20341.33C682.67%20529.72%20529.72%20682.66%20341.33%20682.66C152.94%20682.66%200%20529.72%200%20341.33C0%20152.94%20152.94%200%20341.33%200C529.72%200%20682.67%20152.94%20682.67%20341.33Z%22%20id%3D%22ap5mkxn9H%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
   		}
   	}
-  	select.cs-select {
+  	.cs-select {
   		width: 100%;
 		height: 2.4375rem;
 		padding: 0.5rem;
@@ -192,9 +241,7 @@
 			border: 1px solid #8a8a8a;
 		}
 	}
-	input.cs-button,
-	button.cs-button,
-	a.cs-button {
+	.cs-button {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		line-height: 1;

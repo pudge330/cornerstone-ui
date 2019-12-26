@@ -14,12 +14,12 @@
 @import './components/visible';
 @import './components/colors';
 @import './components/shadows';
-@import './components/helpers';
 @import './components/tables';
 @import './components/forms';
 @import './components/alerts';
 @import './components/badges';
 @import './components/breadcrumbs';
+@import './components/helpers';
 
 //--js widgets
 @import './components/accordion';
@@ -41,12 +41,12 @@
 	@include CornerstoneUI_visible();
 	@include CornerstoneUI_colors(); //--required for any component that has contextual colors
 	@include CornerstoneUI_shadows();
-	@include CornerstoneUI_helpers();
 	@include CornerstoneUI_tables();
 	@include CornerstoneUI_forms();
 	@include CornerstoneUI_alerts();
 	@include CornerstoneUI_badges();
 	@include CornerstoneUI_breadcrumbs();
+	@include CornerstoneUI_helpers();
 
 	//--js widgets
 	@include CornerstoneUI_accordion();

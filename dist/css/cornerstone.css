@@ -3101,257 +3101,6 @@ a.animated.text-info-light-4x:after {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.text-left {
-  text-align: left !important;
-}
-.text-right {
-  text-align: right !important;
-}
-.text-center {
-  text-align: center !important;
-}
-.text-justify {
-  text-align: justify !important;
-}
-.text-break {
-  word-break: break-all;
-}
-.text-wrap {
-  word-wrap: break-word;
-}
-.text-under {
-  text-decoration: underline;
-}
-.text-over {
-  text-decoration: overline;
-}
-.text-thru {
-  text-decoration: line-through;
-}
-.text-none {
-  text-decoration: none;
-}
-.text-indent {
-  text-indent: 3rem;
-}
-.text-upper {
-  text-transform: uppercase;
-}
-.text-lower {
-  text-transform: lowercase;
-}
-.text-capital {
-  text-transform: capitalize;
-}
-.text-under-hv:hover, .text-under-hv:focus {
-  text-decoration: underline;
-}
-.text-thru-hv:hover, .text-thru-hv:focus {
-  text-decoration: line-through;
-}
-.text-over-hv:hover, .text-over-hv:focus {
-  text-decoration: overline;
-}
-
-.height-auto {
-  height: auto;
-}
-
-.width-auto {
-  width: auto;
-}
-
-.float-right {
-  float: right;
-}
-.float-left {
-  float: left;
-}
-.float-none {
-  float: none;
-}
-
-.centered {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.overflow-scroll {
-  overflow: scroll;
-}
-
-.overflow-auto {
-  overflow: auto;
-}
-
-.responsive-img {
-  width: 100%;
-  height: auto;
-}
-
-.image-circle {
-  border-radius: 50%;
-}
-
-.width-25 {
-  width: 25% !important;
-}
-.width-50 {
-  width: 50% !important;
-}
-.width-75 {
-  width: 75% !important;
-}
-.width-100 {
-  width: 100% !important;
-}
-.width-100-max {
-  max-width: 100% !important;
-}
-
-.v-centered {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.position-static {
-  position: static;
-}
-.position-relative {
-  position: relative;
-}
-.position-absolute {
-  position: absolute;
-}
-.position-fixed {
-  position: fixed;
-}
-
-.rounded {
-  border-radius: 4px;
-}
-
-.unrounded {
-  border-radius: 0;
-}
-
-.no-border {
-  border-width: 0 !important;
-}
-
-.hide {
-  display: none !important;
-}
-
-.show {
-  display: block !important;
-}
-
-.invisible {
-  visibility: hidden !important;
-}
-
-.visible {
-  visibility: visible !important;
-}
-
-.text-hide {
-  font: 0/0 a !important;
-  color: transparent !important;
-  text-shadow: none !important;
-  background-color: transparent !important;
-  border: 0 !important;
-}
-
-.border-tiny {
-  border-width: 1px;
-}
-.border-small {
-  border-width: 2px;
-}
-.border-medium {
-  border-width: 3px;
-}
-.border-large {
-  border-width: 4px;
-}
-.border-huge {
-  border-width: 5px;
-}
-
-.p-indent {
-  text-indent: 2.5rem;
-}
-
-.clear-float {
-  float: none !important;
-}
-.clear-bg {
-  background-color: transparent !important;
-}
-.clear-mall {
-  margin: 0 !important;
-}
-.clear-mtop {
-  margin-top: 0 !important;
-}
-.clear-mright {
-  margin-right: 0 !important;
-}
-.clear-mbottom {
-  margin-bottom: 0 !important;
-}
-.clear-mleft {
-  margin-left: 0 !important;
-}
-.clear-pall {
-  padding: 0 !important;
-}
-.clear-ptop {
-  padding-top: 0 !important;
-}
-.clear-pright {
-  padding-right: 0 !important;
-}
-.clear-pbottom {
-  padding-bottom: 0 !important;
-}
-.clear-pleft {
-  padding-left: 0 !important;
-}
-
-.display-inline {
-  display: inline !important;
-}
-
-.display-inline-block {
-  display: inline-block !important;
-}
-
-.display-block {
-  display: block !important;
-}
-
-.table {
-  display: table !important;
-}
-
-.table-row {
-  display: table-row !important;
-}
-
-.table-cell {
-  display: table-cell !important;
-}
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -3441,29 +3190,31 @@ table.table-hover tbody td {
   margin-bottom: 0;
 }
 
-input.cs-input, textarea.cs-textarea {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: 2.4375rem;
-  border: 1px solid #cacaca;
-  margin: 0 0 1rem 0;
-  font-family: inherit;
-  font-size: 1rem;
+.cs-input, .cs-textarea {
   color: #0a0a0a;
   background-color: #fefefe;
+  border: 1px solid #cacaca;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
-  border-radius: 0;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 }
-input.cs-input:focus, textarea.cs-textarea:focus {
+.cs-input:focus, .cs-textarea:focus {
   border: 1px solid #8a8a8a;
   background-color: #fefefe;
   outline: none;
   box-shadow: 0 0 5px #cacaca;
-  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 }
-input.cs-input:not([type="range"]), textarea.cs-textarea:not([type="range"]) {
+
+.cs-input, .cs-textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.4375rem;
+  margin: 0 0 1rem 0;
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 0;
+}
+.cs-input:not([type="range"]), .cs-textarea:not([type="range"]) {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -3481,20 +3232,20 @@ label {
   margin-bottom: 0.2rem;
 }
 
-input.cs-input {
+.cs-input {
   padding: 0.5rem;
 }
-input.cs-input[type="file"] {
+.cs-input[type="file"] {
   border: none;
   outline: 1px solid #cacaca;
   transition: outline 0.25s ease-in-out;
   font-size: .85rem;
 }
-input.cs-input[type="file"]:focus {
+.cs-input[type="file"]:focus {
   outline: 1px solid #8a8a8a;
 }
 
-textarea.cs-textarea {
+.cs-textarea {
   padding: 0.5rem;
 }
 
@@ -3508,7 +3259,7 @@ textarea.cs-textarea {
   margin: 0 0 1rem 0;
 }
 
-textarea.cs-textarea {
+.cs-textarea {
   border-radius: 0;
   min-height: 39px;
   max-width: 100%;
@@ -3518,41 +3269,41 @@ textarea.cs-textarea {
   line-height: 1.3;
   padding: 0.5rem;
 }
-textarea.cs-textarea[rows] {
+.cs-textarea[rows] {
   height: auto;
 }
-textarea.cs-textarea.single {
+.cs-textarea.single {
   height: 39px;
 }
-textarea.cs-textarea.resize-vertical {
+.cs-textarea.resize-vertical {
   resize: vertical;
 }
-textarea.cs-textarea.resize-horizontal {
+.cs-textarea.resize-horizontal {
   resize: horizontal;
 }
-textarea.cs-textarea.no-resize {
+.cs-textarea.no-resize {
   resize: none;
 }
-textarea.cs-textarea.size-3x {
+.cs-textarea.size-3x {
   height: 149px;
 }
-textarea.cs-textarea.size-4x {
+.cs-textarea.size-4x {
   height: 204px;
 }
 
-input.cs-input::-webkit-input-placeholder,
-textarea.cs-textarea::-webkit-input-placeholder,
-input.cs-input::-moz-placeholder,
-textarea.cs_textarea::-moz-placeholder,
-input.cs-input:-ms-input-placeholder,
-textarea.cs_textarea:-ms-input-placeholder,
-input.cs-input::placeholder,
-textarea.cs_textarea::placeholder {
+.cs-input::-webkit-input-placeholder,
+.cs-textarea::-webkit-input-placeholder,
+.cs-input::-moz-placeholder,
+.cs_textarea::-moz-placeholder,
+.cs-input:-ms-input-placeholder,
+.cs_textarea:-ms-input-placeholder,
+.cs-input::placeholder,
+.cs_textarea::placeholder {
   color: #cacaca;
 }
 
-input.cs-checkbox,
-input.cs-radio {
+.cs-checkbox,
+.cs-radio {
   display: inline-block;
   height: 1rem;
   width: 1rem;
@@ -3568,33 +3319,33 @@ input.cs-radio {
   box-sizing: border-box;
   margin: -2px 0.10rem 0 0;
 }
-input.cs-checkbox:checked,
-input.cs-radio:checked {
+.cs-checkbox:checked,
+.cs-radio:checked {
   border-width: 0px;
 }
-input.cs-checkbox:focus,
-input.cs-radio:focus {
+.cs-checkbox:focus,
+.cs-radio:focus {
   border: 2px solid #8a8a8a;
   background-position: -2px -2px;
   background-size: calc(100% + 4px) calc(100% + 4px);
   box-shadow: 0 0 5px #cacaca;
 }
 
-input.cs-checkbox {
+.cs-checkbox {
   border-radius: 0;
 }
-input.cs-checkbox:checked {
+.cs-checkbox:checked {
   background-image: url("data:image/svg+xml;utf8,%3Csvg%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%20512%20512%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3Aserif%3D%22http%3A%2F%2Fwww.serif.com%2F%22%20style%3D%22fill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3Bstroke-linejoin%3Around%3Bstroke-miterlimit%3A1.41421%3B%22%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22512%22%20height%3D%22512%22%20style%3D%22fill%3A%2309f%3B%22%2F%3E%3Cpath%20d%3D%22M512%2C512l-512%2C0l0%2C-512l512%2C0l0%2C512Zm-502%2C-502l0%2C492l492%2C0l0%2C-492l-492%2C0Z%22%20style%3D%22fill%3A%2309f%3B%22%2F%3E%3Cpath%20d%3D%22M261.687%2C393.289l-163.83%2C-114.716l-31.547%2C45.054l163.83%2C114.715l31.547%2C-45.053Z%22%20style%3D%22fill%3A%23fff%3B%22%2F%3E%3Cpath%20d%3D%22M414.518%2C79.135l-229.431%2C327.66l45.053%2C31.547l229.431%2C-327.661l-45.053%2C-31.546Z%22%20style%3D%22fill%3A%23fff%3B%22%2F%3E%3C%2Fsvg%3E");
 }
 
-input.cs-radio {
+.cs-radio {
   border-radius: 50%;
 }
-input.cs-radio:checked {
+.cs-radio:checked {
   background-image: url("data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20viewBox%3D%220%200%20682.667%20682.667%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cpath%20fill%3D%22%230099ff%22%20d%3D%22M682.67%20341.33C682.67%20529.72%20529.72%20682.66%20341.33%20682.66C152.94%20682.66%200%20529.72%200%20341.33C0%20152.94%20152.94%200%20341.33%200C529.72%200%20682.67%20152.94%20682.67%20341.33Z%22%20id%3D%22ap5mkxn9H%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
 }
 
-select.cs-select {
+.cs-select {
   width: 100%;
   height: 2.4375rem;
   padding: 0.5rem;
@@ -3615,36 +3366,34 @@ select.cs-select {
   background-repeat: no-repeat;
   padding-right: 1.5rem;
 }
-select.cs-select:disabled {
+.cs-select:disabled {
   background-color: #cacaca;
   cursor: not-allowed;
 }
-select.cs-select::-ms-expand {
+.cs-select::-ms-expand {
   display: none;
 }
-select.cs-select[multiple] {
+.cs-select[multiple] {
   height: 94px;
   resize: vertical;
   background-image: none;
   padding: 0.5rem 0.5rem 0 0.5rem;
   min-height: 39px;
 }
-select.cs-select[multiple].single {
+.cs-select[multiple].single {
   height: 39px;
 }
-select.cs-select[multiple] option {
+.cs-select[multiple] option {
   padding: 0.15rem 0.25rem;
 }
-select.cs-select[multiple] option:last-child {
+.cs-select[multiple] option:last-child {
   margin-bottom: 0.5rem;
 }
-select.cs-select:focus {
+.cs-select:focus {
   border: 1px solid #8a8a8a;
 }
 
-input.cs-button,
-button.cs-button,
-a.cs-button {
+.cs-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   line-height: 1;
@@ -3663,584 +3412,340 @@ a.cs-button {
   width: auto;
   text-decoration: none;
 }
-input.cs-button:hover
-, input.cs-button:focus,
-button.cs-button:hover
-,
-button.cs-button:focus,
-a.cs-button:hover
-,
-a.cs-button:focus {
+.cs-button:hover
+, .cs-button:focus {
   background-color: #7A7A7A;
   text-decoration: none;
 }
-input.cs-button:hover.underline
-, input.cs-button:focus.underline,
-button.cs-button:hover.underline
-,
-button.cs-button:focus.underline,
-a.cs-button:hover.underline
-,
-a.cs-button:focus.underline {
+.cs-button:hover.underline
+, .cs-button:focus.underline {
   text-decoration: underline;
 }
-input.cs-button:active,
-button.cs-button:active,
-a.cs-button:active {
+.cs-button:active {
   background-color: #A3A3A3;
 }
-input.cs-button.expanded,
-button.cs-button.expanded,
-a.cs-button.expanded {
+.cs-button.expanded {
   display: block;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
 }
-input.cs-button.tiny,
-button.cs-button.tiny,
-a.cs-button.tiny {
+.cs-button.tiny {
   font-size: 0.6rem;
   padding: 0.55em 1em 0.55em 1em;
 }
-input.cs-button.small,
-button.cs-button.small,
-a.cs-button.small {
+.cs-button.small {
   font-size: 0.75rem;
 }
-input.cs-button.large,
-button.cs-button.large,
-a.cs-button.large {
+.cs-button.large {
   font-size: 1.25rem;
 }
-input.cs-button.large-2x,
-button.cs-button.large-2x,
-a.cs-button.large-2x {
+.cs-button.large-2x {
   font-size: 2.25rem;
 }
-input.cs-button.rounded,
-button.cs-button.rounded,
-a.cs-button.rounded {
+.cs-button.rounded {
   border-radius: 5px;
 }
-input.cs-button.pill,
-button.cs-button.pill,
-a.cs-button.pill {
+.cs-button.pill {
   border-radius: 100px;
   padding-left: 1.75em;
   padding-right: 1.75em;
 }
-input.cs-button.clear,
-button.cs-button.clear,
-a.cs-button.clear {
+.cs-button.clear {
   color: #A3A3A3;
   background-color: transparent;
 }
-input.cs-button.clear:hover
-, input.cs-button.clear:focus,
-button.cs-button.clear:hover
-,
-button.cs-button.clear:focus,
-a.cs-button.clear:hover
-,
-a.cs-button.clear:focus {
+.cs-button.clear:hover
+, .cs-button.clear:focus {
   color: #515151;
 }
-input.cs-button.clear:active,
-button.cs-button.clear:active,
-a.cs-button.clear:active {
+.cs-button.clear:active {
   background-color: #A3A3A3;
 }
-input.cs-button.outline,
-button.cs-button.outline,
-a.cs-button.outline {
+.cs-button.outline {
   background-color: white;
   background-color: transparent;
   color: #A3A3A3;
   border-color: #A3A3A3;
 }
-input.cs-button.outline:hover, input.cs-button.outline:focus,
-button.cs-button.outline:hover,
-button.cs-button.outline:focus,
-a.cs-button.outline:hover,
-a.cs-button.outline:focus {
+.cs-button.outline:hover, .cs-button.outline:focus {
   color: #515151;
   border-color: #515151;
 }
-input.cs-button.outline:hover.fill, input.cs-button.outline:focus.fill,
-button.cs-button.outline:hover.fill,
-button.cs-button.outline:focus.fill,
-a.cs-button.outline:hover.fill,
-a.cs-button.outline:focus.fill {
+.cs-button.outline:hover.fill, .cs-button.outline:focus.fill {
   color: #fff;
   border-color: #7A7A7A;
   background-color: #7A7A7A;
 }
-input.cs-button.outline:active,
-button.cs-button.outline:active,
-a.cs-button.outline:active {
+.cs-button.outline:active {
   color: #A3A3A3;
   border-color: #A3A3A3;
 }
-input.cs-button.outline:active.fill,
-button.cs-button.outline:active.fill,
-a.cs-button.outline:active.fill {
+.cs-button.outline:active.fill {
   color: #fff;
   border-color: #A3A3A3;
   background-color: #A3A3A3;
 }
-input.cs-button.button-primary,
-button.cs-button.button-primary,
-a.cs-button.button-primary {
+.cs-button.button-primary {
   background: #0099FF;
 }
-input.cs-button.button-primary:hover, input.cs-button.button-primary:focus,
-button.cs-button.button-primary:hover,
-button.cs-button.button-primary:focus,
-a.cs-button.button-primary:hover,
-a.cs-button.button-primary:focus {
+.cs-button.button-primary:hover, .cs-button.button-primary:focus {
   background-color: #0081d6;
 }
-input.cs-button.button-primary:active,
-button.cs-button.button-primary:active,
-a.cs-button.button-primary:active {
+.cs-button.button-primary:active {
   background-color: #0099FF;
 }
-input.cs-button.button-primary.clear,
-button.cs-button.button-primary.clear,
-a.cs-button.button-primary.clear {
+.cs-button.button-primary.clear {
   background-color: transparent;
   color: #0099FF;
 }
-input.cs-button.button-primary.clear:hover
-, input.cs-button.button-primary.clear:focus,
-button.cs-button.button-primary.clear:hover
-,
-button.cs-button.button-primary.clear:focus,
-a.cs-button.button-primary.clear:hover
-,
-a.cs-button.button-primary.clear:focus {
+.cs-button.button-primary.clear:hover
+, .cs-button.button-primary.clear:focus {
   color: #0074c2;
 }
-input.cs-button.button-primary.clear:active,
-button.cs-button.button-primary.clear:active,
-a.cs-button.button-primary.clear:active {
+.cs-button.button-primary.clear:active {
   background-color: #0099FF;
 }
-input.cs-button.button-primary.outline,
-button.cs-button.button-primary.outline,
-a.cs-button.button-primary.outline {
+.cs-button.button-primary.outline {
   background-color: white;
   background-color: transparent;
   color: #0099FF;
   border-color: #0099FF;
 }
-input.cs-button.button-primary.outline:hover, input.cs-button.button-primary.outline:focus,
-button.cs-button.button-primary.outline:hover,
-button.cs-button.button-primary.outline:focus,
-a.cs-button.button-primary.outline:hover,
-a.cs-button.button-primary.outline:focus {
+.cs-button.button-primary.outline:hover, .cs-button.button-primary.outline:focus {
   color: #0074c2;
   border-color: #0074c2;
 }
-input.cs-button.button-primary.outline:hover.fill, input.cs-button.button-primary.outline:focus.fill,
-button.cs-button.button-primary.outline:hover.fill,
-button.cs-button.button-primary.outline:focus.fill,
-a.cs-button.button-primary.outline:hover.fill,
-a.cs-button.button-primary.outline:focus.fill {
+.cs-button.button-primary.outline:hover.fill, .cs-button.button-primary.outline:focus.fill {
   color: #fff;
   border-color: #0081d6;
   background-color: #0081d6;
 }
-input.cs-button.button-primary.outline:active,
-button.cs-button.button-primary.outline:active,
-a.cs-button.button-primary.outline:active {
+.cs-button.button-primary.outline:active {
   color: #0099FF;
   border-color: #0099FF;
 }
-input.cs-button.button-primary.outline:active.fill,
-button.cs-button.button-primary.outline:active.fill,
-a.cs-button.button-primary.outline:active.fill {
+.cs-button.button-primary.outline:active.fill {
   color: #fff;
   border-color: #0099FF;
   background-color: #0099FF;
 }
-input.cs-button.button-secondary,
-button.cs-button.button-secondary,
-a.cs-button.button-secondary {
+.cs-button.button-secondary {
   background: #999;
 }
-input.cs-button.button-secondary:hover, input.cs-button.button-secondary:focus,
-button.cs-button.button-secondary:hover,
-button.cs-button.button-secondary:focus,
-a.cs-button.button-secondary:hover,
-a.cs-button.button-secondary:focus {
+.cs-button.button-secondary:hover, .cs-button.button-secondary:focus {
   background-color: #858585;
 }
-input.cs-button.button-secondary:active,
-button.cs-button.button-secondary:active,
-a.cs-button.button-secondary:active {
+.cs-button.button-secondary:active {
   background-color: #999;
 }
-input.cs-button.button-secondary.clear,
-button.cs-button.button-secondary.clear,
-a.cs-button.button-secondary.clear {
+.cs-button.button-secondary.clear {
   background-color: transparent;
   color: #999;
 }
-input.cs-button.button-secondary.clear:hover
-, input.cs-button.button-secondary.clear:focus,
-button.cs-button.button-secondary.clear:hover
-,
-button.cs-button.button-secondary.clear:focus,
-a.cs-button.button-secondary.clear:hover
-,
-a.cs-button.button-secondary.clear:focus {
+.cs-button.button-secondary.clear:hover
+, .cs-button.button-secondary.clear:focus {
   color: #7a7a7a;
 }
-input.cs-button.button-secondary.clear:active,
-button.cs-button.button-secondary.clear:active,
-a.cs-button.button-secondary.clear:active {
+.cs-button.button-secondary.clear:active {
   background-color: #999;
 }
-input.cs-button.button-secondary.outline,
-button.cs-button.button-secondary.outline,
-a.cs-button.button-secondary.outline {
+.cs-button.button-secondary.outline {
   background-color: white;
   background-color: transparent;
   color: #999;
   border-color: #999;
 }
-input.cs-button.button-secondary.outline:hover, input.cs-button.button-secondary.outline:focus,
-button.cs-button.button-secondary.outline:hover,
-button.cs-button.button-secondary.outline:focus,
-a.cs-button.button-secondary.outline:hover,
-a.cs-button.button-secondary.outline:focus {
+.cs-button.button-secondary.outline:hover, .cs-button.button-secondary.outline:focus {
   color: #7a7a7a;
   border-color: #7a7a7a;
 }
-input.cs-button.button-secondary.outline:hover.fill, input.cs-button.button-secondary.outline:focus.fill,
-button.cs-button.button-secondary.outline:hover.fill,
-button.cs-button.button-secondary.outline:focus.fill,
-a.cs-button.button-secondary.outline:hover.fill,
-a.cs-button.button-secondary.outline:focus.fill {
+.cs-button.button-secondary.outline:hover.fill, .cs-button.button-secondary.outline:focus.fill {
   color: #fff;
   border-color: #858585;
   background-color: #858585;
 }
-input.cs-button.button-secondary.outline:active,
-button.cs-button.button-secondary.outline:active,
-a.cs-button.button-secondary.outline:active {
+.cs-button.button-secondary.outline:active {
   color: #999;
   border-color: #999;
 }
-input.cs-button.button-secondary.outline:active.fill,
-button.cs-button.button-secondary.outline:active.fill,
-a.cs-button.button-secondary.outline:active.fill {
+.cs-button.button-secondary.outline:active.fill {
   color: #fff;
   border-color: #999;
   background-color: #999;
 }
-input.cs-button.button-success,
-button.cs-button.button-success,
-a.cs-button.button-success {
+.cs-button.button-success {
   background: #4caf50;
 }
-input.cs-button.button-success:hover, input.cs-button.button-success:focus,
-button.cs-button.button-success:hover,
-button.cs-button.button-success:focus,
-a.cs-button.button-success:hover,
-a.cs-button.button-success:focus {
+.cs-button.button-success:hover, .cs-button.button-success:focus {
   background-color: #409343;
 }
-input.cs-button.button-success:active,
-button.cs-button.button-success:active,
-a.cs-button.button-success:active {
+.cs-button.button-success:active {
   background-color: #4caf50;
 }
-input.cs-button.button-success.clear,
-button.cs-button.button-success.clear,
-a.cs-button.button-success.clear {
+.cs-button.button-success.clear {
   background-color: transparent;
   color: #4caf50;
 }
-input.cs-button.button-success.clear:hover
-, input.cs-button.button-success.clear:focus,
-button.cs-button.button-success.clear:hover
-,
-button.cs-button.button-success.clear:focus,
-a.cs-button.button-success.clear:hover
-,
-a.cs-button.button-success.clear:focus {
+.cs-button.button-success.clear:hover
+, .cs-button.button-success.clear:focus {
   color: #39843c;
 }
-input.cs-button.button-success.clear:active,
-button.cs-button.button-success.clear:active,
-a.cs-button.button-success.clear:active {
+.cs-button.button-success.clear:active {
   background-color: #4caf50;
 }
-input.cs-button.button-success.outline,
-button.cs-button.button-success.outline,
-a.cs-button.button-success.outline {
+.cs-button.button-success.outline {
   background-color: white;
   background-color: transparent;
   color: #4caf50;
   border-color: #4caf50;
 }
-input.cs-button.button-success.outline:hover, input.cs-button.button-success.outline:focus,
-button.cs-button.button-success.outline:hover,
-button.cs-button.button-success.outline:focus,
-a.cs-button.button-success.outline:hover,
-a.cs-button.button-success.outline:focus {
+.cs-button.button-success.outline:hover, .cs-button.button-success.outline:focus {
   color: #39843c;
   border-color: #39843c;
 }
-input.cs-button.button-success.outline:hover.fill, input.cs-button.button-success.outline:focus.fill,
-button.cs-button.button-success.outline:hover.fill,
-button.cs-button.button-success.outline:focus.fill,
-a.cs-button.button-success.outline:hover.fill,
-a.cs-button.button-success.outline:focus.fill {
+.cs-button.button-success.outline:hover.fill, .cs-button.button-success.outline:focus.fill {
   color: #fff;
   border-color: #409343;
   background-color: #409343;
 }
-input.cs-button.button-success.outline:active,
-button.cs-button.button-success.outline:active,
-a.cs-button.button-success.outline:active {
+.cs-button.button-success.outline:active {
   color: #4caf50;
   border-color: #4caf50;
 }
-input.cs-button.button-success.outline:active.fill,
-button.cs-button.button-success.outline:active.fill,
-a.cs-button.button-success.outline:active.fill {
+.cs-button.button-success.outline:active.fill {
   color: #fff;
   border-color: #4caf50;
   background-color: #4caf50;
 }
-input.cs-button.button-danger,
-button.cs-button.button-danger,
-a.cs-button.button-danger {
+.cs-button.button-danger {
   background: #FF4040;
 }
-input.cs-button.button-danger:hover, input.cs-button.button-danger:focus,
-button.cs-button.button-danger:hover,
-button.cs-button.button-danger:focus,
-a.cs-button.button-danger:hover,
-a.cs-button.button-danger:focus {
+.cs-button.button-danger:hover, .cs-button.button-danger:focus {
   background-color: #ff1717;
 }
-input.cs-button.button-danger:active,
-button.cs-button.button-danger:active,
-a.cs-button.button-danger:active {
+.cs-button.button-danger:active {
   background-color: #FF4040;
 }
-input.cs-button.button-danger.clear,
-button.cs-button.button-danger.clear,
-a.cs-button.button-danger.clear {
+.cs-button.button-danger.clear {
   background-color: transparent;
   color: #FF4040;
 }
-input.cs-button.button-danger.clear:hover
-, input.cs-button.button-danger.clear:focus,
-button.cs-button.button-danger.clear:hover
-,
-button.cs-button.button-danger.clear:focus,
-a.cs-button.button-danger.clear:hover
-,
-a.cs-button.button-danger.clear:focus {
+.cs-button.button-danger.clear:hover
+, .cs-button.button-danger.clear:focus {
   color: #ff0303;
 }
-input.cs-button.button-danger.clear:active,
-button.cs-button.button-danger.clear:active,
-a.cs-button.button-danger.clear:active {
+.cs-button.button-danger.clear:active {
   background-color: #FF4040;
 }
-input.cs-button.button-danger.outline,
-button.cs-button.button-danger.outline,
-a.cs-button.button-danger.outline {
+.cs-button.button-danger.outline {
   background-color: white;
   background-color: transparent;
   color: #FF4040;
   border-color: #FF4040;
 }
-input.cs-button.button-danger.outline:hover, input.cs-button.button-danger.outline:focus,
-button.cs-button.button-danger.outline:hover,
-button.cs-button.button-danger.outline:focus,
-a.cs-button.button-danger.outline:hover,
-a.cs-button.button-danger.outline:focus {
+.cs-button.button-danger.outline:hover, .cs-button.button-danger.outline:focus {
   color: #ff0303;
   border-color: #ff0303;
 }
-input.cs-button.button-danger.outline:hover.fill, input.cs-button.button-danger.outline:focus.fill,
-button.cs-button.button-danger.outline:hover.fill,
-button.cs-button.button-danger.outline:focus.fill,
-a.cs-button.button-danger.outline:hover.fill,
-a.cs-button.button-danger.outline:focus.fill {
+.cs-button.button-danger.outline:hover.fill, .cs-button.button-danger.outline:focus.fill {
   color: #fff;
   border-color: #ff1717;
   background-color: #ff1717;
 }
-input.cs-button.button-danger.outline:active,
-button.cs-button.button-danger.outline:active,
-a.cs-button.button-danger.outline:active {
+.cs-button.button-danger.outline:active {
   color: #FF4040;
   border-color: #FF4040;
 }
-input.cs-button.button-danger.outline:active.fill,
-button.cs-button.button-danger.outline:active.fill,
-a.cs-button.button-danger.outline:active.fill {
+.cs-button.button-danger.outline:active.fill {
   color: #fff;
   border-color: #FF4040;
   background-color: #FF4040;
 }
-input.cs-button.button-warning,
-button.cs-button.button-warning,
-a.cs-button.button-warning {
+.cs-button.button-warning {
   background: #fd9904;
 }
-input.cs-button.button-warning:hover, input.cs-button.button-warning:focus,
-button.cs-button.button-warning:hover,
-button.cs-button.button-warning:focus,
-a.cs-button.button-warning:hover,
-a.cs-button.button-warning:focus {
+.cs-button.button-warning:hover, .cs-button.button-warning:focus {
   background-color: #d68102;
 }
-input.cs-button.button-warning:active,
-button.cs-button.button-warning:active,
-a.cs-button.button-warning:active {
+.cs-button.button-warning:active {
   background-color: #fd9904;
 }
-input.cs-button.button-warning.clear,
-button.cs-button.button-warning.clear,
-a.cs-button.button-warning.clear {
+.cs-button.button-warning.clear {
   background-color: transparent;
   color: #fd9904;
 }
-input.cs-button.button-warning.clear:hover
-, input.cs-button.button-warning.clear:focus,
-button.cs-button.button-warning.clear:hover
-,
-button.cs-button.button-warning.clear:focus,
-a.cs-button.button-warning.clear:hover
-,
-a.cs-button.button-warning.clear:focus {
+.cs-button.button-warning.clear:hover
+, .cs-button.button-warning.clear:focus {
   color: #c27502;
 }
-input.cs-button.button-warning.clear:active,
-button.cs-button.button-warning.clear:active,
-a.cs-button.button-warning.clear:active {
+.cs-button.button-warning.clear:active {
   background-color: #fd9904;
 }
-input.cs-button.button-warning.outline,
-button.cs-button.button-warning.outline,
-a.cs-button.button-warning.outline {
+.cs-button.button-warning.outline {
   background-color: white;
   background-color: transparent;
   color: #fd9904;
   border-color: #fd9904;
 }
-input.cs-button.button-warning.outline:hover, input.cs-button.button-warning.outline:focus,
-button.cs-button.button-warning.outline:hover,
-button.cs-button.button-warning.outline:focus,
-a.cs-button.button-warning.outline:hover,
-a.cs-button.button-warning.outline:focus {
+.cs-button.button-warning.outline:hover, .cs-button.button-warning.outline:focus {
   color: #c27502;
   border-color: #c27502;
 }
-input.cs-button.button-warning.outline:hover.fill, input.cs-button.button-warning.outline:focus.fill,
-button.cs-button.button-warning.outline:hover.fill,
-button.cs-button.button-warning.outline:focus.fill,
-a.cs-button.button-warning.outline:hover.fill,
-a.cs-button.button-warning.outline:focus.fill {
+.cs-button.button-warning.outline:hover.fill, .cs-button.button-warning.outline:focus.fill {
   color: #fff;
   border-color: #d68102;
   background-color: #d68102;
 }
-input.cs-button.button-warning.outline:active,
-button.cs-button.button-warning.outline:active,
-a.cs-button.button-warning.outline:active {
+.cs-button.button-warning.outline:active {
   color: #fd9904;
   border-color: #fd9904;
 }
-input.cs-button.button-warning.outline:active.fill,
-button.cs-button.button-warning.outline:active.fill,
-a.cs-button.button-warning.outline:active.fill {
+.cs-button.button-warning.outline:active.fill {
   color: #fff;
   border-color: #fd9904;
   background-color: #fd9904;
 }
-input.cs-button.button-info,
-button.cs-button.button-info,
-a.cs-button.button-info {
+.cs-button.button-info {
   background: #2DDBE1;
 }
-input.cs-button.button-info:hover, input.cs-button.button-info:focus,
-button.cs-button.button-info:hover,
-button.cs-button.button-info:focus,
-a.cs-button.button-info:hover,
-a.cs-button.button-info:focus {
+.cs-button.button-info:hover, .cs-button.button-info:focus {
   background-color: #1dc3c9;
 }
-input.cs-button.button-info:active,
-button.cs-button.button-info:active,
-a.cs-button.button-info:active {
+.cs-button.button-info:active {
   background-color: #2DDBE1;
 }
-input.cs-button.button-info.clear,
-button.cs-button.button-info.clear,
-a.cs-button.button-info.clear {
+.cs-button.button-info.clear {
   background-color: transparent;
   color: #2DDBE1;
 }
-input.cs-button.button-info.clear:hover
-, input.cs-button.button-info.clear:focus,
-button.cs-button.button-info.clear:hover
-,
-button.cs-button.button-info.clear:focus,
-a.cs-button.button-info.clear:hover
-,
-a.cs-button.button-info.clear:focus {
+.cs-button.button-info.clear:hover
+, .cs-button.button-info.clear:focus {
   color: #1ab1b7;
 }
-input.cs-button.button-info.clear:active,
-button.cs-button.button-info.clear:active,
-a.cs-button.button-info.clear:active {
+.cs-button.button-info.clear:active {
   background-color: #2DDBE1;
 }
-input.cs-button.button-info.outline,
-button.cs-button.button-info.outline,
-a.cs-button.button-info.outline {
+.cs-button.button-info.outline {
   background-color: white;
   background-color: transparent;
   color: #2DDBE1;
   border-color: #2DDBE1;
 }
-input.cs-button.button-info.outline:hover, input.cs-button.button-info.outline:focus,
-button.cs-button.button-info.outline:hover,
-button.cs-button.button-info.outline:focus,
-a.cs-button.button-info.outline:hover,
-a.cs-button.button-info.outline:focus {
+.cs-button.button-info.outline:hover, .cs-button.button-info.outline:focus {
   color: #1ab1b7;
   border-color: #1ab1b7;
 }
-input.cs-button.button-info.outline:hover.fill, input.cs-button.button-info.outline:focus.fill,
-button.cs-button.button-info.outline:hover.fill,
-button.cs-button.button-info.outline:focus.fill,
-a.cs-button.button-info.outline:hover.fill,
-a.cs-button.button-info.outline:focus.fill {
+.cs-button.button-info.outline:hover.fill, .cs-button.button-info.outline:focus.fill {
   color: #fff;
   border-color: #1dc3c9;
   background-color: #1dc3c9;
 }
-input.cs-button.button-info.outline:active,
-button.cs-button.button-info.outline:active,
-a.cs-button.button-info.outline:active {
+.cs-button.button-info.outline:active {
   color: #2DDBE1;
   border-color: #2DDBE1;
 }
-input.cs-button.button-info.outline:active.fill,
-button.cs-button.button-info.outline:active.fill,
-a.cs-button.button-info.outline:active.fill {
+.cs-button.button-info.outline:active.fill {
   color: #fff;
   border-color: #2DDBE1;
   background-color: #2DDBE1;
@@ -4639,6 +4144,257 @@ a.cs-button.button-info.outline:active.fill {
   top: -1px;
   position: relative;
   margin: 0 0.25rem;
+}
+
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+.text-break {
+  word-break: break-all;
+}
+.text-wrap {
+  word-wrap: break-word;
+}
+.text-under {
+  text-decoration: underline;
+}
+.text-over {
+  text-decoration: overline;
+}
+.text-thru {
+  text-decoration: line-through;
+}
+.text-none {
+  text-decoration: none;
+}
+.text-indent {
+  text-indent: 3rem;
+}
+.text-upper {
+  text-transform: uppercase;
+}
+.text-lower {
+  text-transform: lowercase;
+}
+.text-capital {
+  text-transform: capitalize;
+}
+.text-under-hv:hover, .text-under-hv:focus {
+  text-decoration: underline;
+}
+.text-thru-hv:hover, .text-thru-hv:focus {
+  text-decoration: line-through;
+}
+.text-over-hv:hover, .text-over-hv:focus {
+  text-decoration: overline;
+}
+
+.height-auto {
+  height: auto;
+}
+
+.width-auto {
+  width: auto;
+}
+
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.float-none {
+  float: none;
+}
+
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+.image-circle {
+  border-radius: 50%;
+}
+
+.width-25 {
+  width: 25% !important;
+}
+.width-50 {
+  width: 50% !important;
+}
+.width-75 {
+  width: 75% !important;
+}
+.width-100 {
+  width: 100% !important;
+}
+.width-100-max {
+  max-width: 100% !important;
+}
+
+.v-centered {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.position-static {
+  position: static;
+}
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+.position-fixed {
+  position: fixed;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.unrounded {
+  border-radius: 0;
+}
+
+.no-border {
+  border-width: 0 !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+.text-hide {
+  font: 0/0 a !important;
+  color: transparent !important;
+  text-shadow: none !important;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.border-tiny {
+  border-width: 1px;
+}
+.border-small {
+  border-width: 2px;
+}
+.border-medium {
+  border-width: 3px;
+}
+.border-large {
+  border-width: 4px;
+}
+.border-huge {
+  border-width: 5px;
+}
+
+.p-indent {
+  text-indent: 2.5rem;
+}
+
+.clear-float {
+  float: none !important;
+}
+.clear-bg {
+  background-color: transparent !important;
+}
+.clear-mall {
+  margin: 0 !important;
+}
+.clear-mtop {
+  margin-top: 0 !important;
+}
+.clear-mright {
+  margin-right: 0 !important;
+}
+.clear-mbottom {
+  margin-bottom: 0 !important;
+}
+.clear-mleft {
+  margin-left: 0 !important;
+}
+.clear-pall {
+  padding: 0 !important;
+}
+.clear-ptop {
+  padding-top: 0 !important;
+}
+.clear-pright {
+  padding-right: 0 !important;
+}
+.clear-pbottom {
+  padding-bottom: 0 !important;
+}
+.clear-pleft {
+  padding-left: 0 !important;
+}
+
+.display-inline {
+  display: inline !important;
+}
+
+.display-inline-block {
+  display: inline-block !important;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.table {
+  display: table !important;
+}
+
+.table-row {
+  display: table-row !important;
+}
+
+.table-cell {
+  display: table-cell !important;
 }
 
 .accordion .accordion-title {
