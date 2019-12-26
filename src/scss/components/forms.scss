@@ -351,8 +351,14 @@
 						,&:focus {
 						    color: csColor($name, 'dark-3x');
 						}
-						&:active {
-						    background-color: csColor($name, 'base');
+						&.fill {
+							&:hover
+							,&:focus {
+							    background-color: csColor($name, 'light-3x');
+							}
+							&:active {
+							    background-color: csColor($name, 'light-2x');
+							}
 						}
 					}
 					&.outline {

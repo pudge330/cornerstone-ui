@@ -3199,9 +3199,58 @@ table.table-hover tbody td {
 }
 .cs-input:focus, .cs-textarea:focus {
   border: 1px solid #8a8a8a;
-  background-color: #fefefe;
   outline: none;
   box-shadow: 0 0 5px #cacaca;
+}
+[type="file"].cs-input, [type="file"].cs-textarea {
+  border: none;
+  outline: 1px solid #cacaca;
+  transition: outline 0.25s ease-in-out;
+}
+[type="file"].cs-input:focus, [type="file"].cs-textarea:focus {
+  outline: 1px solid #8a8a8a;
+}
+.input-success.cs-input, .input-success.cs-textarea {
+  color: #4caf50;
+  border-color: #4caf50;
+}
+.input-success.cs-input:focus, .input-success.cs-textarea:focus {
+  box-shadow: 0 0 5px #4caf50;
+}
+.input-success[type="file"].cs-input, .input-success[type="file"].cs-textarea {
+  border: none;
+  outline: 1px solid #4caf50;
+}
+.input-success[type="file"].cs-input:focus, .input-success[type="file"].cs-textarea:focus {
+  box-shadow: 0 0 5px #4caf50;
+}
+.input-danger.cs-input, .input-danger.cs-textarea {
+  color: #FF4040;
+  border-color: #FF4040;
+}
+.input-danger.cs-input:focus, .input-danger.cs-textarea:focus {
+  box-shadow: 0 0 5px #FF4040;
+}
+.input-danger[type="file"].cs-input, .input-danger[type="file"].cs-textarea {
+  border: none;
+  outline: 1px solid #FF4040;
+}
+.input-danger[type="file"].cs-input:focus, .input-danger[type="file"].cs-textarea:focus {
+  box-shadow: 0 0 5px #FF4040;
+}
+.input-warning.cs-input, .input-warning.cs-textarea {
+  color: #fd9904;
+  border-color: #fd9904;
+}
+.input-warning.cs-input:focus, .input-warning.cs-textarea:focus {
+  box-shadow: 0 0 5px #fd9904;
+}
+.input-warning[type="file"].cs-input, .input-warning[type="file"].cs-textarea {
+  border: none;
+  outline: 1px solid #fd9904;
+}
+.input-warning[type="file"].cs-input:focus, .input-warning[type="file"].cs-textarea:focus {
+  box-shadow: 0 0 5px #fd9904;
 }
 
 .cs-input, .cs-textarea {
@@ -3236,13 +3285,11 @@ label {
   padding: 0.5rem;
 }
 .cs-input[type="file"] {
-  border: none;
-  outline: 1px solid #cacaca;
-  transition: outline 0.25s ease-in-out;
   font-size: .85rem;
-}
-.cs-input[type="file"]:focus {
-  outline: 1px solid #8a8a8a;
+  width: 99%;
+  width: calc(100% - 2px);
+  position: relative;
+  left: 1px;
 }
 
 .cs-textarea {
@@ -3503,8 +3550,12 @@ label {
 , .cs-button.button-primary.clear:focus {
   color: #0074c2;
 }
-.cs-button.button-primary.clear:active {
-  background-color: #0099FF;
+.cs-button.button-primary.clear.fill:hover
+, .cs-button.button-primary.clear.fill:focus {
+  background-color: #9cd6fc;
+}
+.cs-button.button-primary.clear.fill:active {
+  background-color: #6ac1fb;
 }
 .cs-button.button-primary.outline {
   background-color: white;
@@ -3547,8 +3598,12 @@ label {
 , .cs-button.button-secondary.clear:focus {
   color: #7a7a7a;
 }
-.cs-button.button-secondary.clear:active {
-  background-color: #999;
+.cs-button.button-secondary.clear.fill:hover
+, .cs-button.button-secondary.clear.fill:focus {
+  background-color: #e6e6e6;
+}
+.cs-button.button-secondary.clear.fill:active {
+  background-color: #cccccc;
 }
 .cs-button.button-secondary.outline {
   background-color: white;
@@ -3591,8 +3646,12 @@ label {
 , .cs-button.button-success.clear:focus {
   color: #39843c;
 }
-.cs-button.button-success.clear:active {
-  background-color: #4caf50;
+.cs-button.button-success.clear.fill:hover
+, .cs-button.button-success.clear.fill:focus {
+  background-color: #b8dcb9;
+}
+.cs-button.button-success.clear.fill:active {
+  background-color: #95cc98;
 }
 .cs-button.button-success.outline {
   background-color: white;
@@ -3635,8 +3694,12 @@ label {
 , .cs-button.button-danger.clear:focus {
   color: #ff0303;
 }
-.cs-button.button-danger.clear:active {
-  background-color: #FF4040;
+.cs-button.button-danger.clear.fill:hover
+, .cs-button.button-danger.clear.fill:focus {
+  background-color: #fedada;
+}
+.cs-button.button-danger.clear.fill:active {
+  background-color: #fda8a8;
 }
 .cs-button.button-danger.outline {
   background-color: white;
@@ -3679,8 +3742,12 @@ label {
 , .cs-button.button-warning.clear:focus {
   color: #c27502;
 }
-.cs-button.button-warning.clear:active {
-  background-color: #fd9904;
+.cs-button.button-warning.clear.fill:hover
+, .cs-button.button-warning.clear.fill:focus {
+  background-color: #fcd69e;
+}
+.cs-button.button-warning.clear.fill:active {
+  background-color: #fac16d;
 }
 .cs-button.button-warning.outline {
   background-color: white;
@@ -3723,8 +3790,12 @@ label {
 , .cs-button.button-info.clear:focus {
   color: #1ab1b7;
 }
-.cs-button.button-info.clear:active {
-  background-color: #2DDBE1;
+.cs-button.button-info.clear.fill:hover
+, .cs-button.button-info.clear.fill:focus {
+  background-color: #b5f0f2;
+}
+.cs-button.button-info.clear.fill:active {
+  background-color: #8ae7ea;
 }
 .cs-button.button-info.outline {
   background-color: white;
