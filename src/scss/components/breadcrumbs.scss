@@ -1,14 +1,14 @@
 @mixin CornerstoneUI_breadcrumbs() {
-	.cs-breadcrumbs {
+	.#{$cs_prefix}breadcrumbs {
 		list-style: none;
 		margin: 1rem 0;
 		padding: 0;
 		font-size: 0;
-		.breadcrumb-item {
+		.#{$cs_prefix}breadcrumb-item {
 			font-size: 1rem;
 			display: inline-block;
 			color: csColor('gray', 'dark');
-			+ .breadcrumb-item {
+			+ .#{$cs_prefix}breadcrumb-item {
 				&:before {
 					content: '/';
 					margin: 0 0.35rem;
@@ -18,10 +18,10 @@
 				color: csColor('primary', 'base');
 			}
 		}
-		&[data-separator="lessthan"],
-		&[data-separator=">"] {
-			.breadcrumb-item {
-				+ .breadcrumb-item {
+		&[data#{$cs_prefix}-separator="lessthan"],
+		&[data#{$cs_prefix}-separator=">"] {
+			.#{$cs_prefix}breadcrumb-item {
+				+ .#{$cs_prefix}breadcrumb-item {
 					&:before {
 						content: '>';
 						position: relative;
@@ -31,9 +31,9 @@
 				}
 			}
 		}
-		&[data-separator="square"] {
-			.breadcrumb-item {
-				+ .breadcrumb-item {
+		&[data#{$cs_prefix}-separator="square"] {
+			.#{$cs_prefix}breadcrumb-item {
+				+ .#{$cs_prefix}breadcrumb-item {
 					&:before {
 						content: '▪';
 						line-height: 0;
@@ -47,9 +47,9 @@
 				}
 			}
 		}
-		&[data-separator="dot"] {
-			.breadcrumb-item {
-				+ .breadcrumb-item {
+		&[data#{$cs_prefix}-separator="dot"] {
+			.#{$cs_prefix}breadcrumb-item {
+				+ .#{$cs_prefix}breadcrumb-item {
 					&:before {
 						content: '•';
 						line-height: 0;

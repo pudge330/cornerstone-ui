@@ -1,60 +1,61 @@
 @mixin CornerstoneUI_columns() {
-	.container,
-	.container-fluid {
+	.#{$cs_prefix}container,
+	.#{$cs_prefix}container-fluid {
 		overflow: visible;
 		position: relative;
 		width: 100%;
 		margin: 0 auto;
 		padding-left: $cs_grid_gutter_size / 2;
 		padding-right: $cs_grid_gutter_size / 2;
-		&.grid-container {
+		&.#{$cs_prefix}grid-container {
 			padding-top: $cs_grid_gutter_size / 2;
 			padding-bottom: $cs_grid_gutter_size / 2;
 		}
 	}
-	.container {
+	.#{$cs_prefix}container {
 		max-width: $cs_grid_max_width;
 	}
-	.container-fluid {
+	.#{$cs_prefix}container-fluid {
 		max-width: unset;
 	}
-	.row {
+	.#{$cs_prefix}row {
 		overflow: visible;
 		position: relative;
 		margin-left: -($cs_grid_gutter_size / 2);
 		margin-right: -($cs_grid_gutter_size / 2);
 		font-size: 0;
-		.grid-container & {
+		.#{$cs_prefix}grid-container & {
 			margin-top: -($cs_grid_gutter_size / 2);
 			margin-bottom: -($cs_grid_gutter_size / 2);
 		}
 	}
-	.container-flex {
-		.row {
+	.#{$cs_prefix}container-flex {
+		.#{$cs_prefix}row {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-			&.same-height {
+			&.#{$cs_prefix}same-height {
 				> *:first-child {
 					height: 100%;
 				}
 			}
 		}
 	}
-	.row.row-flex {
+	.#{$cs_prefix}row.#{$cs_prefix}row-flex {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 	}
-	.col-last {
+	.#{$cs_prefix}col-last {
 		float: right;
 	}
-	.clear-fix:after {
+	.#{$cs_prefix}clear-fix:after {
 	  content: "";
 	  display: table;
 	  clear: both;
 	}
-	[class*="col-"] {
+
+	[class*="#{$cs_prefix}col-"] {
 		overflow: visible;
 		display: inline-block;
 		vertical-align: middle;
@@ -64,111 +65,195 @@
 		font-size: 1rem;
 		padding-left: ($cs_grid_gutter_size / 2);
 		padding-right: ($cs_grid_gutter_size / 2);	
-		.grid-container & {
+		.#{$cs_prefix}grid-container & {
 			padding-top: ($cs_grid_gutter_size / 2);
 			padding-bottom: ($cs_grid_gutter_size / 2);
 		}
-		&.no-gutter {
-			padding-left: 0;
-			padding-right: 0;
-		}
-	}
-	[class*="col-"] {
-	    .container.no-gutter > .row &,
-	    .container-fluid.no-gutter > .row & {
+		.#{$cs_prefix}container.#{$cs_prefix}no-gutter > .#{$cs_prefix}row &,
+	    .#{$cs_prefix}container-fluid.#{$cs_prefix}no-gutter > .#{$cs_prefix}row & {
 	    	padding-left: 0;
 	    	padding-right: 0;
 	    }
-	    .row.no-gutter > &,
-	    .row.no-gutter > & {
+	    .#{$cs_prefix}row.#{$cs_prefix}no-gutter > &,
+	    .#{$cs_prefix}row.#{$cs_prefix}no-gutter > & {
 	    	padding-left: 0;
 	    	padding-right: 0;
 	    }
 	}
-	.container.no-gutter,
-	.container-fluid.no-gutter {
+	.#{$cs_prefix}container.#{$cs_prefix}no-gutter,
+	.#{$cs_prefix}container-fluid.#{$cs_prefix}no-gutter {
 		padding-left: 0;
 	    padding-right: 0;
-	    > .row {
+	    > .#{$cs_prefix}row {
 	    	margin-left: 0;
 	    	margin-right: 0;
 	    }
 	}
-	.container,
-	.container-fluid {
-		&.align-top {
-			[class*="col-"] {
+	.#{$cs_prefix}container,
+	.#{$cs_prefix}container-fluid {
+		&.#{$cs_prefix}align-top {
+			[class*="#{$cs_prefix}col-"] {
 				vertical-align: text-top;
 			}
 		}
-		&.align-bottom {
-			[class*="col-"] {
+		&.#{$cs_prefix}align-bottom {
+			[class*="#{$cs_prefix}col-"] {
 				vertical-align: text-bottom;
 			}
 		}
-		.row {
-			&.align-top {
-				[class*="col-"] {
+		.#{$cs_prefix}row {
+			&.#{$cs_prefix}align-top {
+				[class*="#{$cs_prefix}col-"] {
 					vertical-align: text-top;
 				}
 			}
-			&.align-middle {
-				[class*="col-"] {
+			&.#{$cs_prefix}align-middle {
+				[class*="#{$cs_prefix}col-"] {
 					vertical-align: middle;
 				}
 			}
-			&.align-bottom {
-				[class*="col-"] {
+			&.#{$cs_prefix}align-bottom {
+				[class*="#{$cs_prefix}col-"] {
 					vertical-align: text-bottom;
 				}
 			}	
 		}
-		&.align-center {
-			.row {
+		&.#{$cs_prefix}align-center {
+			.#{$cs_prefix}row {
 				text-align: center;
 			}
 		}
-		&.align-right {
+		&.#{$cs_prefix}align-right {
 			text-align: right;
 		}
-		.row {
-			&.align-left {
+		.#{$cs_prefix}row {
+			&.#{$cs_prefix}align-left {
 				text-align: left;
 			}
-			&.align-center {
+			&.#{$cs_prefix}align-center {
 				text-align: center;
 			}
-			&.align-right {
+			&.#{$cs_prefix}align-right {
 				text-align: right;
 			}	
 		}
 	}
+
+	// [class*="col-"] {
+	// 	overflow: visible;
+	// 	display: inline-block;
+	// 	vertical-align: middle;
+	// 	width: 100%;
+	// 	position: relative;
+	// 	min-height: 1px;
+	// 	font-size: 1rem;
+	// 	padding-left: ($cs_grid_gutter_size / 2);
+	// 	padding-right: ($cs_grid_gutter_size / 2);	
+	// 	.grid-container & {
+	// 		padding-top: ($cs_grid_gutter_size / 2);
+	// 		padding-bottom: ($cs_grid_gutter_size / 2);
+	// 	}
+	// 	&.no-gutter {
+	// 		padding-left: 0;
+	// 		padding-right: 0;
+	// 	}
+	// }
+	// [class*="col-"] {
+	//     .container.no-gutter > .row &,
+	//     .container-fluid.no-gutter > .row & {
+	//     	padding-left: 0;
+	//     	padding-right: 0;
+	//     }
+	//     .row.no-gutter > &,
+	//     .row.no-gutter > & {
+	//     	padding-left: 0;
+	//     	padding-right: 0;
+	//     }
+	// }
+	// .container.no-gutter,
+	// .container-fluid.no-gutter {
+	// 	padding-left: 0;
+	//     padding-right: 0;
+	//     > .row {
+	//     	margin-left: 0;
+	//     	margin-right: 0;
+	//     }
+	// }
+	// .container,
+	// .container-fluid {
+	// 	&.align-top {
+	// 		[class*="col-"] {
+	// 			vertical-align: text-top;
+	// 		}
+	// 	}
+	// 	&.align-bottom {
+	// 		[class*="col-"] {
+	// 			vertical-align: text-bottom;
+	// 		}
+	// 	}
+	// 	.row {
+	// 		&.align-top {
+	// 			[class*="col-"] {
+	// 				vertical-align: text-top;
+	// 			}
+	// 		}
+	// 		&.align-middle {
+	// 			[class*="col-"] {
+	// 				vertical-align: middle;
+	// 			}
+	// 		}
+	// 		&.align-bottom {
+	// 			[class*="col-"] {
+	// 				vertical-align: text-bottom;
+	// 			}
+	// 		}	
+	// 	}
+	// 	&.align-center {
+	// 		.row {
+	// 			text-align: center;
+	// 		}
+	// 	}
+	// 	&.align-right {
+	// 		text-align: right;
+	// 	}
+	// 	.row {
+	// 		&.align-left {
+	// 			text-align: left;
+	// 		}
+	// 		&.align-center {
+	// 			text-align: center;
+	// 		}
+	// 		&.align-right {
+	// 			text-align: right;
+	// 		}	
+	// 	}
+	// }
 	//--calculate grid
 	@for $i from $cs_grid_column_size through 0 {
 		$calculatedWidth: ((100% / $cs_grid_column_size) * $i);
 
 		@if $i != 0 {
-			.col-tn-#{$i} {
+			.#{$cs_prefix}col-tn-#{$i} {
 	            width: $calculatedWidth;
 	        }
-	        .offset-tn-#{$i} {
+	        .#{$cs_prefix}offset-tn-#{$i} {
 	            margin-left: $calculatedWidth;
 	        }
-	        .pull-tn-#{$i} {
+	        .#{$cs_prefix}pull-tn-#{$i} {
 	            right: $calculatedWidth;
 	        }
-	        .push-tn-#{$i} {
+	        .#{$cs_prefix}push-tn-#{$i} {
 	            left: $calculatedWidth;
 	        }
 		}
 		@else {
-			.offset-tn-#{$i} {
+			.#{$cs_prefix}offset-tn-#{$i} {
 	            margin-left: 0;
 	        }
-	        .pull-tn-#{$i} {
+	        .#{$cs_prefix}pull-tn-#{$i} {
 	            right: 0;
 	        }
-	        .push-tn-#{$i} {
+	        .#{$cs_prefix}push-tn-#{$i} {
 	            left: 0;
 	        }
 		}
@@ -180,27 +265,27 @@
 					$calculatedWidth: ((100% / $cs_grid_column_size) * $i);
 
 					@if $i != 0 {
-						.col-#{$bpKey}-#{$i} {
+						.#{$cs_prefix}col-#{$bpKey}-#{$i} {
 				            width: $calculatedWidth;
 				        }
-				        .offset-#{$bpKey}-#{$i} {
+				        .#{$cs_prefix}offset-#{$bpKey}-#{$i} {
 				            margin-left: $calculatedWidth;
 				        }
-				        .pull-#{$bpKey}-#{$i} {
+				        .#{$cs_prefix}pull-#{$bpKey}-#{$i} {
 				            right: $calculatedWidth;
 				        }
-				        .push-#{$bpKey}-#{$i} {
+				        .#{$cs_prefix}push-#{$bpKey}-#{$i} {
 				            left: $calculatedWidth;
 				        }
 					}
 					@else {
-						.offset-#{$bpKey}-#{$i} {
+						.#{$cs_prefix}offset-#{$bpKey}-#{$i} {
 				            margin-left: 0;
 				        }
-				        .pull-#{$bpKey}-#{$i} {
+				        .#{$cs_prefix}pull-#{$bpKey}-#{$i} {
 				            right: 0;
 				        }
-				        .push-#{$bpKey}-#{$i} {
+				        .#{$cs_prefix}push-#{$bpKey}-#{$i} {
 				            left: 0;
 				        }
 					}

@@ -640,7 +640,8 @@ body {
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
 p, ul, ol, fieldset, pre, blockquote, dl, figure,
 table, form {
   margin: 0;
@@ -658,8 +659,7 @@ ol, ul {
 input,
 textarea,
 select,
-button,
-.btn {
+button {
   margin: 0;
   margin-bottom: 8px;
   margin-bottom: 0.5rem;
@@ -838,11 +838,6 @@ code {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
-[class*="col-"].no-gutter {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .container.no-gutter > .row [class*="col-"], .container-fluid.no-gutter > .row [class*="col-"] {
   padding-left: 0;
   padding-right: 0;

@@ -2,13 +2,13 @@
 	@each $name, $colors in $cs_colors {
 		@if $name == 'generic' {
 			@each $accentName, $accent in $colors {
-				.text-#{$accentName} {
+				.#{$cs_prefix}text-#{$accentName} {
 					color: $accent;
 				}
-				.background-#{$accentName} {
+				.#{$cs_prefix}background-#{$accentName} {
 					background-color: $accent;
 				}
-				.border-#{$accentName} {
+				.#{$cs_prefix}border-#{$accentName} {
 					border: 1px solid $accent;
 				}
 			}
@@ -16,32 +16,32 @@
 		@else {
 			@each $accentName, $accent in $colors {
 				@if $accentName == 'base' {
-					.text-#{$name} {
+					.#{$cs_prefix}text-#{$name} {
 						color: $accent;
 					}
-					.background-#{$name} {
+					.#{$cs_prefix}background-#{$name} {
 						background: $accent;
 					}
-					.border-#{$name} {
+					.#{$cs_prefix}border-#{$name} {
 						border: 1px solid $accent;
 					}
-					a.animated.text-#{$name} {
+					a.#{$cs_prefix}animated.#{$cs_prefix}text-#{$name} {
 						&:after {
 							border-color: $accent;
 						}
 					}
 				}
 				@else {
-					.text-#{$name}-#{$accentName} {
+					.#{$cs_prefix}text-#{$name}-#{$accentName} {
 						color: $accent;
 					}
-					.background-#{$name}-#{$accentName} {
+					.#{$cs_prefix}background-#{$name}-#{$accentName} {
 						background: $accent;
 					}
-					.border-#{$name}-#{$accentName} {
+					.#{$cs_prefix}border-#{$name}-#{$accentName} {
 						border: 1px solid $accent;
 					}
-					a.animated.text-#{$name}-#{$accentName} {
+					a.#{$cs_prefix}animated.#{$cs_prefix}text-#{$name}-#{$accentName} {
 						&:after {
 							border-color: $accent;
 						}

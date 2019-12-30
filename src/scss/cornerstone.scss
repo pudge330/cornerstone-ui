@@ -7,7 +7,7 @@
 @import './components/settings';
 @import './components/normalize';
 @import './components/html5-boilerplate';
-@import './components/screen-readers';
+// @import './components/screen-readers';
 @import './components/base';
 @import './components/columns';
 @import './components/hidden';
@@ -34,7 +34,7 @@
 @mixin CornerstoneUI_includeAll() {
 	@include CornerstoneUI_normalize();
 	@include CornerstoneUI_html5_boilerplate();
-	@include CornerstoneUI_screen_readers();
+	// @include CornerstoneUI_screen_readers();
 	@include CornerstoneUI_base();
 	@include CornerstoneUI_columns();
 	@include CornerstoneUI_hidden();

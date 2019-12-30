@@ -22,7 +22,8 @@
 		font-size: $cs_default_font_size;
 	}
 	//==block margins
-	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
+	h1, h2, h3, h4, h5, h6,
+	.#{$cs_prefix}h1, .#{$cs_prefix}h2, .#{$cs_prefix}h3, .#{$cs_prefix}h4, .#{$cs_prefix}h5, .#{$cs_prefix}h6,
 	p, ul, ol, fieldset, pre, blockquote, dl, figure,
 	table, form {
 		margin: 0;
@@ -35,8 +36,7 @@
 	input,
 	textarea,
 	select,
-	button,
-	.btn {
+	button {
 		margin: 0;
 		@include cs-px-fallback(margin-bottom, $cs_base_block_margin / 2);
 	}
@@ -46,31 +46,31 @@
 	}
 	//==headings
 	h1, h2, h3, h4, h5, h6,
-	.h1, .h2, .h3, .h4, .h5, .h6 {
+	.#{$cs_prefix}h1, .#{$cs_prefix}h2, .#{$cs_prefix}h3, .#{$cs_prefix}h4, .#{$cs_prefix}h5, .#{$cs_prefix}h6 {
 		font-weight: 400;
 		font-family: $cs_base_font_header;
 	}
-	h1, .h1 {
+	h1, .#{$cs_prefix}h1 {
 		font-size: 38px;
 	}
-	h2, .h2 {
+	h2, .#{$cs_prefix}h2 {
 		font-size: 32px;
 	}
-	h3, .h3 {
+	h3, .#{$cs_prefix}h3 {
 		font-size: 28px;
 	}
-	h4, .h4 {
+	h4, .#{$cs_prefix}h4 {
 		font-size: 24px;
 	}
-	h5, .h5 {
+	h5, .#{$cs_prefix}h5 {
 		font-size: 20px;
 	}
-	h6, .h6 {
+	h6, .#{$cs_prefix}h6 {
 		font-size: 16px;
 	}
 	//==fonts
 	@each $fontKey, $fontValue in $cs_font_map {
-		.font-#{$fontKey} {
+		.#{$cs_prefix}font-#{$fontKey} {
 			font-family: $fontValue;
 		}
 	}
@@ -81,7 +81,7 @@
 		&:hover {
 			text-decoration: underline;
 		}
-		&.animated {
+		&.#{$cs_prefix}animated {
 			position: relative;
 			&:after {
 				content: '';
@@ -119,7 +119,29 @@
 	code {
 		color: csColor('primary', 'base');
 	}
-	.cornerstone-bp {
+	.cornerstone-breakpoints {
 		content: 'sm:#{$cs_bp_sm};md:#{$cs_bp_md};lg:#{$cs_bp_lg};xlg:#{$cs_bp_xlg}';
+	}
+	.cornerstone-prefix {
+		content: '#{$cs_prefix}';
+	}
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+	.sr-only-focusable:active,
+	.sr-only-focusable:focus {
+		position: static;
+		width: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
 	}
 }
