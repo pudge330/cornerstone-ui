@@ -551,39 +551,55 @@ bglib.fn.rand = function(max) {
     return Math.floor((Math.random() * max) + 1);
 };
 bglib.fn.compileTemplate = function(tpl) {
-	/*
-		Does not work with multi line <% %> tags
-			- only single line works
-	*/
-	var str = tpl;
-	var match;
-	while (match = str.match(/\<\%([^]+?)\%\>/m)) {
-		// console.log(match);
-		// console.log(match[1]);
-		// match[1] = match[1].replace(/\\$/gm, "");
-		// console.log(match[1]);
-		str = str.replace(/\<\%([^]+?)\%\>/m, "'; $1  __bglib_template__ += '");
-		// str = str.replace(/\<\%/, "'; ");
-		// str = str.replace(/\%\>/, " __bglib_template__ += '");
+	var tpl = tpl,
+		match,
+		tmp,
+		jsTokens = [],
+		count = -1,
+		token = null;
+	//--js-code tokens
+	while (match = tpl.match(/(\<\%(.*|[\s\S]+?)\%\>?)/)) {
+		count++;
+		token = '##__jct__' + count + '__' + bglib.fn.rand() + '__##';
+		jsTokens.push([token, match[2].trim()]);
+		tpl = tpl.replace(/(\<\%(.*|[\s\S]+?)\%\>?)/, token);
 	}
-	str = str.replace(/\{\{/g, "' + ");
-	str = str.replace(/\}\}/g, " + '");
-	// str = str.replace(/\<\%/g, "'; ");
-	// str = str.replace(/\%\>/g, " __bglib_template__ += '");
-	str = str.replace(/\<\*/g, "'; /*");
-	str = str.replace(/\*\>/g, "*/ __bglib_template__ += '");
-	str = str.replace(/\\\{\\\{/g, "{{");
-	str = str.replace(/\\\}\\\}/g, "}}");
-	str = str.replace(/\r\n/g, "\n");
-	// str = str.replace(/\n/g, "\\\n");
-	str = str.replace(/\n/g, "';\n__bglib_template__ += '");
-	// str = str.replace(/\'\; \\/g, "';");
-	console.log('var __bglib_template__ = \'' + str + '\';');
-	return 'var __bglib_template__ = \'' + str + '\';';
+	//--single-line tokens and comment tokens
+	tpl = tpl.replace(/\{\{\{/g, "' + helpers.htmlEntities(");
+	tpl = tpl.replace(/\}\}\}/g, ") + '");
+	tpl = tpl.replace(/\{\{/g, "' + ");
+	tpl = tpl.replace(/\}\}/g, " + '");
+	tpl = tpl.replace(/\<\*/g, "'; /*");
+	tpl = tpl.replace(/\*\>/g, "*/ __bglib_template__ += '");
+	//--escaped tokens
+	tpl = tpl.replace(/\{\\\{\\\{/g, "{{{");
+	tpl = tpl.replace(/\}\\\}\\\}/g, "}}}");
+	tpl = tpl.replace(/\{\\\{/g, "{{");
+	tpl = tpl.replace(/\}\\\}/g, "}}");
+	tpl = tpl.replace(/\<\\\*/g, "<*");
+	tpl = tpl.replace(/\*\\\>/g, "*>");
+	tpl = tpl.replace(/\<\\\%/g, "<%");
+	tpl = tpl.replace(/\%\\\>/g, "%>");
+	//--newlines
+	tpl = tpl.replace(/\r\n/g, "\n");
+	tpl = tpl.replace(/\n/g, "';\n__bglib_template__ += '");
+	//--cut js comments
+	while (match = tpl.match(/(\/\*(.*|[\s\S]+?)\*\/)/)) {
+		tpl = tpl.replace(/(\/\*(.*|[\s\S]+?)\*\/)/, '');
+	}
+	//--js-code tokens
+	for (var i = 0; i < jsTokens.length; i++) {
+		tpl = tpl.replace(jsTokens[i][0], "'; " + jsTokens[i][1] + "  __bglib_template__ += '");
+	}
+	//--empty concatenation
+	tpl = tpl.replace(/__bglib_template__ \+\= '';/gm, '');
+	tpl = tpl.replace(/__bglib_template__ \+\= '\s+';/gm, '');
+	return 'var __bglib_template__ = \'' + tpl + '\';';
 };
 bglib.fn.renderTemplate = function(tpl, data) {
 	var helpers = bglib.fn.renderTemplate.helpers,
-		format = bglib.fn.renderTemplate.format;
+		format = bglib.fn.renderTemplate.format,
+		fn = bglib.fn.renderTemplate.fn;
 	tpl = tpl.match(/^var __bglib_template__ = \'/) ? tpl : bglib.fn.compileTemplate(tpl);
 	return function() {
 		return eval(tpl);
@@ -600,6 +616,7 @@ bglib.fn.renderTemplate.format.camelCase = bglib.fn.toCamelCase;
 bglib.fn.renderTemplate.format.properCase = bglib.fn.toProperCase;
 bglib.fn.renderTemplate.format.decimal = bglib.fn.formatDecimal;
 bglib.fn.renderTemplate.format.price = bglib.fn.formatPrice;
+bglib.fn.renderTemplate.fn = {};
 bglib.fn.request = function(url, cb, data, type) {
     data = data || {};
     type = type || 'GET';

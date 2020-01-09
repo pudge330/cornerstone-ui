@@ -236,7 +236,7 @@ Cornerstone.BaseModule = module2;
 			this.breakpointsPx = [];
 			DomEvents.document.on('ready', function() {
 				_self.$html = jQuery('html');
-				var $tmp = jQuery('<div class="cornerstone-bp"></div>');
+				var $tmp = jQuery('<div class="cornerstone-breakpoints"></div>');
 				$tmp.css({
 					position: 'fixed'
 					,top: '-999px'
