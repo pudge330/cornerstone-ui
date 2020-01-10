@@ -53,7 +53,7 @@ Cornerstone.init = function() {
 	for (var i = 0; i < _cornerstone.__onLoadHandlers.length; i++) {
 		_cornerstone.__onLoadHandlers[i]();
 	}
-	console.log('Cornerstone:inited');
+	// console.log('Cornerstone:inited');
 };
 Cornerstone.onLoad = function(cb) {
 	if (!_cornerstone.__hasLoaded) {
@@ -73,10 +73,8 @@ Cornerstone.autoload.factory = function(component, sel, dataAttr, dataAttrOption
 		var elements = document.querySelectorAll(sel);
 		for (var i = 0; i < elements.length; i++) {
 			var opts = elements[i].getAttribute(dataAttr);
-			console.log(sel, opts);
 			if (opts && opts.trim() != '') {
 				opts = JSON.safeParse(opts.trim());
-				console.log(sel, opts);
 			}
 			else {
 				opts = {};
@@ -1031,7 +1029,6 @@ Cornerstone.BaseModule = module2;
 			var prevDisabled = (current < 2);
 			var nextDisabled = (current == maxPages);
 			this.$el.find('li:not(.template)').remove();
-			console.log(arr);
 			for (var i = 0; i < arr.length; i++) {
 				var $item = jQuery('<li></li>');
 				if (arr[i] == '...') {
@@ -1181,7 +1178,6 @@ Cornerstone.BaseModule = module2;
 			this.selector = '.tabs-' + this.instanceId + ' > ul li a, .tabs-' + this.instanceId + ' > li a';
 			jQuery(document.querySelector('body')).on('click', this.selector, function(evt) {
 				evt.preventDefault();
-				// console.log('tab clicked');
 				_self.openTab(jQuery(this).closest('li')[0]);
 			});
 
@@ -1255,7 +1251,6 @@ Cornerstone.BaseModule = module2;
 			var _self = this;
 			this.$el.find('thead tr th').each(function(index) {
 				var $this = jQuery(this);
-				console.log('tbody tr td:nth-child(' + (index + 1) + ')');
 				_self.$el.find('tbody tr td:nth-child(' + (index + 1) + ')').each(function() {
 					var $td = jQuery(this);
 					$td.html('<span>' + $this.html() + $td.html() + '</span>');

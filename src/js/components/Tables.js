@@ -25,7 +25,6 @@
 			var _self = this;
 			this.$el.find('thead tr th').each(function(index) {
 				var $this = jQuery(this);
-				console.log('tbody tr td:nth-child(' + (index + 1) + ')');
 				_self.$el.find('tbody tr td:nth-child(' + (index + 1) + ')').each(function() {
 					var $td = jQuery(this);
 					$td.html('<span>' + $this.html() + $td.html() + '</span>');

@@ -10,7 +10,6 @@
 			this.selector = '.tabs-' + this.instanceId + ' > ul li a, .tabs-' + this.instanceId + ' > li a';
 			jQuery(document.querySelector('body')).on('click', this.selector, function(evt) {
 				evt.preventDefault();
-				// console.log('tab clicked');
 				_self.openTab(jQuery(this).closest('li')[0]);
 			});
 

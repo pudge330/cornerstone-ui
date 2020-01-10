@@ -101,7 +101,6 @@
 			var prevDisabled = (current < 2);
 			var nextDisabled = (current == maxPages);
 			this.$el.find('li:not(.template)').remove();
-			console.log(arr);
 			for (var i = 0; i < arr.length; i++) {
 				var $item = jQuery('<li></li>');
 				if (arr[i] == '...') {

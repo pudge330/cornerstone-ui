@@ -34,7 +34,7 @@ Cornerstone.init = function() {
 	for (var i = 0; i < _cornerstone.__onLoadHandlers.length; i++) {
 		_cornerstone.__onLoadHandlers[i]();
 	}
-	console.log('Cornerstone:inited');
+	// console.log('Cornerstone:inited');
 };
 Cornerstone.onLoad = function(cb) {
 	if (!_cornerstone.__hasLoaded) {
@@ -54,10 +54,8 @@ Cornerstone.autoload.factory = function(component, sel, dataAttr, dataAttrOption
 		var elements = document.querySelectorAll(sel);
 		for (var i = 0; i < elements.length; i++) {
 			var opts = elements[i].getAttribute(dataAttr);
-			console.log(sel, opts);
 			if (opts && opts.trim() != '') {
 				opts = JSON.safeParse(opts.trim());
-				console.log(sel, opts);
 			}
 			else {
 				opts = {};
