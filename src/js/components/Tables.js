@@ -1,8 +1,10 @@
 (function(CS) {
 	var component = CS.BaseComponent.extend({
 		Name: 'Table'
+		,cachedElms: undefined 
 		,init: function() {
 			var _self = this;
+			this.cachedElms = {};
 			this.defaultOptions = {
 				breakpoint: 'sm'
 			};
@@ -32,13 +34,28 @@
 			});
 		},
 		updateFixedHeaderWidths: function() {
-			var $fixedHeader = this.$el.closest('.table-fixed-wrap').find('.cs-table-fixedwrap thead tr th');
+			var _self = this;
+			// var $fixedHeader = _self.$el.closest('.table-fixed-wrap').find('.cs-table-fixedwrap thead tr th');
+			if (typeof _self.cachedElms.header == 'undefined' || _self.cachedElms.header.length) {
+				this.cachedElms = {header: [], body: []};
+				_self.$el.closest('.table-fixed-wrap').find('.cs-table-fixedwrap thead tr th').each(function() {
+					_self.cachedElms.header.push(jQuery(this));
+				});
+				this.$el.find('tbody tr:first-child td').each(function() {
+					_self.cachedElms.body.push(jQuery(this));
+				});
+			}
 			var total = 0;
-			this.$el.find('tbody tr:first-child td').each(function(index) {
-				var $td = jQuery(this);
-				jQuery($fixedHeader[index]).width($td.width() + 'px');
-				total += $td.width();
-			});
+			for (var i = 0; i < _self.cachedElms.body.length; i++) {
+				var width = _self.cachedElms.body[i].width();
+				jQuery(_self.cachedElms.header[i]).width(width + 'px');
+				total += width;
+			}
+			// _self.cachedElms.body.each(function(index) {
+			// 	var $td = jQuery(this);
+			// 	jQuery(_self.cachedElms.header[index]).width($td.width() + 'px');
+			// 	total += $td.width();
+			// });
 			this.$el.closest('.table-fixed-wrap').find('.cs-table-fixedwrap table').width(total + 'px');
 		},
 		initFixedHeader: function() {
@@ -47,7 +64,8 @@
 			var $fixedHeader = jQuery('<table><thead><tr></tr></thead></table>');
 			this.$el.find('thead tr th').each(function() {
 				var $th = jQuery(this);
-				$fixedHeader.find('tr').append('<th>' + $th.html() + '</th>');
+				var $copy = jQuery('<th>' + $th.html() + '</th>');
+				$fixedHeader.find('tr').append($copy);
 			});
 			$fixedWrap.append($fixedHeader);
 			$fixedWrap.attr('aria-hidden', 'true');
@@ -79,9 +97,13 @@
 
 			this.updateFixedHeaderWidths();
 
-			window.addEventListener('resize', bglib.fn.debounce(function() {
+			// window.addEventListener('resize', bglib.fn.debounce(function() {
+			// 	_self.updateFixedHeaderWidths();
+			// }, 10));
+
+			window.addEventListener('resize', function() {
 				_self.updateFixedHeaderWidths();
-			}, 10));
+			});
 		},
 		initFixedFooter: function() {
 		}

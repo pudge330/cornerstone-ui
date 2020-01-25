@@ -326,8 +326,7 @@ if (!Object.prototype.unwatch) {
 }
 //--JSON
 if (!JSON.safeParse) {
-	JSON.safeParse = function(_json, _d) {
-		_d = typeof _d !== 'undefined' ? _d : null;
+	JSON.safeParse = function(_json) {
 		if (_json === null) { return null; }
 		try {
 			_json = JSON.parse(_json);
@@ -490,7 +489,7 @@ bglib.fn.toEm = function(val, scope) {
 	scope.appendChild(test);
 	var testVal = parseFloat(bglib.El.css(test, 'height'));
 	bglib.El.remove(test);
-	return (val / testVal).toFixed(8) + 'em';
+	return ((val / testVal).toFixed(8) + '').replace(/0+$/, '').replace(/\.$/, '') + 'em';
 };
 bglib.fn.toPx = function(val, scope) {
 	scope = scope || document.querySelector('body');
@@ -508,7 +507,7 @@ bglib.fn.toPx = function(val, scope) {
 	scope.appendChild(test);
 	var testVal = parseFloat(bglib.El.css(test, 'height'));
 	bglib.El.remove(test);
-	return Math.round(val * testVal) + 'px';
+	return (Math.round(val * testVal) + '') + 'px';
 };
 bglib.fn.formatDecimal = function(amount, pos) {
     pos = pos || 2;
@@ -551,9 +550,7 @@ bglib.fn.rand = function(max) {
     return Math.floor((Math.random() * max) + 1);
 };
 bglib.fn.compileTemplate = function(tpl) {
-	var tpl = tpl,
-		match,
-		tmp,
+	var match,
 		jsTokens = [],
 		count = -1,
 		token = null;
@@ -623,8 +620,8 @@ bglib.fn.request = function(url, cb, data, type) {
     var sendData = (type !== 'GET');
     cb = cb || bglib.noop;
     cb = bglib.DT.isFunction(cb)
-        ? {success: cb, error: bglib.noop}
-        : Object.assign({success: bglib.noop, error: bglib.noop}, cb)
+        ? {success: cb, error: bglib.noop, always: bglib.noop}
+        : Object.assign({success: bglib.noop, error: bglib.noop, always: bglib.noop}, cb)
     ;
     var xhr = new XMLHttpRequest();
     xhr.open(type, url, true);
@@ -635,6 +632,7 @@ bglib.fn.request = function(url, cb, data, type) {
         else {
             cb.error(xhr.responseText, xhr, data);
         }
+        cb.always(xhr.responseText, xhr, data);
     }, false);
     if (sendData) {
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
