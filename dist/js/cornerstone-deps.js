@@ -524,8 +524,22 @@ bglib.fn.formatPrice = function(amount) {
     return bglib.fn.formatDecimal(amount, 2);
 };
 bglib.fn.htmlEntities = function(s) {
-    return s.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-        return '&#'+i.charCodeAt(0)+';';
+	s = s.replace(/[\'\"\&]/gim, function(i) {
+		if (i == '\'') {
+			return '&#039;';
+		} else if (i == '"') {
+			return '&quot;'
+		} else if (i == '&') {
+			return '&amp;'
+		}
+	});
+    return s.replace(/[\u00A0-\u9999<>]/gim, function(i) {
+    	if (['\'', '"', '&'].indexOf(i) === -1) {
+        	return '&#'+i.charCodeAt(0)+';';
+        }
+        else {
+        	i;
+        }
     });
 };
 bglib.fn.interpolate = function(tpl, data) {
@@ -596,10 +610,12 @@ bglib.fn.compileTemplate = function(tpl) {
 bglib.fn.renderTemplate = function(tpl, data) {
 	var helpers = bglib.fn.renderTemplate.helpers,
 		format = bglib.fn.renderTemplate.format,
-		fn = bglib.fn.renderTemplate.fn;
+		fn = bglib.fn.renderTemplate.fn,
+		data = data || {};
 	tpl = tpl.match(/^var __bglib_template__ = \'/) ? tpl : bglib.fn.compileTemplate(tpl);
 	return function() {
-		return eval(tpl);
+		eval(tpl);
+		return __bglib_template__;
 	}.call(data);
 };
 bglib.fn.renderTemplate.helpers = {};
