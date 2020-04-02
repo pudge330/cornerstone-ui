@@ -2,6 +2,7 @@
 	.cs-tooltip {
 		position: fixed;
 		padding: 0.75rem;
+		z-index: 1000;
 		.tooltipContent {
 			position: relative;
 			background-color: #333;
