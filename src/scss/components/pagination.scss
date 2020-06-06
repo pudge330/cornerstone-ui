@@ -41,7 +41,7 @@
 				}
 				.ellipsis-input {
 					position: absolute;
-					top: 105%;
+					top: 115%;
 					top: calc(100% + 5px);
 					left: 0;
 					left: calc(-25px + 50%);
@@ -91,6 +91,21 @@
 			}
 			&.no-padding {
 				padding: 0 !important;
+			}
+		}
+		&[data-ellipsis="top"] {
+			.ellipsis {
+				.ellipsis-input {
+					bottom: 115%;
+					bottom: calc(100% + 5px);
+					top: unset;
+					&:before {
+						bottom: -5px;
+						top: unset;
+						border-bottom: 0;
+						border-top: 5px solid #8a8a8a;
+					}
+				}
 			}
 		}
 	}

@@ -338,12 +338,12 @@ Cornerstone.BaseModule = module2;
 			var $children = this.getChildren();
 			$children.each(function() {
 				var $item = jQuery(this);
-				var $wrap = $item.find('.accordion-content-wrap');
-				if (!$wrap.length) {
-					$wrap = jQuery('<div class="accordion-content-wrap"></div>');
-					$wrap.append($item.find('.accordion-content').children());
-					$item.find('.accordion-content').append($wrap);
-				}
+				// var $wrap = $item.find('.accordion-content-wrap');
+				// if (!$wrap.length) {
+				// 	$wrap = jQuery('<div class="accordion-content-wrap"></div>');
+				// 	$wrap.append($item.find('.accordion-content').children());
+				// 	$item.find('.accordion-content').append($wrap);
+				// }
 				var $indicator = $item.find('.accordion-title .open-indicator');
 				if (!$indicator.length) {
 					var $indicator = jQuery('<span class="open-indicator"><span>');
@@ -405,7 +405,11 @@ Cornerstone.BaseModule = module2;
 		}
 		,setHeight: function($item) {
 			var $content = $item.find('.accordion-content');
-			$content.css('height', $content.find('.accordion-content-wrap').css('height'));
+			var height = 0;
+			$content.children().each(function() {
+				height += jQuery(this).outerHeight();
+			});
+			$content.css('height', height + 'px');
 		}
 		,toggleItem: function($item) {
 			if (!($item instanceof jQuery)) { $item = jQuery($item); }

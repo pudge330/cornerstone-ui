@@ -18,7 +18,7 @@
 				color: csColor('primary', 'base');
 			}
 		}
-		&[data#{$cs_prefix}-separator="lessthan"],
+		&[data#{$cs_prefix}-separator="greaterthan"],
 		&[data#{$cs_prefix}-separator=">"] {
 			.#{$cs_prefix}breadcrumb-item {
 				+ .#{$cs_prefix}breadcrumb-item {

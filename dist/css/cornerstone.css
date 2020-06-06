@@ -4185,7 +4185,7 @@ label {
 .breadcrumbs .breadcrumb-item a {
   color: #0099FF;
 }
-.breadcrumbs[data-separator="lessthan"] .breadcrumb-item + .breadcrumb-item:before, .breadcrumbs[data-separator=">"] .breadcrumb-item + .breadcrumb-item:before {
+.breadcrumbs[data-separator="greaterthan"] .breadcrumb-item + .breadcrumb-item:before, .breadcrumbs[data-separator=">"] .breadcrumb-item + .breadcrumb-item:before {
   content: '>';
   position: relative;
   top: -1px;
@@ -4523,18 +4523,44 @@ label {
   height: 0.75em;
 }
 .accordion .accordion-content {
-  transition: height .3s, margin .3s;
+  transition: height .3s;
   overflow: hidden;
 }
 .accordion .accordion-content .accordion-content-wrap {
   padding: 1rem;
+}
+.accordion .accordion-title {
+  position: relative;
+}
+.accordion.outlined {
+  border: 1px solid #ccc;
+}
+.accordion.outlined .accordion-item {
+  border-top: 1px solid #ccc;
+}
+.accordion.outlined .accordion-item:first-child {
+  border-top: none;
+}
+.accordion.outlined .accordion-title:after {
+  content: '';
+  background: #ccc;
+  height: 1px;
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.accordion.outlined .accordion-item.opened-item .accordion-title:after {
+  opacity: 1;
 }
 
 .cs-js .accordion-item:not(.pre-opened):not(.opened-item) .accordion-title .open-indicator {
   transform: rotate(0deg);
 }
 .cs-js .accordion-item:not(.pre-opened):not(.opened-item) .accordion-content {
-  margin: 0;
   height: 0 !important;
 }
 
@@ -4775,7 +4801,7 @@ body.modal-open {
 }
 .pagination li.ellipsis .ellipsis-input {
   position: absolute;
-  top: 105%;
+  top: 115%;
   top: calc(100% + 5px);
   left: 0;
   left: calc(-25px + 50%);
@@ -4824,6 +4850,17 @@ body.modal-open {
 }
 .pagination li.no-padding {
   padding: 0 !important;
+}
+.pagination[data-ellipsis="top"] .ellipsis .ellipsis-input {
+  bottom: 115%;
+  bottom: calc(100% + 5px);
+  top: unset;
+}
+.pagination[data-ellipsis="top"] .ellipsis .ellipsis-input:before {
+  bottom: -5px;
+  top: unset;
+  border-bottom: 0;
+  border-top: 5px solid #8a8a8a;
 }
 
 ul.tabs,
@@ -4954,6 +4991,7 @@ ul.tabs.vertical-tabs li a:after,
 .cs-tooltip {
   position: fixed;
   padding: 0.75rem;
+  z-index: 1000;
 }
 .cs-tooltip .tooltipContent {
   position: relative;
