@@ -1155,9 +1155,9 @@ bglib.AppRouter = bglib.BaseModule.extend({
 			else if (['ends-with', 'ends', '$'].indexOf(type) !== 1)
 				return 'ends-with';
 			else if (['regex'].indexOf(type) !== 1)
-				return 'ends-with';
+				return 'regex';
 			else if (['function', 'func'].indexOf(type) !== 1)
-				return 'ends-with';
+				return 'function';
 			else
 				return 'equals';
 			//--todo: add 'regex' and 'func' type
@@ -1937,7 +1937,7 @@ bglib.TagLoader = {
 	}
 	,getText: function(elm) {
 		var text = null;
-		if (typeof jQuery != 'undefined' && elm instanceof jQuery)
+		if (typeof jQuery !== 'undefined' && elm instanceof jQuery)
 			text = elm.text() || elm.html();
 		else if (isObject(elm))
 			text = elm.innerHTML;
@@ -1950,7 +1950,7 @@ bglib.TagLoader = {
 	}
 	,setText: function(elm, text, parent) {
 		text = this.applyWrap(text);
-		if (typeof jQuery != 'undefined' && elm instanceof jQuery)
+		if (typeof jQuery !== 'undefined' && elm instanceof jQuery)
 			elm.html(text);
 		else if (isObject(elm))
 			elm.innerHTML = text;

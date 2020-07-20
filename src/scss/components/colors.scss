@@ -25,11 +25,6 @@
 					.#{$cs_prefix}border-#{$name} {
 						border: 1px solid $accent;
 					}
-					a.#{$cs_prefix}animated.#{$cs_prefix}text-#{$name} {
-						&:after {
-							border-color: $accent;
-						}
-					}
 				}
 				@else {
 					.#{$cs_prefix}text-#{$name}-#{$accentName} {
@@ -40,11 +35,6 @@
 					}
 					.#{$cs_prefix}border-#{$name}-#{$accentName} {
 						border: 1px solid $accent;
-					}
-					a.#{$cs_prefix}animated.#{$cs_prefix}text-#{$name}-#{$accentName} {
-						&:after {
-							border-color: $accent;
-						}
 					}
 				}
 			}

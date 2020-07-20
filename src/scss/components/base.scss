@@ -81,25 +81,6 @@
 		&:hover {
 			text-decoration: underline;
 		}
-		&.#{$cs_prefix}animated {
-			position: relative;
-			&:after {
-				content: '';
-				display: block;
-				position: absolute;
-				width: 0%;
-				bottom: -1px;
-				left: 0;
-				border-top: 1px solid $cs_base_link_color;
-				transition: width .6s;
-			}
-			&:hover {
-				text-decoration: none;
-				&:after {
-					width: 100%;
-				}
-			}
-		}
 	}
 	p, a, span, ul, li {
 		font-size: inherit;
