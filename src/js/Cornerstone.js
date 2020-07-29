@@ -7,8 +7,9 @@ var _cornerstone = {
     ,__onLoadHandlers: []
     ,__hasLoaded: false
 };
-var Cornerstone = function() {
-};
+var Cornerstone = {};
+// var Cornerstone = function() {
+// };
 Cornerstone.getName = function() {
     return _this.name;
 };
