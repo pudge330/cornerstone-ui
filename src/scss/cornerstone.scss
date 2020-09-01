@@ -20,6 +20,7 @@
 @import './components/badges';
 @import './components/breadcrumbs';
 @import './components/helpers';
+@import './components/blockquote';
 
 //--js widgets
 @import './components/accordion';
@@ -47,6 +48,7 @@
 	@include CornerstoneUI_badges();
 	@include CornerstoneUI_breadcrumbs();
 	@include CornerstoneUI_helpers();
+	@include CornerstoneUI_blockquote();
 
 	//--js widgets
 	@include CornerstoneUI_accordion();

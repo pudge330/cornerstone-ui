@@ -71,6 +71,10 @@ var htmlConcats = {
 		src: ['src/html/parts/badges.html'],
 		dest: 'examples/badges.html'
 	}
+	,htmlBlockquote: {
+		src: ['src/html/parts/blockquote.html'],
+		dest: 'examples/blockquotes.html'
+	}
 	,htmlTables: {
 		src: ['src/html/parts/tables.html'],
 		dest: 'examples/tables.html'

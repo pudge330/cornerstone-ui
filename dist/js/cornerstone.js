@@ -26,8 +26,9 @@ var _cornerstone = {
     ,__onLoadHandlers: []
     ,__hasLoaded: false
 };
-var Cornerstone = function() {
-};
+var Cornerstone = {};
+// var Cornerstone = function() {
+// };
 Cornerstone.getName = function() {
     return _this.name;
 };
@@ -1275,6 +1276,63 @@ Cornerstone.BaseModule = module2;
 					_self.cachedElms.body.push(jQuery(this));
 				});
 			}
+
+/*
+
+			//--need to fix how the table resize columns/headers, not always working, especially with empty columns
+
+			var total = 0;
+			this.$el.closest('.table-fixed-wrap').find('.cs-table-fixedwrap table')[0].style.removeProperty('width');
+			this.$el[0].style.removeProperty('width');
+			for (var i = 0; i < _self.cachedElms.body.length; i++) {
+				_self.cachedElms.header[i][0].style.removeProperty('width');
+				_self.cachedElms.body[i][0].style.removeProperty('width');
+
+				var minWidth = 
+					parseInt(_self.cachedElms.header[i].css('padding-left')) +
+					parseInt(_self.cachedElms.header[i].css('padding-right')) + 
+					parseInt(_self.cachedElms.header[i].find('span').css('width'));
+				var minWidth2 = 
+					parseInt(_self.cachedElms.body[i].css('padding-left')) +
+					parseInt(_self.cachedElms.body[i].css('padding-right')) +
+					parseInt(_self.cachedElms.body[i].find('span').css('width'));
+				var mw = minWidth > minWidth2 ? minWidth : minWidth2;
+				console.log(i + '-min: max=' + mw + ', w1=' + minWidth + ', w2=' + minWidth2);
+
+				// var width = _self.cachedElms.header[i].outerWidth(),
+				// 	width2 = _self.cachedElms.body[i].outerWidth();
+				// var w = width > width2 ? width : width2;
+				// w = w > mw ? w : mw;
+				w = mw;
+
+				// console.log(i + ': max=' + w + ', w1=' + width + ', w2=' + width2);
+
+				_self.cachedElms.header[i].css('width', w + 'px');
+				_self.cachedElms.body[i].css('width', w + 'px');
+				total += w;
+			}
+
+			// console.log([
+			// 	total,
+			// 	this.$el.closest('.table-fixed-wrap').width(),
+			// 	this.$el.closest('.table-fixed-wrap').width() - total
+			// ]);
+
+
+			if (total < this.$el.closest('.table-fixed-wrap').width()) {
+				var w = this.$el.closest('.table-fixed-wrap').width() - total;
+				w = w - _self.cachedElms.body[0].width();
+				console.log(w);
+				_self.cachedElms.header[0].css('width', w + 'px');
+				_self.cachedElms.body[0].css('width', w + 'px');
+				total = this.$el.closest('.table-fixed-wrap').width();
+			}
+			
+			this.$el.closest('.table-fixed-wrap').find('.cs-table-fixedwrap table')[0].style['width'] = total + 'px';
+			this.$el[0].style['width'] = total + 'px';
+
+*/
+
 			var total = 0;
 			for (var i = 0; i < _self.cachedElms.body.length; i++) {
 				var width = _self.cachedElms.body[i].width();

@@ -2893,9 +2893,6 @@ table.table-hover tbody td {
   height: 500px;
 }
 
-.cs-table-fixedwrap {
-  overflow: hidden;
-}
 .cs-table-fixedwrap table {
   table-layout: fixed;
   margin-bottom: 0;
@@ -4217,6 +4214,82 @@ label {
 
 .table-cell {
   display: table-cell !important;
+}
+
+.blockquote {
+  background: #EAEAEA;
+  border-left: 5px solid #CCC;
+  padding: 1rem;
+}
+.blockquote hr {
+  border: 0;
+  border-top: 1px solid #CCC;
+}
+.blockquote p a {
+  color: #CCC;
+}
+.blockquote footer {
+  text-align: right;
+  color: #A3A3A3;
+}
+.blockquote footer:before {
+  content: '—';
+  margin-right: 0.25rem;
+}
+.blockquote cite a {
+  color: #A3A3A3;
+  text-decoration: underline;
+}
+.blockquote cite a:hover {
+  color: #7A7A7A;
+}
+.blockquote.blockquote-thin {
+  border-left: 2px solid #CCC;
+}
+.blockquote.blockquote-thick {
+  border-left: 10px solid #CCC;
+}
+.blockquote.text-center footer {
+  text-align: center;
+}
+.blockquote.underline-cite cite {
+  text-decoration: underline;
+}
+.blockquote.blockquote-primary {
+  border-color: #0099FF;
+}
+.blockquote.blockquote-primary p a {
+  color: #0099FF;
+}
+.blockquote.blockquote-secondary {
+  border-color: #999;
+}
+.blockquote.blockquote-secondary p a {
+  color: #999;
+}
+.blockquote.blockquote-success {
+  border-color: #4caf50;
+}
+.blockquote.blockquote-success p a {
+  color: #4caf50;
+}
+.blockquote.blockquote-danger {
+  border-color: #FF4040;
+}
+.blockquote.blockquote-danger p a {
+  color: #FF4040;
+}
+.blockquote.blockquote-warning {
+  border-color: #fd9904;
+}
+.blockquote.blockquote-warning p a {
+  color: #fd9904;
+}
+.blockquote.blockquote-info {
+  border-color: #2DBFE1;
+}
+.blockquote.blockquote-info p a {
+  color: #2DBFE1;
 }
 
 .accordion .accordion-title {
