@@ -103,6 +103,7 @@
 			//--make sure dropdown fits within page boundaries
 			var anchor = this.getOption('anchor');
 			var buttonRect = this.$el[0].getBoundingClientRect();
+			console.log(anchor);
 		}
 		,handleCloseAction: function() {
 			if (this.isOpen()) {
