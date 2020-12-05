@@ -66,24 +66,42 @@ $cs_colors: (
 		"dark-2x": #7A7A7A,
 		"dark-3x": #515151
 	)
+	// ,"primary": (
+	// 	"base": #0099FF
+	// )
+	// ,"secondary": (
+	// 	"base": #999
+	// )
+	// ,"success": (
+	// 	"base": #4caf50
+	// )
+	// ,"danger": (
+	// 	"base": #FF4040
+	// )
+	// ,"warning": (
+	// 	"base": #fd9904
+	// )
+	// ,"info": (
+	// 	"base": #2DBFE1
+	// )
 	,"primary": (
-		"base": #0099FF
+		"base": #2baaec
 	)
 	,"secondary": (
 		"base": #999
 	)
 	,"success": (
-		"base": #4caf50
+		"base": #70D852
 	)
 	,"danger": (
-		"base": #FF4040
+		"base": #fd5c62
 	)
 	,"warning": (
-		"base": #fd9904
+		"base": #FE713E
 	)
 	,"info": (
-		"base": #2DBFE1
-	)	
+		"base": #4eccc4
+	)
 ) !default;
 $cs_colors: csGenerateColorMap($cs_colors);
 $cs_colors_ext: () !default;
