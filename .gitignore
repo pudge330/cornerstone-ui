@@ -1,6 +1,3 @@
-.sass-cache/
-node_modules/
-
 ##--OS files/folders
 */.DS_Store
 .DS_Store
@@ -13,3 +10,7 @@ ehthumbs.db
 Thumbs.db
 __MACOSX
 */__MACOSX
+
+.sass-cache/
+node_modules/
+!src/svg/icons
