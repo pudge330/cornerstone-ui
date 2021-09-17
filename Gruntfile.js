@@ -135,7 +135,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					style: 'expanded'
-					,sourcemap: 'none'
+					,"no-source-map": ''
 				}
 				,files: {
 					'dist/css/cornerstone.css': 'src/scss/cornerstone.scss'
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
 			,prod: {
 				options: {
 					style: 'compressed'
-					,sourcemap: 'none'
+					,"no-source-map": ''
 				}
 				,files: {
 					'dist/css/cornerstone.min.css': 'src/scss/cornerstone.scss'
