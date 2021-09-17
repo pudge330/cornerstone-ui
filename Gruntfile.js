@@ -181,11 +181,11 @@ module.exports = function(grunt) {
 			}
 			,resources: {
 				src: [
-					'src/svg/icons/wrap-start.js'
+					'src/svg/wrap-start.js'
 					,'src/svg/icons/arrow.svg'
 					,'src/svg/icons/ios-close.svg'
 					,'src/svg/icons/md-close.svg'
-					,'src/svg/icons/wrap-end.js'
+					,'src/svg/wrap-end.js'
 				]
 				,dest: 'dist/js/cornerstone-resources.js'
 				,options: {
@@ -194,9 +194,9 @@ module.exports = function(grunt) {
 			}
 			,'resources-all': {
 				src: [
-					'src/svg/icons/wrap-start.js'
+					'src/svg/wrap-start.js'
 					,'src/svg/icons/*.svg'
-					,'src/svg/icons/wrap-end.js'
+					,'src/svg/wrap-end.js'
 				]
 				,dest: 'dist/js/cornerstone-resources-all.js'
 				,options: {
