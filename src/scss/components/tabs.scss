@@ -1,6 +1,6 @@
 @mixin CornerstoneUI_tabs() {
 	ul.tabs,
-	.tabs ul {
+	.tabs > ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -41,8 +41,6 @@
 	}
 	.tabs {
 		margin-bottom: 1rem;
-		ul {
-		}
 	}
 	ul.tabs.vertical-tabs,
 	.tabs.vertical-tabs ul {
